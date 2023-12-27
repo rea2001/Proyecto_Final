@@ -1,0 +1,51 @@
+  h2{
+    color: #3e8e41;
+  }
+  
+  .login-container {
+    height: auto;
+    width: 25%;
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid #4CAF50;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8em;
+  }
+ img{
+    width: 60px;
+ }
+  .form-group {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  button[type='submit'] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  button[type='submit']:hover {
+    background-color: #3e8e41;
+  }
+  

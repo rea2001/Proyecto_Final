@@ -1,0 +1,30 @@
+    
+    <div class="login-container" id="superponerLo">
+        <div>
+            <h2>Login</h2>
+        </div>
+    <img src="../../assets/Images/user.png" alt="user">
+    <br>
+    <form (ngSubmit)="onLoginSubmit()" #loginForm="ngForm">
+        <div class="form-group">
+            <label for="username">Usuario:</label>
+            <input type="text" id="username" name="username" [(ngModel)]="loginFormModel.username" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" [(ngModel)]="loginFormModel.password" required>
+        </div>
+
+        <button id="iniciar" type="submit" [disabled]="!loginForm.valid">Iniciar sesión</button>
+        <div class="register-link">
+            <p>¿No tienes una cuenta? <a (click)="showRegistroOverlay()">Regístrate aquí</a></p>
+        </div>
+    </form>
+    
+</div>
+
+<div class="overlay" *ngIf="showRegistro">
+    <app-registro (usuarioCreado)="recibirEstado($event)"></app-registro>
+</div>
+

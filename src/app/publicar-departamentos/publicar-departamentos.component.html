@@ -1,0 +1,53 @@
+<div class="main-content">
+<app-hearder></app-hearder>
+<!-- publicar-departamento.component.html -->
+<form [formGroup]="publicarForm" (ngSubmit)="onSubmit()">
+    <!-- Campos del formulario -->
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" formControlName="nombre">
+  
+    <!-- Otros campos según tus necesidades -->
+  
+    <!-- Botón de envío -->
+    <button type="submit">Publicar Departamento</button>
+  </form>
+
+  <!-- caracteristicas-form.component.html -->
+<form [formGroup]="caracteristicasForm" (ngSubmit)="onSubmit()">
+    <!-- Campos del formulario -->
+    <label for="habitaciones">Número de Habitaciones:</label>
+    <input type="number" id="habitaciones" formControlName="habitaciones">
+  
+    <!-- Otros campos según tus necesidades -->
+  
+    <!-- Botón de envío -->
+    <button type="submit">Guardar Características</button>
+  </form>
+
+  <!-- servicios-form.component.html -->
+<form [formGroup]="serviciosForm" (ngSubmit)="onSubmit()">
+    <!-- Campos del formulario -->
+    <label><input type="checkbox" formControlName="luz"> Luz</label>
+    <label><input type="checkbox" formControlName="internet"> Internet</label>
+    <!-- Otros campos según tus necesidades -->
+  
+    <!-- Botón de envío -->
+    <button type="submit">Guardar Servicios</button>
+  </form>
+
+  <!-- condiciones-form.component.html -->
+<form [formGroup]="condicionesForm" (ngSubmit)="onSubmit()">
+    <!-- Campos del formulario -->
+    <label><input type="checkbox" formControlName="permiteAnimales"> Permite Animales</label>
+    <label><input type="checkbox" formControlName="permiteFumar"> Permite Fumar</label>
+    <!-- Otros campos según tus necesidades -->
+  
+    <!-- Botón de envío -->
+    <button type="submit">Guardar Condiciones</button>
+  </form>
+
+<app-footer></app-footer>  
+</div>
+  
+  
+  

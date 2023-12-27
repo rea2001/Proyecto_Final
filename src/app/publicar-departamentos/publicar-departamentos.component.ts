@@ -31,12 +31,16 @@ export class PublicarDepartamentosComponent {
     this.serviciosForm = this.fb.group({
       luz: [false],
       internet: [false],
+      duchaElectrica: [false],
+      calefon: [false],
+      garage: [false]
       // ... otros servicios según tus necesidades
     })
 
     this.condicionesForm = this.fb.group({
       permiteAnimales: [false],
       permiteFumar: [false],
+      numPersonas: ['', Validators.required]
       // ... otras condiciones según tus necesidades
     })
   }

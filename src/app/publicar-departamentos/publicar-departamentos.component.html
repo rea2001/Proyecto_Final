@@ -1,53 +1,57 @@
 <div class="main-content">
-<app-hearder></app-hearder>
-<!-- publicar-departamento.component.html -->
-<form [formGroup]="publicarForm" (ngSubmit)="onSubmit()">
-    <!-- Campos del formulario -->
-    <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" formControlName="nombre">
-  
-    <!-- Otros campos según tus necesidades -->
-  
-    <!-- Botón de envío -->
-    <button type="submit">Publicar Departamento</button>
-  </form>
+  <app-hearder></app-hearder>
+  <div id="grid">
+    <div id="fotos">
+      <h3>Fotos</h3>
+      <div class="mb-3">
+        <label for="formFileMultiple" class="form-label">Multiple files input example</label>
+        <input class="form-control" type="file" id="formFileMultiple" multiple>
+      </div> 
+    </div>
+    <div id="form">
+      <form [formGroup]="publicarForm" (ngSubmit)="onSubmit()">
+        <!-- Campos del formulario -->
+        <input type="text" id="nombre" formControlName="nombre" placeholder="Nombre">
+        <input type="number" id="nombre" formControlName="precio" placeholder="$ Precio">
+        <select id="tipoPropiedad" name="tipoPropiedad" formControlName="tipoPropiedad">
+          <option value="Casa">Casa</option>
+          <option value="Media Agua">Media Agua</option>
+          <option value="Departamento">Departamento</option>
+          <option value="Condominio">Condominio</option>
+          <option value="Solohabitacion">Solo habitación</option>
+        </select>
+        <button type="submit">Publicar Departamento</button>
+      </form>
 
-  <!-- caracteristicas-form.component.html -->
-<form [formGroup]="caracteristicasForm" (ngSubmit)="onSubmit()">
-    <!-- Campos del formulario -->
-    <label for="habitaciones">Número de Habitaciones:</label>
-    <input type="number" id="habitaciones" formControlName="habitaciones">
-  
-    <!-- Otros campos según tus necesidades -->
-  
-    <!-- Botón de envío -->
-    <button type="submit">Guardar Características</button>
-  </form>
+      <form [formGroup]="caracteristicasForm" (ngSubmit)="onSubmit()">
+        <input type="number" id="habitaciones" formControlName="habitaciones" placeholder="Número de Habitaciones">
+        <input type="number" id="banios" formControlName="banios" placeholder="Número de Baños">
+ 
+        <button type="submit">Guardar Características</button>
+      </form>
 
-  <!-- servicios-form.component.html -->
-<form [formGroup]="serviciosForm" (ngSubmit)="onSubmit()">
-    <!-- Campos del formulario -->
-    <label><input type="checkbox" formControlName="luz"> Luz</label>
-    <label><input type="checkbox" formControlName="internet"> Internet</label>
-    <!-- Otros campos según tus necesidades -->
-  
-    <!-- Botón de envío -->
-    <button type="submit">Guardar Servicios</button>
-  </form>
+      <form [formGroup]="serviciosForm" (ngSubmit)="onSubmit()">
+        <h3>Servicios</h3>
+        <label><input type="checkbox" formControlName="luz"> Luz</label>
+        <label><input type="checkbox" formControlName="internet"> Internet</label>
+        <label><input type="checkbox" formControlName="garage"> Garage</label>
+        <label><input type="checkbox" formControlName="calefon"> Calefón</label>
+        <label><input type="checkbox" formControlName="duchaElectrica"> Ducha Eléctrica</label>
+        <button type="submit">Guardar Servicios</button>
+      </form>
 
-  <!-- condiciones-form.component.html -->
-<form [formGroup]="condicionesForm" (ngSubmit)="onSubmit()">
-    <!-- Campos del formulario -->
-    <label><input type="checkbox" formControlName="permiteAnimales"> Permite Animales</label>
-    <label><input type="checkbox" formControlName="permiteFumar"> Permite Fumar</label>
-    <!-- Otros campos según tus necesidades -->
-  
-    <!-- Botón de envío -->
-    <button type="submit">Guardar Condiciones</button>
-  </form>
+      <form [formGroup]="condicionesForm" (ngSubmit)="onSubmit()">
+        <label><input type="checkbox" formControlName="permiteAnimales"> Permite Animales</label>
+        <label><input type="checkbox" formControlName="permiteFumar"> Permite Fumar</label>
+        <input type="number" id="numPersonas" formControlName="numPersonas" placeholder="Número de Personas">
+        <button type="submit">Guardar Condiciones</button>
+      </form> 
+    </div>
 
-<app-footer></app-footer>  
+    <div id="map">
+      <h3>Api Mapa</h3>
+    </div>
+  </div>
+
+  <app-footer></app-footer>
 </div>
-  
-  
-  

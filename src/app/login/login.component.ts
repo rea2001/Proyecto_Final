@@ -41,24 +41,33 @@ export class LoginComponent {
   };
 
   onLoginSubmit() {
-    // Hacer la solicitud al servicio para obtener la lista de usuarios
     this.http.get('http://reaavero.somee.com/SArriendos.svc/lista').subscribe(
       (data: any) => {
-        // Filtrar la lista para encontrar el usuario con el nombre de usuario y contraseña proporcionados
         const usuarioEncontrado = data.find(
           (usuario: any) =>
             usuario.Nom_Usuario === this.loginFormModel.username &&
             usuario.Contrasena === this.loginFormModel.password
         );
-
+  
         if (usuarioEncontrado) {
-          // Usuario encontrado, puedes continuar con la lógica de autenticación
+          // Usuario autenticado
           console.log('Autenticación exitosa');
-          this.siLogeado();
-          
+  
+          // Verifica el rol del usuario
+          if (usuarioEncontrado.Rol === 'Publicar') {
+            // Redirige al componente de publicar-departamentos
+            this.router.navigate(['/publicar-departamentos']);
+            this.siLogeado();
+          } else if (usuarioEncontrado.Rol === 'Alquilar') {
+            // Redirige al componente de alquilar-departamentos
+            this.router.navigate(['/alquilar-departamentos']);
+            this.siLogeado();
+          }
         } else {
           // Usuario no encontrado, muestra un error
           alert('Error de autenticación: Usuario o contraseña incorrectos');
+          this.loginFormModel.username = '';
+          this.loginFormModel.password = '';
         }
       },
       (error) => {
@@ -68,3 +77,4 @@ export class LoginComponent {
     );
   }
 }
+

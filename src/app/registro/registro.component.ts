@@ -1,23 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit,Output, EventEmitter  } from '@angular/core';
-
-
-interface Usuario {
-  Apellido1: string;
-  Apellido2: string;
-  Cedula: string;
-  Contrasena: string;
-  Correo: string;
-  Est_Civ: string;
-  Fec_Nac: string; // Ajusta según la forma en que tu servicio maneje las fechas
-  Id_Usu: number;
-  Nom_Usuario: string;
-  Nombre1: string;
-  Nombre2: string;
-  Rol: string;
-  Sexo: string;
-  Telefono: string;
-}
+import { Usuario } from '../Modelos/Entidades.model';
+import { ServicioUsuariosService } from '../servicio-usuarios.service';
 
 @Component({
   selector: 'app-registro',
@@ -25,6 +8,8 @@ interface Usuario {
   styleUrls: ['./registro.component.css']
 })
 export class RegistroComponent implements OnInit {
+
+  constructor(private servicioUsuario:ServicioUsuariosService) { }
 
   @Output() usuarioCreado = new EventEmitter<boolean>();
 
@@ -42,7 +27,7 @@ export class RegistroComponent implements OnInit {
     Contrasena: '',
     Correo: '',
     Est_Civ: '',
-    Fec_Nac: '', // Ajusta según la forma en que tu servicio maneje las fechas
+    Fec_Nac: '', 
     Id_Usu: 0,
     Nom_Usuario: '',
     Nombre1: '',
@@ -50,31 +35,30 @@ export class RegistroComponent implements OnInit {
     Rol: '',
     Sexo: '',
     Telefono: ''
-  };
-
-  constructor(private httpClient: HttpClient) { }
+  };  
 
   ngOnInit(): void {
     // Lógica de inicialización si es necesaria
   }
 
-  onRegisterSubmit() {
-    const url = 'http://reaavero.somee.com/SArriendos.svc/Crear';
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-
-    // Ajustamos la fecha de nacimiento según el formato esperado por el servicio
+  onRegisterSubmit() {    
+    //this.registerFormModel.Fec_Nac = Date.parse(this.registerFormModel.Fec_Nac).toString();
     this.registerFormModel.Fec_Nac = '/Date(' + new Date(this.registerFormModel.Fec_Nac).getTime() + ')/';
-
-    this.httpClient.post(url, this.registerFormModel, { headers: headers })
-      .subscribe(
+    alert(this.registerFormModel.Fec_Nac)
+    this.servicioUsuario.CrearUsuario(this.registerFormModel).subscribe(
         (data) => {
-          alert('Usuario registrado con éxito:'+ data);
-          this.noLogeado();
+          if (data) {
+            alert('Usuario registrado con éxito:');
+            this.noLogeado();            
+          }else{
+            alert('El usuario no se pudo crear');
+          }
+          console.log("Estado de la creacion de usuario: "+data);
         },
         (error) => {
-          alert('Error al registrar usuario:' + error);
+          alert('Error al registrar usuario: \n' + error);
           
         }
-      );
-  }
+      );      
+  }  
 }

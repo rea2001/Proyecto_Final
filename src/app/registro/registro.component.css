@@ -43,7 +43,6 @@ h2 {
 }
 
 button[type='submit'] {
-  grid-column: span 2; /* Ocupa las dos columnas */
   background-color: #4CAF50;
   color: white;
   padding: 10px 10px;

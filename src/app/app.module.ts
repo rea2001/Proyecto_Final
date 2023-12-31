@@ -8,27 +8,24 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { HearderComponent } from './Principal/hearder/hearder.component';
-import { NavegacionComponent } from './Principal/navegacion/navegacion.component';
-import { BusquedaComponent } from './Principal/busqueda/busqueda.component';
 import { GaleriaComponent } from './Principal/galeria/galeria.component';
 import { FooterComponent } from './Principal/footer/footer.component';
-import { InicioComponent } from './inicio/inicio.component';
 import { ItemComponent } from './item/item.component';
 import { PublicarDepartamentosComponent } from './publicar-departamentos/publicar-departamentos.component';
+import { DescripcionItemComponent } from './descripcion-item/descripcion-item.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegistroComponent,
-    HearderComponent,
-    NavegacionComponent,
-    BusquedaComponent,
+    HearderComponent,  
     GaleriaComponent,
-    FooterComponent,
-    InicioComponent,
+    FooterComponent,    
     ItemComponent,
-    PublicarDepartamentosComponent
+    PublicarDepartamentosComponent,
+    DescripcionItemComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +35,7 @@ import { PublicarDepartamentosComponent } from './publicar-departamentos/publica
     ReactiveFormsModule
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),CookieService
   ],
   bootstrap: [AppComponent]
 })

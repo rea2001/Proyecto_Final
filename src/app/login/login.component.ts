@@ -1,8 +1,11 @@
-import { Component, Output, EventEmitter  } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Output, EventEmitter } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { AppComponent } from '../app.component';
 import { error } from 'console';
+import { Usuario } from '../Modelos/Entidades.model';
+import { ServicioUsuariosService } from '../servicio-usuarios.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -10,71 +13,64 @@ import { error } from 'console';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  @Output() usuarioLogeado = new EventEmitter<boolean>();
 
-  siLogeado() {
+  constructor(private router: Router, private usuarioServicio:ServicioUsuariosService) { }
+  
+  @Output() usuarioLogeado = new EventEmitter<boolean>();
+  loginFormModel = { username: '', password: ''};
+  showRegistro = false;  
+
+  siLogeado() {    
     this.usuarioLogeado.emit(true);
   }
   noLogeado() {
     this.usuarioLogeado.emit(false);
+    this.router.navigate(["/home"])
   }
-  showRegistro = false;
 
   recibirEstado(estado: boolean) {
-    this.showRegistro=estado;
+    this.showRegistro = estado;
   }
 
   // Método para mostrar el login superpuesto
-  showRegistroOverlay() {
+  showRegistroOverlay(e:Event) {
     this.showRegistro = true;
-  }  
-
-  showRegistroFalse(){
-    this.showRegistro = false;
+    e.preventDefault();
   }
 
-  constructor(private router: Router, private http: HttpClient) {}
-
-  loginFormModel = {
-    username: '',
-    password: ''
-  };
-
+  showRegistroFalse() {
+    this.showRegistro = false;
+  }
+  
   onLoginSubmit() {
-    this.http.get('http://reaavero.somee.com/SArriendos.svc/lista').subscribe(
-      (data: any) => {
-        const usuarioEncontrado = data.find(
-          (usuario: any) =>
-            usuario.Nom_Usuario === this.loginFormModel.username &&
-            usuario.Contrasena === this.loginFormModel.password
-        );
-  
-        if (usuarioEncontrado) {
-          // Usuario autenticado
-          console.log('Autenticación exitosa');
-  
-          // Verifica el rol del usuario
-          if (usuarioEncontrado.Rol === 'Publicar') {
-            // Redirige al componente de publicar-departamentos
-            this.router.navigate(['/publicar-departamentos']);
+    this.usuarioServicio.LogearUsuario(this.loginFormModel.username, this.loginFormModel.password).subscribe(
+      (data: Usuario) => {
+        if (data) {
+          // this.usuarioConectado = new Usuario(data.Apellido1, data.Apellido2, data.Cedula, data.Contrasena, data.Correo,
+          //   data.Est_Civ, data.Fec_Nac, data.Id_Usu, data.Nom_Usuario, data.Nombre1, data.Nombre2, data.Rol, data.Sexo, data.Telefono);          
+          this.usuarioServicio.usuarioConectado=data;
+          console.log('Autenticación exitosa');                        
             this.siLogeado();
-          } else if (usuarioEncontrado.Rol === 'Alquilar') {
-            // Redirige al componente de alquilar-departamentos
-            this.router.navigate(['/alquilar-departamentos']);
-            this.siLogeado();
-          }
+            this.router.navigate(['/galeria']);
         } else {
-          // Usuario no encontrado, muestra un error
           alert('Error de autenticación: Usuario o contraseña incorrectos');
           this.loginFormModel.username = '';
           this.loginFormModel.password = '';
         }
       },
       (error) => {
-        // Manejar errores de la solicitud HTTP
         console.error('Error al obtener la lista de usuarios', error);
       }
-    );
+    )
   }
+
+
+
+
+
+
+
+
 }
+
 

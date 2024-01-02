@@ -15,14 +15,14 @@
       </div>
 
       <div id="form">
-        <form [formGroup]="publicarForm" (ngSubmit)="onSubmit()">
+        <form>
           <!-- Campos del formulario -->
           <label for="Nombre">Nombre:</label>
-          <input type="text" id="nombre" formControlName="nombre">
+          <input type="text" id="nombre" class="nombre">
           <label for="Precio">Precio:</label>
-          <input type="number" id="nombre" formControlName="precio" placeholder="$">
+          <input type="number" id="nombre" class="precio" placeholder="$">
           <label for="TipoPropiedad">Tipo de propiedad: </label>
-          <select id="tipoPropiedad" name="tipoPropiedad" formControlName="tipoPropiedad">
+          <select id="tipoPropiedad" name="tipoPropiedad" class="tipoPropiedad">
             <option value="Casa">Casa</option>
             <option value="Media Agua">Media Agua</option>
             <option value="Departamento">Departamento</option>
@@ -30,10 +30,10 @@
             <option value="Solohabitacion">Solo habitación</option>
           </select>
           <label for="longitud">Longitud:</label>
-          <input type="text" id="longitud" formControlName="longitud">
+          <input type="text" id="longitud" class="longitud">
 
           <label for="latitud">Latitud:</label>
-          <input type="text" id="latitud" formControlName="latitud">
+          <input type="text" id="latitud" class="latitud">
 
           <label for="descripcion">Descripción</label>
           <textarea name="" id="" cols="30" rows="3" placeholder="Agrega una descripción de la vivienda"></textarea>
@@ -41,59 +41,58 @@
           <h4>Caracteristicas </h4>
 
           <label for="Num_Hab">Número de Habitaciones: </label>
-          <input type="number" id="Num_Hab" formControlName="Num_Hab">
+          <input type="number" id="Num_Hab" class="Num_Hab">
           <label for="Num_Ban">Número de Baños: </label>
-          <input type="number" id="Num_Ban" formControlName="Num_Ban">
+          <input type="number" id="Num_Ban" class="Num_Ban">
           <label for="Num_Pis">Número de Piso: </label>
-          <input type="number" id="Num_Pis" formControlName="Num_Pis">
+          <input type="number" id="Num_Pis" class="Num_Pis">
           <label for="Metraje">Metraje: </label>
-          <input type="number" id="Metraje" formControlName="Metraje">
+          <input type="number" id="Metraje" class="Metraje">
           <br>
           <div class="grid-2">
-            <label><input type="checkbox" formControlName="Comedor"> Comedor</label>
-            <label><input type="checkbox" formControlName="Sala"> Sala</label>
-            <label><input type="checkbox" formControlName="Lavanderia"> Lavandería</label>
-            <label><input type="checkbox" formControlName="Cocina"> Cocina</label>
-            <label><input type="checkbox" formControlName="Jardin"> Jardin</label>
-            <label><input type="checkbox" formControlName="Amoblado"> Amoblado</label>
-            <label><input type="checkbox" formControlName="Ascensor"> Ascensor</label>
-            <label><input type="checkbox" formControlName="Terraza"> Terraza</label>
+            <label><input type="checkbox" class="Comedor"> Comedor</label>
+            <label><input type="checkbox" class="Sala"> Sala</label>
+            <label><input type="checkbox" class="Lavanderia"> Lavandería</label>
+            <label><input type="checkbox" class="Cocina"> Cocina</label>
+            <label><input type="checkbox" class="Jardin"> Jardin</label>
+            <label><input type="checkbox" class="Amoblado"> Amoblado</label>
+            <label><input type="checkbox" class="Ascensor"> Ascensor</label>
+            <label><input type="checkbox" class="Terraza"> Terraza</label>
           </div>
           <br>
           <h4>Servicios</h4>
           <div class="grid-2">
-            <label><input type="checkbox" formControlName="Luz"> Luz</label>
-            <label><input type="checkbox" formControlName="Agua"> Agua</label>
-            <label><input type="checkbox" formControlName="Internet"> Internet</label>
-            <label><input type="checkbox" formControlName="Garage"> Garage</label>
-            <label><input type="checkbox" formControlName="Calefon"> Calefón</label>
-            <label><input type="checkbox" formControlName="Duc_Elec"> Ducha Eléctrica</label>
+            <label><input type="checkbox" class="Luz"> Luz</label>
+            <label><input type="checkbox" class="Agua"> Agua</label>
+            <label><input type="checkbox" class="Internet"> Internet</label>
+            <label><input type="checkbox" class="Garage"> Garage</label>
+            <label><input type="checkbox" class="Calefon"> Calefón</label>
+            <label><input type="checkbox" class="Duc_Elec"> Ducha Eléctrica</label>
           </div>
           <br>
           <h4>Condiciones</h4>
           <label for="numPersonas">Número de Personas: </label>
-          <input type="number" id="numPersonas" formControlName="numPersonas">
+          <input type="number" id="numPersonas" class="numPersonas">
           <label for="numPersonas">Garantía: </label>
-          <input type="number" id="Garantia" formControlName="Garantia">
+          <input type="number" id="Garantia" class="Garantia">
           <br>
 
           <div class="grid-2">
-            <div> <label><input type="checkbox" formControlName="Mascotas"> Permite Mascotas</label>
+            <div> <label><input type="checkbox" class="Mascotas"> Permite Mascotas</label>
             </div>
-            <div> <label><input type="checkbox" formControlName="Fiestas"> Permite Fiestas</label>
+            <div> <label><input type="checkbox" class="Fiestas"> Permite Fiestas</label>
             </div>
           </div>
           <button type="submit">Publicar Departamento</button>
         </form>
       </div>
     </div>
-
-    <div id="map">
+    <div id="mapa">
       <h3>Localización</h3>
-      <div id="map-api">
-        <p>Aqui va el mapa</p>
-      </div>
+      <div #map style="height: 500px; width: 100%; margin-top:1em;">
     </div>
+    </div>    
+    
   </div>
 </div>
 <br>

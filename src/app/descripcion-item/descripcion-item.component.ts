@@ -1,7 +1,6 @@
 /// <reference types="@types/google.maps" />
 
 import { Component, ViewChild } from '@angular/core';
-import { OnInit, Renderer2 } from '@angular/core';
 import { Vivienda } from '../Modelos/Entidades.model';
 
 @Component({
@@ -11,7 +10,7 @@ import { Vivienda } from '../Modelos/Entidades.model';
 })
 export class DescripcionItemComponent {
   estaVivienda:Vivienda=new Vivienda()
-  constructor(private renderer: Renderer2) { }
+  constructor() {}
   @ViewChild('map') mapElement: any;
   map!: google.maps.Map;
   marker!: google.maps.Marker;

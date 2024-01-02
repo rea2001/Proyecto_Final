@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+/// <reference types="@types/google.maps" />
+
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -7,51 +9,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrl: './publicar-departamentos.component.css'
 })
 export class PublicarDepartamentosComponent {
-  publicarForm: FormGroup;
-  caracteristicasForm: FormGroup;
-  serviciosForm: FormGroup;
-  condicionesForm: FormGroup;
 
-
-
-  constructor(private fb: FormBuilder) {
-    this.caracteristicasForm = this.fb.group({
-      habitaciones: ['', Validators.required],
-      banios: ['', Validators.required],
-      // ... otras características según tus necesidades
-    })
+  @ViewChild('map') mapElement: any;
+  map!: google.maps.Map;
+  marker!: google.maps.Marker;
+  lat: number = -1.24908; // Latitud inicial
+  lng: number = -78.61675; // Longitud inicial
     
-    this.publicarForm = this.fb.group({
-      nombre: ['', Validators.required],
-      precio: ['', Validators.required],
-      tipoPropiedad: ['', Validators.required],
-      latitud: ['',Validators.required],
-      longitud: ['',Validators.required],
-      estado: ['', Validators.required],
-    // ... otros campos según tus necesidades
-    })
-    this.serviciosForm = this.fb.group({
-      luz: [false],
-      internet: [false],
-      duchaElectrica: [false],
-      calefon: [false],
-      garage: [false]
-      // ... otros servicios según tus necesidades
-    })
 
-    this.condicionesForm = this.fb.group({
-      permiteAnimales: [false],
-      permiteFumar: [false],
-      numPersonas: ['', Validators.required]
-      // ... otras condiciones según tus necesidades
-    })
-  }
-    
-  onSubmit() {
-    // Lógica para enviar datos al servicio
-    console.log('Datos del formulario de publicación:', this.publicarForm.value);
-  }
-
+  constructor(private fb: FormBuilder) {}
+        
   selectedImages: string[] = [];
 
   onFileChange(event: any) {
@@ -74,5 +41,48 @@ export class PublicarDepartamentosComponent {
         reader.readAsDataURL(files[i]);
       }
     }
+  }
+
+
+//___________________________________-  
+
+  ngAfterViewInit(): void {
+    const mapProperties: google.maps.MapOptions = {
+      center: new google.maps.LatLng(this.lat, this.lng),
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    this.map = new google.maps.Map(this.mapElement.nativeElement, mapProperties);
+
+    //Crear el marcador con la posición
+    this.marker = new google.maps.Marker({
+      position: new google.maps.LatLng(this.lat, this.lng),
+      map: this.map,
+      title: 'Marker Title',
+      draggable: true
+    });
+
+    // Verificar si el marcador se creó correctamente antes de añadir un listener
+    if (this.marker) {
+      this.marker.addListener('click', () => {
+        const infoWindow = new google.maps.InfoWindow({
+          content: this.marker.getTitle()
+        });
+        infoWindow.open(this.map, this.marker);
+      });
+    }
+
+    //Poner el evento drag para guardar la ubicación
+    if (this.marker) {
+      this.marker.addListener('drag', (event: google.maps.MapMouseEvent) => {
+        const { latLng } = event;        
+        if (latLng) {          
+          this.lat=latLng.lat()
+          this.lng=latLng.lng()
+        }
+      });
+    }
+
   }
 }

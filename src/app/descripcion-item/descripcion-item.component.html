@@ -1,1 +1,400 @@
-<p>descripcion-item works!</p>
+<!-- Open Content -->
+<section class="bg-light">
+    <div class="container pb-5">
+        <div class="row">
+            <!-- col start -->
+            <div class="col-lg-5 mt-5">
+                <div class="card mb-3">
+                    <img class="card-img img-fluid" src="assets/img/product_single_10.jpg" alt="Card image cap"
+                        id="product-detail" width="694" height="694">
+                </div>
+                <div class="row">
+                    <!--Start Controls-->
+                    <div class="col-1 align-self-center">
+                        <a href="#multi-item-example" role="button" data-bs-slide="prev">
+                            <i class="text-dark fas fa-chevron-left"></i>
+                            <span class="sr-only">Anterior</span>
+                        </a>
+                    </div>
+                    <!--End Controls-->
+                    <!--Start Carousel Wrapper-->
+                    <div id="multi-item-example" class="col-10 carousel slide carousel-multi-item"
+                        data-bs-ride="carousel">
+                        <!--Start Slides-->
+                        <div class="carousel-inner product-links-wap" role="listbox">
+
+                            <!--First slide-->
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <a href="#">
+                                            <img class="card-img img-fluid" src="assets/img/product_single_01.jpg"
+                                                alt="Product Image 1" style="background-color: white;" width="176"
+                                                height="176">
+                                        </a>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="#">
+                                            <img class="card-img img-fluid" src="assets/img/product_single_02.jpg"
+                                                alt="Product Image 2" width="176" height="176">
+                                        </a>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="#">
+                                            <img class="card-img img-fluid" src="assets/img/product_single_03.jpg"
+                                                alt="Product Image 3">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/.First slide-->
+
+                            <!--Second slide-->
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <a href="#">
+                                            <img class="card-img img-fluid" src="assets/img/product_single_04.jpg"
+                                                alt="Product Image 4">
+                                        </a>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="#">
+                                            <img class="card-img img-fluid" src="assets/img/product_single_05.jpg"
+                                                alt="Product Image 5">
+                                        </a>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="#">
+                                            <img class="card-img img-fluid" src="assets/img/product_single_06.jpg"
+                                                alt="Product Image 6">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/.Second slide-->
+
+                            <!--Third slide-->
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <a href="#">
+                                            <img class="card-img img-fluid" src="assets/img/product_single_07.jpg"
+                                                alt="Product Image 7">
+                                        </a>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="#">
+                                            <img class="card-img img-fluid" src="assets/img/product_single_08.jpg"
+                                                alt="Product Image 8">
+                                        </a>
+                                    </div>
+                                    <div class="col-4">
+                                        <a href="#">
+                                            <img class="card-img img-fluid" src="assets/img/product_single_09.jpg"
+                                                alt="Product Image 9">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/.Third slide-->
+                        </div>
+                        <!--End Slides-->
+                    </div>
+                    <!--End Carousel Wrapper-->
+                    <!--Start Controls-->
+                    <div class="col-1 align-self-center">
+                        <a href="#multi-item-example" role="button" data-bs-slide="next">
+                            <i class="text-dark fas fa-chevron-right"></i>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    <!--End Controls-->
+                </div>
+                <div class="row">
+                    <h4 class="text-center" style="margin-top:2em;">Ubicacion de la Propiedad</h4>
+                    <div #map style="height: 500px; width: 600px; margin-top:1em;"></div>                    
+                </div>
+            </div>
+            <!-- col end -->
+            <div class="col-lg-7 mt-5">
+                <div class="card">
+                    <div class="card-body mx-5">
+                        <h1 class="h2 text-center text-uppercase">Se Arrienda Departamento {{estaVivienda.Nombre}}</h1>
+                        <p class="h4 py-2 text-center">Ambato/Huachi {{estaVivienda.Precio}}</p>
+                        <p class="h5 py-2 text-center">$280.90 {{estaVivienda.Precio}}</p>
+                        <p class="py-2 text-center">
+                            <span class="list-inline-item text-dark">Disponible {{estaVivienda.Estado}}</span>
+                        </p>
+                        <h6>DESCRIPCION:</h6>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temp incididunt
+                            ut labore et dolore magna aliqua. Quis ipsum suspendisse. Donec condimentum elementum
+                            convallis. Nunc sed orci a diam ultrices aliquet interdum quis nulla.</p>
+                        <h6 class="my-3 text-left">CARACTERISTICAS: </h6>
+                        <!---Start Fila-->
+                        <div class="row my-3 mx-2">
+                            <!---Start Col 1-->
+                            <div class="col-lg-6 my-1">
+                                <ul class="list-inline py-0 m-0">
+                                    <li class="list-inline-item">
+                                        <p class="my-0 py-0">Numero de Baños:</p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <p class="text-muted"><strong>6</strong></p>
+                                    </li>
+                                </ul>
+                                <ul class="list-inline py-0 m-0">
+                                    <li class="list-inline-item">
+                                        <p class="my-0">Numero de Habitaciones:</p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <p class="text-muted"><strong>6</strong></p>
+                                    </li>
+                                </ul>
+                                <ul class="list-inline py-0 m-0">
+                                    <li class="list-inline-item">
+                                        <p class="my-0">Numero de Piso(s):</p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <p class="text-muted"><strong>6</strong></p>
+                                    </li>
+                                </ul>
+                                <ul class="list-inline py-0 m-0">
+                                    <li class="list-inline-item">
+                                        <p class="my-0">Metros Cuadrados:</p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <p class="text-muted"><strong>6 m2</strong></p>
+                                    </li>
+                                </ul>
+                                <ul class="list-inline py-0 m-0">
+                                    <li class="list-inline-item">
+                                        <p class="my-0">Tiene Cocina?</p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <p class="text-muted"><strong>6</strong></p>
+                                    </li>
+                                </ul>
+                                <ul class="list-inline py-0 m-0">
+                                    <li class="list-inline-item">
+                                        <p class="my-0">Tiene Sala?</p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <p class="text-muted"><strong>6</strong></p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!---Start Col 2-->
+                            <div class="col-lg-6 my-1">
+                                <ul class="list-inline py-0 m-0">
+                                    <li class="list-inline-item">
+                                        <p class="my-0">Tiene Comedor?</p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <p class="text-muted"><strong>6</strong></p>
+                                    </li>
+                                </ul>
+                                <ul class="list-inline py-0 m-0">
+                                    <li class="list-inline-item">
+                                        <p class="my-0">Tiene Lavanderia?</p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <p class="text-muted"><strong>6</strong></p>
+                                    </li>
+                                </ul>
+                                <ul class="list-inline py-0 m-0">
+                                    <li class="list-inline-item">
+                                        <p class="my-0">Tiene Jardin?</p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <p class="text-muted"><strong>6</strong></p>
+                                    </li>
+                                </ul>
+                                <ul class="list-inline py-0 m-0">
+                                    <li class="list-inline-item">
+                                        <p class="my-0">Esta Amoblado?</p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <p class="text-muted"><strong>6</strong></p>
+                                    </li>
+                                </ul>
+                                <ul class="list-inline py-0 m-0">
+                                    <li class="list-inline-item">
+                                        <p class="my-0">Tiene Ascensor?</p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <p class="text-muted"><strong>6</strong></p>
+                                    </li>
+                                </ul>
+                                <ul class="list-inline py-0 m-0">
+                                    <li class="list-inline-item">
+                                        <p class="my-0">Tiene Terraza?</p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <p class="text-muted"><strong>6</strong></p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!---End Fila-->
+                        <h6 class="my-3 pr-6 text-left">SERVICIOS:</h6>
+                        <div class="row my-3 mx-2">
+                            <!---Start Col 1-->
+                            <div class="col-lg-6 my-1">
+                                <ul class="list-inline py-0 m-0">
+                                    <li class="list-inline-item">
+                                        <p class="my-0">Consta de Luz? </p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <p class="text-muted"><strong>6</strong></p>
+                                    </li>
+                                </ul>
+                                <ul class="list-inline py-0 m-0">
+                                    <li class="list-inline-item">
+                                        <p class="my-0">Consta de Agua? </p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <p class="text-muted"><strong>6</strong></p>
+                                    </li>
+                                </ul>
+                                <ul class="list-inline py-0 m-0">
+                                    <li class="list-inline-item">
+                                        <p class="my-0">Consta de Internet? </p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <p class="text-muted"><strong>6</strong></p>
+                                    </li>
+                                </ul>
+                                <ul class="list-inline py-0 m-0">
+                                    <li class="list-inline-item">
+                                        <p class="my-0">Consta de Telefono? </p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <p class="text-muted"><strong>6</strong></p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!---Start Col 2-->
+                            <div class="col-lg-6 my-1">
+                                <ul class="list-inline py-0 m-0">
+                                    <li class="list-inline-item">
+                                        <p class="my-0">Consta de Garaje? </p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <p class="text-muted"><strong>6</strong></p>
+                                    </li>
+                                </ul>
+                                <ul class="list-inline py-0 m-0">
+                                    <li class="list-inline-item">
+                                        <p class="my-0">Consta de Calefon? </p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <p class="text-muted"><strong>6</strong></p>
+                                    </li>
+                                </ul>
+                                <ul class="list-inline py-0 m-0">
+                                    <li class="list-inline-item">
+                                        <p class="my-0">Consta de Ducha Electrica? </p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <p class="text-muted"><strong>6</strong></p>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                        <h6 class="my-3 pr-6">CONDICIONES:</h6>
+                        <div class="row my-3 mx-2">
+                            <!---Start Col 1-->
+                            <div class="col-lg-6 my-1">
+                                <ul class="list-inline py-0 m-0">
+                                    <li class="list-inline-item">
+                                        <p class="my-0">Acepta Mascotas? </p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <p class="text-muted"><strong>6</strong></p>
+                                    </li>
+                                </ul>
+                                <ul class="list-inline py-0 m-0">
+                                    <li class="list-inline-item">
+                                        <p class="my-0">Acepta Fiestas? </p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <p class="text-muted"><strong>6</strong></p>
+                                    </li>
+                                </ul>                                
+                            </div>
+                            <!---Start Col 2-->
+                            <div class="col-lg-6 my-1">
+                                <ul class="list-inline py-0 m-0">
+                                    <li class="list-inline-item">
+                                        <p class="my-0">Numero de personas (Max): </p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <p class="text-muted"><strong>6</strong></p>
+                                    </li>
+                                </ul>
+                                <ul class="list-inline py-0 m-0">
+                                    <li class="list-inline-item">
+                                        <p class="my-0">Meses de Garantía: </p>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <p class="text-muted"><strong>6</strong></p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <form action="" method="get">
+                            <div class="row pb-3">
+                                <div class="col d-grid">
+                                    <button class="btn btn-danger btn-lg" name="submit"
+                                        value="buy">Salir</button>
+                                </div>
+                                <div class="col d-grid">
+                                    <button class="btn btn-primary btn-lg" name="submit"
+                                        value="addtocard">Contactar al dueño</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Close Content -->
+
+<script>
+    $('#carousel-related-product').slick({
+        infinite: true,
+        arrows: false,
+        slidesToShow: 4,
+        slidesToScroll: 3,
+        dots: true,
+        responsive: [{
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3
+            }
+        },
+        {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 3
+            }
+        },
+        {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 3
+            }
+        }
+        ]
+    });
+</script>
+<!-- End Slider Script -->

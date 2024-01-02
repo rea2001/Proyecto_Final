@@ -29,6 +29,16 @@ export class Vivienda {
     Id_Ubi_Per?: number = 0;
     Id_Usu_Per?: number = 0;
 }
+
+export class caracteristicas{
+    constructor(Id_Car?: number, Num_Ban?: number, Num_Hab?:number, Num_Pis?:number,Metraje?:number, Cocina?: boolean, Sala?:boolean,Comedor?: boolean,
+        Lavanderia?: boolean, Ascensor?: boolean,Amoblado?: boolean,Jardin?: boolean,Terraza?: boolean){
+            this.Id_Car = Id_Car;
+    }
+
+    Id_Car?: number = 0;
+}
+
 //-------------------------------------------------------------------------------------
 export class Usuario {
     constructor(Apellido1: string, Apellido2: string, cedula: string, contraseña: string, correo: string, estadoCivil: string, fechaNacimiento: string, idUsu: number, 

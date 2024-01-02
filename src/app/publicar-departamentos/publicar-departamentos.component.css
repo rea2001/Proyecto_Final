@@ -1,59 +1,92 @@
-#grid{
-    display: grid;
-    grid-template-columns: 1fr 2fr 3fr; /* Cada columna ocupa el espacio definido */
-    grid-gap: 15px; /* Espacio entre columnas y filas */
-    justify-content: center;
-    align-items: center;
-    padding: 40px;
-  }
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 3fr; /* Cada columna ocupa el espacio definido */
+  grid-gap: 15px; /* Espacio entre columnas y filas */
+  justify-content: center;
+  align-items: center;
+  padding-top: 0px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.grid-2{
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Cada columna ocupa el espacio definido */
+  grid-gap: 10px; /* Espacio entre columnas y filas */
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+}
+
+#columna1 {
+  width: 100%;
+  max-height: 85vh; /* Altura máxima igual a la altura de la ventana */
+  overflow-y: auto; /* Habilita la barra de desplazamiento vertical cuando sea necesario */
+  padding: 20px;
+}
+
+.row{
+  background-color:beige;
+  margin: 0px;
+  padding: 20px;
+}
+
+h4{
+  background-color:beige;
+  border-radius: 5px;
+  padding: 	10px;
+}
 
 form {
-    width: 90%;
-    background-color: white;
-    border-radius: 10px;
-    border: 2px solid #4CAF50;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.8em;
-    margin: 20px auto; /* Centra los formularios en el medio de la página */
-  }
-  
-  .form-group {
-    width: 100%;
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: #3e8e41; /* Color de la etiqueta */
-  }
-  
-  .form-group input,
-  .form-group select,
-  .form-group label input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-top: 5px;
-  }
-  
-  button[type='submit'] {
-    width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-  }
-  
-  button[type='submit']:hover {
-    background-color: #3e8e41;
-  }
-  
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto; /* Centra los formularios en el medio de la página */
+  position: sticky;
+  top: 10px; /* Ajusta según sea necesario para la posición deseada */
+}
+
+#map-api{
+  width: auto;
+  height: 500px;
+  background-color:black;
+}
+
+.form-group {
+  width: 100%;
+  padding: 0px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+
+.form-group input,
+.form-group select,
+.form-group label input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+
+
+button[type='submit'] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button[type='submit']:hover {
+  background-color: #3e8e41;
+}

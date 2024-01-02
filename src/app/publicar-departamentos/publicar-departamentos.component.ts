@@ -25,6 +25,8 @@ export class PublicarDepartamentosComponent {
       nombre: ['', Validators.required],
       precio: ['', Validators.required],
       tipoPropiedad: ['', Validators.required],
+      latitud: ['',Validators.required],
+      longitud: ['',Validators.required],
       estado: ['', Validators.required],
     // ... otros campos según tus necesidades
     })
@@ -48,5 +50,29 @@ export class PublicarDepartamentosComponent {
   onSubmit() {
     // Lógica para enviar datos al servicio
     console.log('Datos del formulario de publicación:', this.publicarForm.value);
+  }
+
+  selectedImages: string[] = [];
+
+  onFileChange(event: any) {
+    const files = event.target.files;
+
+    if (files) {
+      for (let i = 0; i < files.length; i++) {
+        const reader = new FileReader();
+
+        reader.onload = (e: any) => {
+          // Asegúrate de no exceder el límite de 5 imágenes
+          if (this.selectedImages.length < 5) {
+            this.selectedImages.push(e.target.result);
+          }else{
+            alert("Límite de 5 imágenes");
+          }
+        
+        };
+
+        reader.readAsDataURL(files[i]);
+      }
+    }
   }
 }

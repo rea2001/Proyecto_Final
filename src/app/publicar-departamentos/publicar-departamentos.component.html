@@ -83,6 +83,12 @@
             <div> <label><input type="checkbox" class="Fiestas"> Permite Fiestas</label>
             </div>
           </div>
+
+           <!-- Input para subir múltiples archivos -->
+      <div class="mb-3">
+        <label for="formFileMultiple" class="form-label">Subir PDF (Contrato de Arrendamiento)</label>
+        <input class="form-control" type="file" id="formFileMultiple" multiple (change)="onFileChange($event)">
+      </div>
           <button type="submit">Publicar Departamento</button>
         </form>
       </div>

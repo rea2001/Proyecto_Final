@@ -30,7 +30,7 @@ export class PublicarDepartamentosComponent {
 
         reader.onload = (e: any) => {
           // Asegúrate de no exceder el límite de 5 imágenes
-          if (this.selectedImages.length < 5) {
+          if (this.selectedImages.length < 6) {
             this.selectedImages.push(e.target.result);
           }else{
             alert("Límite de 5 imágenes");

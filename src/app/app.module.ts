@@ -14,6 +14,7 @@ import { ItemComponent } from './item/item.component';
 import { PublicarDepartamentosComponent } from './publicar-departamentos/publicar-departamentos.component';
 import { DescripcionItemComponent } from './descripcion-item/descripcion-item.component';
 import { CookieService } from 'ngx-cookie-service';
+import { ReportesComponent } from './reportes/reportes.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CookieService } from 'ngx-cookie-service';
     FooterComponent,    
     ItemComponent,
     PublicarDepartamentosComponent,
-    DescripcionItemComponent
+    DescripcionItemComponent,
+    ReportesComponent
   ],
   imports: [
     BrowserModule,

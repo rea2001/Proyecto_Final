@@ -18,6 +18,10 @@
   padding: 0px;
 }
 
+#icoImage{
+  width: 50%;
+}
+
 #columna1 {
   width: 100%;
   max-height: 85vh; /* Altura máxima igual a la altura de la ventana */

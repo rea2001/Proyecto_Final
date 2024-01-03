@@ -7,6 +7,7 @@ import { GaleriaComponent } from './Principal/galeria/galeria.component';
 import { FooterComponent } from './Principal/footer/footer.component';
 import { PublicarDepartamentosComponent } from './publicar-departamentos/publicar-departamentos.component';
 import { DescripcionItemComponent } from './descripcion-item/descripcion-item.component';
+import { ReportesComponent } from './reportes/reportes.component';
 
 const routes: Routes = [
   {path: '', redirectTo:'/home', pathMatch:'full'},
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path: 'header',component: HearderComponent, pathMatch: 'full'},     
   {path: 'footer',component: FooterComponent, pathMatch: 'full'},
   {path: 'publicar-departamentos',component: PublicarDepartamentosComponent, pathMatch: 'full'},
-  {path: 'descripcionItem',component: DescripcionItemComponent, pathMatch: 'full'}
+  {path: 'descripcionItem',component: DescripcionItemComponent, pathMatch: 'full'},
+  {path: 'reportes', component: ReportesComponent, pathMatch: 'full'}
   // Puedes agregar más rutas según tus necesidades
 ];
 

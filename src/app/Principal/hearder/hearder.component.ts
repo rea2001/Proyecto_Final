@@ -29,8 +29,8 @@ export class HearderComponent {
   cerrarSesion() {
     this.isLoggedIn = false;
     this.usuarioServicio.cerrarSesion()
-    this.esAdmin = this.usuarioServicio.esAdmin;
-    this.ruta.navigate(['/home'])    
+    this.esAdmin = this.usuarioServicio.esAdmin;    
+    this.ruta.navigate(['/home'])   
   }
 
   // Método para mostrar el login superpuesto

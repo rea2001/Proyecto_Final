@@ -5,13 +5,12 @@
       <!-- Input para subir múltiples archivos -->
       <div class="mb-3">
         <label for="formFileMultiple" class="form-label">Subir imágenes (máximo 5)</label>
-        <input class="form-control" type="file" id="formFileMultiple" multiple (change)="onFileChange($event)">
+        <input class="form-control" type="file" id="formFileMultiple" multiple (change)="CambioImagenes($event)">
       </div>
       <!-- Columna de imágenes -->
       <div class="row">
-        <i class="bi bi-image" id="icoImage"></i> 
-        <div *ngFor="let image of selectedImages" class="col-md-4 mb-3">
-          <img class="img-fluid custom-image" [src]="image" alt="Imagen" >
+        <div *ngFor="let image of imagenes" class="col-md-4 mb-3">
+          <img class="img-fluid custom-image" [src]="image" alt="Imagen">
         </div>
       </div>
 
@@ -19,11 +18,11 @@
         <form>
           <!-- Campos del formulario -->
           <label for="Nombre">Nombre:</label>
-          <input type="text" id="nombre" class="nombre">
+          <input type="text" id="nombre" name="nombre" [(ngModel)]="viviendaCrear.Nombre">
           <label for="Precio">Precio:</label>
-          <input type="number" id="nombre" class="precio" placeholder="$">
+          <input type="number" id="nombre" name="precio" placeholder="$" [(ngModel)]="viviendaCrear.Precio">
           <label for="TipoPropiedad">Tipo de propiedad: </label>
-          <select id="tipoPropiedad" name="tipoPropiedad" class="tipoPropiedad">
+          <select id="tipoPropiedad" name="tipoPropiedad" name="tipoPropiedad" [(ngModel)]="viviendaCrear.Tip_Pro">
             <option value="Casa">Casa</option>
             <option value="Media Agua">Media Agua</option>
             <option value="Departamento">Departamento</option>
@@ -31,75 +30,79 @@
             <option value="Solohabitacion">Solo habitación</option>
           </select>
           <label for="longitud">Longitud:</label>
-          <input type="text" id="longitud" class="longitud">
+          <input type="text" id="longitud" name="longitud" [(ngModel)]="viviendaCrear.Longitud" disabled>
 
           <label for="latitud">Latitud:</label>
-          <input type="text" id="latitud" class="latitud">
+          <input type="text" id="latitud" name="latitud" [(ngModel)]="viviendaCrear.Latitud" disabled>
 
           <label for="descripcion">Descripción</label>
-          <textarea name="" id="" cols="30" rows="3" placeholder="Agrega una descripción de la vivienda"></textarea>
+          <textarea name="" id="" cols="30" rows="3" placeholder="Agrega una descripción de la vivienda"
+            [(ngModel)]="viviendaCrear.Descripcion"></textarea>
           <br>
           <h4>Caracteristicas </h4>
 
           <label for="Num_Hab">Número de Habitaciones: </label>
-          <input type="number" id="Num_Hab" class="Num_Hab">
+          <input type="number" id="Num_Hab" name="Num_Hab" [(ngModel)]="caraCrear.Num_Hab">
           <label for="Num_Ban">Número de Baños: </label>
-          <input type="number" id="Num_Ban" class="Num_Ban">
+          <input type="number" id="Num_Ban" name="Num_Ban" [(ngModel)]="caraCrear.Num_Ban">
           <label for="Num_Pis">Número de Piso: </label>
-          <input type="number" id="Num_Pis" class="Num_Pis">
+          <input type="number" id="Num_Pis" name="Num_Pis" [(ngModel)]="caraCrear.Num_Pis">
           <label for="Metraje">Metraje: </label>
-          <input type="number" id="Metraje" class="Metraje">
+          <input type="number" id="Metraje" name="Metraje" [(ngModel)]="caraCrear.Metraje">
           <br>
           <div class="grid-2">
-            <label><input type="checkbox" class="Comedor"> Comedor</label>
-            <label><input type="checkbox" class="Sala"> Sala</label>
-            <label><input type="checkbox" class="Lavanderia"> Lavandería</label>
-            <label><input type="checkbox" class="Cocina"> Cocina</label>
-            <label><input type="checkbox" class="Jardin"> Jardin</label>
-            <label><input type="checkbox" class="Amoblado"> Amoblado</label>
-            <label><input type="checkbox" class="Ascensor"> Ascensor</label>
-            <label><input type="checkbox" class="Terraza"> Terraza</label>
+            <label><input type="checkbox" name="Comedor" [(ngModel)]="caraCrear.Comedor"> Comedor</label>
+            <label><input type="checkbox" name="Sala" [(ngModel)]="caraCrear.Sala"> Sala</label>
+            <label><input type="checkbox" name="Lavanderia" [(ngModel)]="caraCrear.Lavanderia"> Lavandería</label>
+            <label><input type="checkbox" name="Cocina" [(ngModel)]="caraCrear.Cocina"> Cocina</label>
+            <label><input type="checkbox" name="Jardin" [(ngModel)]="caraCrear.Jardin"> Jardin</label>
+            <label><input type="checkbox" name="Amoblado" [(ngModel)]="caraCrear.Amoblado"> Amoblado</label>
+            <label><input type="checkbox" name="Ascensor" [(ngModel)]="caraCrear.Ascensor"> Ascensor</label>
+            <label><input type="checkbox" name="Terraza" [(ngModel)]="caraCrear.Terraza"> Terraza</label>
           </div>
           <br>
           <h4>Servicios</h4>
           <div class="grid-2">
-            <label><input type="checkbox" class="Luz"> Luz</label>
-            <label><input type="checkbox" class="Agua"> Agua</label>
-            <label><input type="checkbox" class="Internet"> Internet</label>
-            <label><input type="checkbox" class="Garage"> Garage</label>
-            <label><input type="checkbox" class="Calefon"> Calefón</label>
-            <label><input type="checkbox" class="Duc_Elec"> Ducha Eléctrica</label>
+            <label><input type="checkbox" name="Luz" [(ngModel)]="serviCrear.Luz"> Luz</label>
+            <label><input type="checkbox" name="Agua" [(ngModel)]="serviCrear.Agua"> Agua</label>
+            <label><input type="checkbox" name="Internet" [(ngModel)]="serviCrear.Internet"> Internet</label>
+            <label><input type="checkbox" name="Garage" [(ngModel)]="serviCrear.Garaje"> Garage</label>
+            <label><input type="checkbox" name="Calefon" [(ngModel)]="serviCrear.Calefon"> Calefón</label>
+            <label><input type="checkbox" name="Duc_Elec" [(ngModel)]="serviCrear.Duc_Elec"> Ducha Eléctrica</label>
+            <label><input type="checkbox" name="Telefono" [(ngModel)]="serviCrear.Telefono"> Telefono</label>
           </div>
           <br>
           <h4>Condiciones</h4>
           <label for="numPersonas">Número de Personas: </label>
-          <input type="number" id="numPersonas" class="numPersonas">
+          <input type="number" id="numPersonas" name="numPersonas" [(ngModel)]="condicioCrear.Num_Pers">
           <label for="numPersonas">Garantía: </label>
-          <input type="number" id="Garantia" class="Garantia">
+          <input type="number" id="Garantia" name="Garantia" [(ngModel)]="condicioCrear.Garantia">
           <br>
 
           <div class="grid-2">
-            <div> <label><input type="checkbox" class="Mascotas"> Permite Mascotas</label>
+            <div> <label><input type="checkbox" name="Mascotas" [(ngModel)]="condicioCrear.Mascotas"> Permite Mascotas</label>
             </div>
-            <div> <label><input type="checkbox" class="Fiestas"> Permite Fiestas</label>
+            <div> <label><input type="checkbox" name="Fiestas" [(ngModel)]="condicioCrear.Fiestas"> Permite Fiestas</label>
             </div>
           </div>
 
-           <!-- Input para subir múltiples archivos -->
-      <div class="mb-3">
-        <label for="formFileMultiple" class="form-label">Subir PDF (Contrato de Arrendamiento)</label>
-        <input class="form-control" type="file" id="formFileMultiple" multiple (change)="onFileChange($event)">
-      </div>
+          <!-- Input para subir múltiples archivos -->
+          <div class="mb-3">
+            <label for="formFileMultiple" class="form-label">Subir PDF (Contrato de Arrendamiento)</label>
+            <input class="form-control" type="file" id="formFileMultiple" multiple (change)="CambioImagenes($event)">
+          </div>
           <button type="submit">Publicar Departamento</button>
         </form>
       </div>
     </div>
+
+    <!-- Ubicacion del mapa -->
     <div id="mapa">
       <h3>Localización</h3>
       <div #map style="height: 500px; width: 100%; margin-top:1em;">
+      </div>
     </div>
-    </div>    
-    
+
   </div>
 </div>
 <br>

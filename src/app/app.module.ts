@@ -15,6 +15,7 @@ import { PublicarDepartamentosComponent } from './publicar-departamentos/publica
 import { DescripcionItemComponent } from './descripcion-item/descripcion-item.component';
 import { CookieService } from 'ngx-cookie-service';
 import { ReportesComponent } from './reportes/reportes.component';
+import { PerfilUsuariosComponent } from './perfil-usuarios/perfil-usuarios.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ReportesComponent } from './reportes/reportes.component';
     ItemComponent,
     PublicarDepartamentosComponent,
     DescripcionItemComponent,
-    ReportesComponent
+    ReportesComponent,
+    PerfilUsuariosComponent
   ],
   imports: [
     BrowserModule,

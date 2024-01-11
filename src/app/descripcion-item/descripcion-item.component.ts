@@ -1,26 +1,45 @@
 /// <reference types="@types/google.maps" />
 
-import { Component, ViewChild } from '@angular/core';
-import { Vivienda } from '../Modelos/Entidades.model';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Caracteristicas, Condiciones, Fotos, Servicios, Usuario, Vivienda, ubicacion } from '../Modelos/Entidades.model';
+import { ServicioUsuariosService } from '../servicio-usuarios.service';
+import { SviviendasService } from '../sviviendas.service';
+import { encode } from 'punycode';
 
 @Component({
   selector: 'app-descripcion-item',
   templateUrl: './descripcion-item.component.html',
   styleUrl: './descripcion-item.component.css'
 })
-export class DescripcionItemComponent {
-  estaVivienda:Vivienda=new Vivienda()
-  constructor() {}
+export class DescripcionItemComponent implements OnInit {
+  constructor(private sUsuarios: ServicioUsuariosService, private sViviendas: SviviendasService) { }
   @ViewChild('map') mapElement: any;
   map!: google.maps.Map;
   marker!: google.maps.Marker;
 
-  lat: number = -1.24908; // Latitud inicial
-  lng: number = -78.61675; // Longitud inicial
+  estaVivienda!: Vivienda
+  usuario!: Usuario
+  ubicaciones!: ubicacion
+  condiciones!: Condiciones
+  servicio!: Servicios
+  caracteristica!: Caracteristicas
+  fotos: Fotos[]=[]
+  imagenes: string[]=[]
+  imagenElegida!: string
+
+  ngOnInit(): void {
+    if (this.sUsuarios.usuarioConectado) {
+      this.usuario = this.sUsuarios.usuarioConectado
+      console.log('vivienda servicio')
+      console.log(this.sViviendas.vivendaElegida)
+      this.estaVivienda = this.sViviendas.vivendaElegida
+      this.cargarTodoVivienda();
+    }
+  }
 
   ngAfterViewInit(): void {
     const mapProperties: google.maps.MapOptions = {
-      center: new google.maps.LatLng(this.lat, this.lng),
+      center: new google.maps.LatLng(this.estaVivienda.Latitud, this.estaVivienda.Longitud),
       zoom: 15,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
@@ -29,9 +48,9 @@ export class DescripcionItemComponent {
 
     //Crear el marcador con la posición
     this.marker = new google.maps.Marker({
-      position: new google.maps.LatLng(this.lat, this.lng),
+      position: new google.maps.LatLng(this.estaVivienda.Latitud, this.estaVivienda.Longitud),
       map: this.map,
-      title: 'Marker Title',
+      title: 'Se arrienda',
       draggable: true
     });
 
@@ -45,16 +64,87 @@ export class DescripcionItemComponent {
       });
     }
 
-    //Poner el evento drag para guardar la ubicación
-    if (this.marker) {
-      this.marker.addListener('drag', (event: google.maps.MapMouseEvent) => {
-        const { latLng } = event;        
-        if (latLng) {          
-          this.lat=latLng.lat()
-          this.lng=latLng.lng()
-        }
-      });
+  }
+
+  cargarTodoVivienda() {
+
+    this.sViviendas.retornarUbicacionPorId(this.estaVivienda.Id_Ubi_Per).subscribe(
+      ubicacion => {
+        this.ubicaciones = ubicacion
+      },
+      error => {
+        console.log(error)
+      }
+    )
+    this.sViviendas.retornarCondicionesPorId(this.estaVivienda.Id_Con_Per).subscribe(
+      condicion => {
+        this.condiciones = condicion
+      },
+      error => {
+        console.log(error)
+      }
+    )
+    this.sViviendas.retornarServiciosPorId(this.estaVivienda.Id_Ser_Per).subscribe(
+      servicio => {
+        this.servicio = servicio
+      },
+      error => {
+        console.log(error)
+      }
+    )
+    this.sViviendas.retornarCaracteristicasPorId(this.estaVivienda.Id_Car_Per).subscribe(
+      caracteristica => {
+        this.caracteristica = caracteristica
+      },
+      error => {
+        console.log(error)
+      }
+    )
+    this.sViviendas.retornarFotosPorIdVivienda(this.estaVivienda.Id_Viv).subscribe(
+      fotos => {
+        this.fotos = fotos        
+        this.displayImageFromBytes()
+      },
+      error => {
+        console.log(error)
+      }
+    )
+    console.log('componenete vivienda')
+    console.log(this.caracteristica)
+    console.log(this.condiciones)
+    console.log(this.estaVivienda)
+    console.log(this.fotos)
+    console.log(this.servicio)
+    console.log(this.ubicaciones)
+
+  }
+
+  //Metodo para convertir de bytes a imagen
+  displayImageFromBytes() {
+    // Convertir el ArrayBuffer a un Uint8Array
+    for (let i = 0; i < this.fotos.length; i++) {      
+      let encoded=this.base64ToUint8Array(this.fotos[i].Foto_Com)
+      const byteArray = new Uint8Array(encoded);
+      
+      const blob = new Blob([byteArray], { type: 'image/jpeg' }); // Ajusta el tipo de archivo según el formato de la imagen
+      //aqui se pone la imagen
+      let imageUrl = URL.createObjectURL(blob);
+      alert(imageUrl)
+      this.imagenes.push(imageUrl);
+    }
+  }
+
+
+  //De base 64 a bit[]
+  private base64ToUint8Array(base64String: string): Uint8Array {
+    const binaryString = atob(base64String);
+    const length = binaryString.length;
+    const uintArray = new Uint8Array(length);
+
+    for (let i = 0; i < length; i++) {
+      uintArray[i] = binaryString.charCodeAt(i);
     }
 
+    return uintArray;
   }
 }

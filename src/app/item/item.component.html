@@ -3,17 +3,17 @@
         <!-- Sale badge-->
         <div class="badge text-white position-absolute" [ngClass]="{'dispo':vivienda.Estado === 'Disponible','noDispo':vivienda.Estado !== 'Disponible'}" style="top: 0.5rem; right: 0.5rem;">{{vivienda.Estado === "Disponible" ? "Disponible" : "Arrendado" }}</div>
         <!-- Product image-->
-        <img class="card-img-top"  src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+        <img class="card-img-top"  [src]="imagen" alt="..." />
         <!-- Product details-->
         <div class="card-body p-4">
             <div class="text-center">
                 <!-- Product name-->
-                <h5 class="fw-bolder">{{vivienda.Nombre}}Casa 2 pisos</h5>
+                <h5 class="fw-bolder">{{vivienda.Nombre}}</h5>
                 <!-- Product reviews-->
-                <h6>{{direccionItem}}Ambato</h6>
-                <p>{{vivienda.Tip_Pro}}Casa</p>
+                <h6>{{direccionItem}}</h6>
+                <p>{{vivienda.Tip_Pro}}</p>
                 <!-- Product price-->                
-                ${{vivienda.Precio}}200
+                ${{vivienda.Precio}}
             </div>
         </div>
         <!-- Product actions-->

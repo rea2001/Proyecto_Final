@@ -1,8 +1,8 @@
 import { ControlContainer } from "@angular/forms";
 
 export class Vivienda {
-    constructor(id_Vivienda?: number, NombreVivienda?: string, Precio?: number, TipoPropiedad?: string, Latitud?: number,
-        Longitud?: number, Descripcion?: string, Estado?: string, IdCaracteristica?: number, IdServicio?: number, IdCondicion?: number, IdUbicacion?: number, IdUsuario?: number) {
+    constructor(id_Vivienda: number, NombreVivienda: string, Precio: number, TipoPropiedad: string, Latitud: number,
+        Longitud: number, Descripcion: string, Estado: string, IdCaracteristica: number, IdServicio: number, IdCondicion: number, IdUbicacion: number, IdUsuario: number) {
         this.Id_Viv = id_Vivienda;
         this.Nombre = NombreVivienda;
         this.Precio = Precio;
@@ -17,24 +17,24 @@ export class Vivienda {
         this.Id_Ubi_Per = IdUbicacion;
         this.Id_Usu_Per = IdUsuario;
     }
-    Id_Viv?: number = 0;
-    Nombre?: string = ""
-    Precio?: number = 0
-    Tip_Pro?: string = "";
-    Latitud?: number = 0;
-    Longitud?: number = 0;
-    Descripcion?: string  = "";
-    Estado?: string = "Disponible"
-    Id_Car_Per?: number = 0;
-    Id_Ser_Per?: number = 0;
-    Id_Con_Per?: number = 0;
-    Id_Ubi_Per?: number = 0;
-    Id_Usu_Per?: number = 0;
+    Id_Viv: number = 0;
+    Nombre: string = ""
+    Precio: number = 0
+    Tip_Pro: string = "";
+    Latitud: number = 0;
+    Longitud: number = 0;
+    Descripcion: string  = "";
+    Estado: string = "Disponible"
+    Id_Car_Per: number = 0;
+    Id_Ser_Per: number = 0;
+    Id_Con_Per: number = 0;
+    Id_Ubi_Per: number = 0;
+    Id_Usu_Per: number = 0;
 }
 
 export class Caracteristicas{
-    constructor(Id_Car?: number, Num_Ban?: number, Num_Hab?:number, Num_Pis?:number,Metraje?:number, Cocina?: boolean, Sala?:boolean,Comedor?: boolean,
-        Lavanderia?: boolean, Ascensor?: boolean,Amoblado?: boolean,Jardin?: boolean,Terraza?: boolean){
+    constructor(Id_Car: number, Num_Ban: number, Num_Hab:number, Num_Pis:number,Metraje:number, Cocina: boolean, Sala:boolean,Comedor: boolean,
+        Lavanderia: boolean, Ascensor: boolean,Amoblado: boolean,Jardin: boolean,Terraza: boolean){
             this.Id_Car = Id_Car;
             this.Num_Ban = Num_Ban;
             this.Num_Hab = Num_Hab;
@@ -50,25 +50,25 @@ export class Caracteristicas{
             this.Terraza = Terraza;
     }
 
-    Id_Car?: number = 0;
-    Num_Ban?: number = 0;
-    Num_Hab?: number = 0;
-    Num_Pis?: number = 0;
-    Metraje?: number= 0;
-    Cocina?: boolean = false;
-    Sala?: boolean = false;
-    Comedor?: boolean = false;
-    Lavanderia?: boolean = false;
-    Ascensor?: boolean = false;
-    Amoblado?: boolean = false;
-    Jardin?: boolean = false;
-    Terraza?: boolean = false;
+    Id_Car: number = 0;
+    Num_Ban: number = 0;
+    Num_Hab: number = 0;
+    Num_Pis: number = 0;
+    Metraje: number= 0;
+    Cocina: boolean = false;
+    Sala: boolean = false;
+    Comedor: boolean = false;
+    Lavanderia: boolean = false;
+    Ascensor: boolean = false;
+    Amoblado: boolean = false;
+    Jardin: boolean = false;
+    Terraza: boolean = false;
 
 }
 
 export class Servicios{
-    constructor(Id_Ser?:number, Luz?: boolean, Agua?: boolean, Internet?: boolean,Garaje?: boolean,Telefono?: boolean,
-        Calefon?: boolean,Duc_Elec?: boolean){
+    constructor(Id_Ser:number, Luz: boolean, Agua: boolean, Internet: boolean,Garaje: boolean,Telefono: boolean,
+        Calefon: boolean,Duc_Elec: boolean){
             this.Id_Ser = Id_Ser;
             this.Agua = Agua;
             this.Luz = Luz;
@@ -79,18 +79,18 @@ export class Servicios{
             this.Duc_Elec = Duc_Elec;
         }
 
-    Id_Ser?: number = 0;
-    Luz?: boolean = false;
-    Agua?: boolean = false;
-    Garaje?: boolean = false;
-    Internet?: boolean = false;
-    Telefono?: boolean = false;
-    Calefon?: boolean = false;
-    Duc_Elec?: boolean = false;
+    Id_Ser: number = 0;
+    Luz: boolean = false;
+    Agua: boolean = false;
+    Garaje: boolean = false;
+    Internet: boolean = false;
+    Telefono: boolean = false;
+    Calefon: boolean = false;
+    Duc_Elec: boolean = false;
 }
 
 export class Condiciones{
-    constructor(Id_Con?: number, Num_Pers?: number, Mascotas?: boolean, Fiestas?: boolean, Garantia?:number ){
+    constructor(Id_Con: number, Num_Pers: number, Mascotas: boolean, Fiestas: boolean, Garantia:number ){
         this.Id_Con = Id_Con;
         this.Num_Pers = Num_Pers;
         this.Garantia = Garantia;
@@ -98,37 +98,37 @@ export class Condiciones{
         this.Fiestas = Fiestas;
     }
 
-    Id_Con?: number = 0;
-    Garantia?: number = 0;
-    Num_Pers?: number = 0;
-    Mascotas?: boolean = false;
-    Fiestas?: boolean = false;
+    Id_Con: number = 0;
+    Garantia: number = 0;
+    Num_Pers: number = 0;
+    Mascotas: boolean = false;
+    Fiestas: boolean = false;
 }
 
 export class ubicacion{
-    constructor(Id_Ubi?: number, Provincia?: string, Canton?: string, Parroquia?: string){
+    constructor(Id_Ubi: number, Provincia: string, Canton: string, Parroquia: string){
         this.Id_Ubi = Id_Ubi;
         this.Provincia = Provincia;
         this.Canton = Canton;
         this.Parroquia = Parroquia;
     }
-    Id_Ubi?: number = 0;
-    Provincia?: string  = "";
-    Canton?: string  = "";
-    Parroquia?: string  = "";
+    Id_Ubi: number = 0;
+    Provincia: string  = "";
+    Canton: string  = "";
+    Parroquia: string  = "";
 }
 
 export class Fotos{
-    constructor(Id_Fot?:number, Id_Viv_Per?: number, Descripcion?: string, Foto_Com?: string){
-        this.Id_Fot = Id_Fot;
+    constructor( Id_Viv_Per: number, Descripcion: string, Foto_Com: string){
+        this.Id_Fot = 0;
         this.Id_Viv_Per = Id_Viv_Per;
         this.Descripcion = Descripcion;
         this.Foto_Com = Foto_Com;
     }
-    Id_Fot?: number = 0;
-    Id_Viv_Per?: number = 0;
-    Descripcion?: string  = "";
-    Foto_Com?: string  = "";
+    Id_Fot: number = 0;
+    Id_Viv_Per: number = 0;
+    Descripcion: string  = "";
+    Foto_Com: string  = "";
 }
 
 //-------------------------------------------------------------------------------------

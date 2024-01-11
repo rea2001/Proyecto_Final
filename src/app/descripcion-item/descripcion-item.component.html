@@ -3,9 +3,9 @@
     <div class="container pb-5">
         <div class="row">
             <!-- col start -->
-            <div class="col-lg-5 mt-5">
+            <div class="col-lg-5 mt-5" *ngIf="imagenes" >
                 <div class="card mb-3">
-                    <img class="card-img img-fluid" src="assets/img/product_single_10.jpg" alt="Card image cap"
+                    <img class="card-img img-fluid" [src]="imagenes[0]" alt="Imagen Principal"
                         id="product-detail" width="694" height="694">
                 </div>
                 <div class="row">
@@ -26,25 +26,13 @@
                             <!--First slide-->
                             <div class="carousel-item active">
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-4" *ngFor="let imagen of imagenes">
                                         <a href="#">
-                                            <img class="card-img img-fluid" src="assets/img/product_single_01.jpg"
+                                            <img class="card-img img-fluid" [src]="imagen"
                                                 alt="Product Image 1" style="background-color: white;" width="176"
                                                 height="176">
                                         </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="assets/img/product_single_02.jpg"
-                                                alt="Product Image 2" width="176" height="176">
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="assets/img/product_single_03.jpg"
-                                                alt="Product Image 3">
-                                        </a>
-                                    </div>
+                                    </div>                                    
                                 </div>
                             </div>
                             <!--/.First slide-->
@@ -57,47 +45,10 @@
                                             <img class="card-img img-fluid" src="assets/img/product_single_04.jpg"
                                                 alt="Product Image 4">
                                         </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="assets/img/product_single_05.jpg"
-                                                alt="Product Image 5">
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="assets/img/product_single_06.jpg"
-                                                alt="Product Image 6">
-                                        </a>
-                                    </div>
+                                    </div>                                    
                                 </div>
                             </div>
-                            <!--/.Second slide-->
-
-                            <!--Third slide-->
-                            <div class="carousel-item">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="assets/img/product_single_07.jpg"
-                                                alt="Product Image 7">
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="assets/img/product_single_08.jpg"
-                                                alt="Product Image 8">
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="assets/img/product_single_09.jpg"
-                                                alt="Product Image 9">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--/.Third slide-->
+                            <!--/.Second slide-->                           
                         </div>
                         <!--End Slides-->
                     </div>
@@ -120,16 +71,14 @@
             <div class="col-lg-7 mt-5">
                 <div class="card">
                     <div class="card-body mx-5">
-                        <h1 class="h2 text-center text-uppercase">Se Arrienda Departamento {{estaVivienda.Nombre}}</h1>
-                        <p class="h4 py-2 text-center">Ambato/Huachi {{estaVivienda.Precio}}</p>
-                        <p class="h5 py-2 text-center">$280.90 {{estaVivienda.Precio}}</p>
+                        <h1 class="h2 text-center text-uppercase">{{estaVivienda.Nombre}}</h1>
+                        <p class="h4 py-2 text-center">{{ubicaciones.Canton}}/{{ubicaciones.Parroquia}}</p>
+                        <p class="h5 py-2 text-center">{{estaVivienda.Precio}}</p>
                         <p class="py-2 text-center">
-                            <span class="list-inline-item text-dark">Disponible {{estaVivienda.Estado}}</span>
+                            <span class="list-inline-item text-dark">{{estaVivienda.Estado}}</span>
                         </p>
                         <h6>DESCRIPCION:</h6>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temp incididunt
-                            ut labore et dolore magna aliqua. Quis ipsum suspendisse. Donec condimentum elementum
-                            convallis. Nunc sed orci a diam ultrices aliquet interdum quis nulla.</p>
+                        <p>{{estaVivienda.Descripcion}}</p>
                         <h6 class="my-3 text-left">CARACTERISTICAS: </h6>
                         <!---Start Fila-->
                         <div class="row my-3 mx-2">
@@ -140,7 +89,7 @@
                                         <p class="my-0 py-0">Numero de Baños:</p>
                                     </li>
                                     <li class="list-inline-item">
-                                        <p class="text-muted"><strong>6</strong></p>
+                                        <p class="text-muted"><strong>{{caracteristica.Num_Ban}}</strong></p>
                                     </li>
                                 </ul>
                                 <ul class="list-inline py-0 m-0">
@@ -148,7 +97,7 @@
                                         <p class="my-0">Numero de Habitaciones:</p>
                                     </li>
                                     <li class="list-inline-item">
-                                        <p class="text-muted"><strong>6</strong></p>
+                                        <p class="text-muted"><strong>{{caracteristica.Num_Hab}}</strong></p>
                                     </li>
                                 </ul>
                                 <ul class="list-inline py-0 m-0">
@@ -156,7 +105,7 @@
                                         <p class="my-0">Numero de Piso(s):</p>
                                     </li>
                                     <li class="list-inline-item">
-                                        <p class="text-muted"><strong>6</strong></p>
+                                        <p class="text-muted"><strong>{{caracteristica.Num_Pis}}</strong></p>
                                     </li>
                                 </ul>
                                 <ul class="list-inline py-0 m-0">
@@ -164,7 +113,7 @@
                                         <p class="my-0">Metros Cuadrados:</p>
                                     </li>
                                     <li class="list-inline-item">
-                                        <p class="text-muted"><strong>6 m2</strong></p>
+                                        <p class="text-muted"><strong>{{caracteristica.Metraje}} m2</strong></p>
                                     </li>
                                 </ul>
                                 <ul class="list-inline py-0 m-0">
@@ -172,7 +121,7 @@
                                         <p class="my-0">Tiene Cocina?</p>
                                     </li>
                                     <li class="list-inline-item">
-                                        <p class="text-muted"><strong>6</strong></p>
+                                        <p class="text-muted"><strong>{{caracteristica.Cocina?'Si':'No'}}</strong></p>
                                     </li>
                                 </ul>
                                 <ul class="list-inline py-0 m-0">
@@ -180,7 +129,7 @@
                                         <p class="my-0">Tiene Sala?</p>
                                     </li>
                                     <li class="list-inline-item">
-                                        <p class="text-muted"><strong>6</strong></p>
+                                        <p class="text-muted"><strong>{{caracteristica.Sala?'Si':'No'}}</strong></p>
                                     </li>
                                 </ul>
                             </div>
@@ -191,7 +140,7 @@
                                         <p class="my-0">Tiene Comedor?</p>
                                     </li>
                                     <li class="list-inline-item">
-                                        <p class="text-muted"><strong>6</strong></p>
+                                        <p class="text-muted"><strong>{{caracteristica.Comedor?'Si':'No'}}</strong></p>
                                     </li>
                                 </ul>
                                 <ul class="list-inline py-0 m-0">
@@ -199,7 +148,7 @@
                                         <p class="my-0">Tiene Lavanderia?</p>
                                     </li>
                                     <li class="list-inline-item">
-                                        <p class="text-muted"><strong>6</strong></p>
+                                        <p class="text-muted"><strong>{{caracteristica.Lavanderia?'Si':'No'}}</strong></p>
                                     </li>
                                 </ul>
                                 <ul class="list-inline py-0 m-0">
@@ -207,7 +156,7 @@
                                         <p class="my-0">Tiene Jardin?</p>
                                     </li>
                                     <li class="list-inline-item">
-                                        <p class="text-muted"><strong>6</strong></p>
+                                        <p class="text-muted"><strong>{{caracteristica.Jardin?'Si':'No'}}</strong></p>
                                     </li>
                                 </ul>
                                 <ul class="list-inline py-0 m-0">
@@ -215,7 +164,7 @@
                                         <p class="my-0">Esta Amoblado?</p>
                                     </li>
                                     <li class="list-inline-item">
-                                        <p class="text-muted"><strong>6</strong></p>
+                                        <p class="text-muted"><strong>{{caracteristica.Amoblado?'Si':'No'}}</strong></p>
                                     </li>
                                 </ul>
                                 <ul class="list-inline py-0 m-0">
@@ -223,7 +172,7 @@
                                         <p class="my-0">Tiene Ascensor?</p>
                                     </li>
                                     <li class="list-inline-item">
-                                        <p class="text-muted"><strong>6</strong></p>
+                                        <p class="text-muted"><strong>{{caracteristica.Ascensor?'Si':'No'}}</strong></p>
                                     </li>
                                 </ul>
                                 <ul class="list-inline py-0 m-0">
@@ -231,7 +180,7 @@
                                         <p class="my-0">Tiene Terraza?</p>
                                     </li>
                                     <li class="list-inline-item">
-                                        <p class="text-muted"><strong>6</strong></p>
+                                        <p class="text-muted"><strong>{{caracteristica.Terraza?'Si':'No'}}</strong></p>
                                     </li>
                                 </ul>
                             </div>
@@ -246,7 +195,7 @@
                                         <p class="my-0">Consta de Luz? </p>
                                     </li>
                                     <li class="list-inline-item">
-                                        <p class="text-muted"><strong>6</strong></p>
+                                        <p class="text-muted"><strong>{{servicio.Luz?'Si':'No'}}</strong></p>
                                     </li>
                                 </ul>
                                 <ul class="list-inline py-0 m-0">
@@ -254,7 +203,7 @@
                                         <p class="my-0">Consta de Agua? </p>
                                     </li>
                                     <li class="list-inline-item">
-                                        <p class="text-muted"><strong>6</strong></p>
+                                        <p class="text-muted"><strong>{{servicio.Agua?'Si':'No'}}</strong></p>
                                     </li>
                                 </ul>
                                 <ul class="list-inline py-0 m-0">
@@ -262,7 +211,7 @@
                                         <p class="my-0">Consta de Internet? </p>
                                     </li>
                                     <li class="list-inline-item">
-                                        <p class="text-muted"><strong>6</strong></p>
+                                        <p class="text-muted"><strong>{{servicio.Internet?'Si':'No'}}</strong></p>
                                     </li>
                                 </ul>
                                 <ul class="list-inline py-0 m-0">
@@ -270,7 +219,7 @@
                                         <p class="my-0">Consta de Telefono? </p>
                                     </li>
                                     <li class="list-inline-item">
-                                        <p class="text-muted"><strong>6</strong></p>
+                                        <p class="text-muted"><strong>{{servicio.Telefono?'Si':'No'}}</strong></p>
                                     </li>
                                 </ul>
                             </div>
@@ -281,7 +230,7 @@
                                         <p class="my-0">Consta de Garaje? </p>
                                     </li>
                                     <li class="list-inline-item">
-                                        <p class="text-muted"><strong>6</strong></p>
+                                        <p class="text-muted"><strong>{{servicio.Garaje?'Si':'No'}}</strong></p>
                                     </li>
                                 </ul>
                                 <ul class="list-inline py-0 m-0">
@@ -289,7 +238,7 @@
                                         <p class="my-0">Consta de Calefon? </p>
                                     </li>
                                     <li class="list-inline-item">
-                                        <p class="text-muted"><strong>6</strong></p>
+                                        <p class="text-muted"><strong>{{servicio.Calefon?'Si':'No'}}</strong></p>
                                     </li>
                                 </ul>
                                 <ul class="list-inline py-0 m-0">
@@ -297,7 +246,7 @@
                                         <p class="my-0">Consta de Ducha Electrica? </p>
                                     </li>
                                     <li class="list-inline-item">
-                                        <p class="text-muted"><strong>6</strong></p>
+                                        <p class="text-muted"><strong>{{servicio.Duc_Elec?'Si':'No'}}</strong></p>
                                     </li>
                                 </ul>
 
@@ -312,7 +261,7 @@
                                         <p class="my-0">Acepta Mascotas? </p>
                                     </li>
                                     <li class="list-inline-item">
-                                        <p class="text-muted"><strong>6</strong></p>
+                                        <p class="text-muted"><strong>{{condiciones.Mascotas?'Si':'No'}}</strong></p>
                                     </li>
                                 </ul>
                                 <ul class="list-inline py-0 m-0">
@@ -320,7 +269,7 @@
                                         <p class="my-0">Acepta Fiestas? </p>
                                     </li>
                                     <li class="list-inline-item">
-                                        <p class="text-muted"><strong>6</strong></p>
+                                        <p class="text-muted"><strong>{{condiciones.Fiestas?'Si':'No'}}</strong></p>
                                     </li>
                                 </ul>                                
                             </div>
@@ -331,7 +280,7 @@
                                         <p class="my-0">Numero de personas (Max): </p>
                                     </li>
                                     <li class="list-inline-item">
-                                        <p class="text-muted"><strong>6</strong></p>
+                                        <p class="text-muted"><strong>{{condiciones.Num_Pers}}</strong></p>
                                     </li>
                                 </ul>
                                 <ul class="list-inline py-0 m-0">
@@ -339,7 +288,7 @@
                                         <p class="my-0">Meses de Garantía: </p>
                                     </li>
                                     <li class="list-inline-item">
-                                        <p class="text-muted"><strong>6</strong></p>
+                                        <p class="text-muted"><strong>{{condiciones.Garantia}}</strong></p>
                                     </li>
                                 </ul>
                             </div>

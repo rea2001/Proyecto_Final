@@ -15,7 +15,7 @@
       </div>
 
       <div id="form">
-        <form>
+        <form (submit)="CrearVivienda($event)">
           <!-- Campos del formulario -->
           <label for="Nombre">Nombre:</label>
           <input type="text" id="nombre" name="nombre" [(ngModel)]="viviendaCrear.Nombre">
@@ -36,8 +36,12 @@
           <input type="text" id="latitud" name="latitud" [(ngModel)]="viviendaCrear.Latitud" disabled>
 
           <label for="descripcion">Descripción</label>
-          <textarea name="" id="" cols="30" rows="3" placeholder="Agrega una descripción de la vivienda"
+          <textarea name="descripcion" id="" cols="30" rows="3" placeholder="Agrega una descripción de la vivienda"
             [(ngModel)]="viviendaCrear.Descripcion"></textarea>
+            <label for="parroquias">Parroquias</label>
+          <select name="parroquias" (change)="EscogioParroquia(parroqui)" #parroqui>
+            <option *ngFor="let parroquia of ubicaciones" [value]="parroquia.Id_Ubi">{{parroquia.Parroquia}}</option>
+          </select>
           <br>
           <h4>Caracteristicas </h4>
 
@@ -89,7 +93,7 @@
           <!-- Input para subir múltiples archivos -->
           <div class="mb-3">
             <label for="formFileMultiple" class="form-label">Subir PDF (Contrato de Arrendamiento)</label>
-            <input class="form-control" type="file" id="formFileMultiple" multiple (change)="CambioImagenes($event)">
+            <input class="form-control" type="file" id="formFileMultiple" multiple>
           </div>
           <button type="submit">Publicar Departamento</button>
         </form>

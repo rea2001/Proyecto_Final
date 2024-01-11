@@ -1,83 +1,94 @@
 <div class="main-content">
+  <div id="container">
     <div id="grid">
-        <div> <h2>holis</h2></div>
-        <div>
-            <form (ngSubmit)="onRegisterSubmit()" #registerForm="ngForm">
-                <div id="grid">
-                    <div class="form-group" id="grid2">
-                        <label for="cedula">Cédula:</label>
-                        <input type="text" id="cedula" name="cedula" [(ngModel)]="registerFormModel.Cedula" required>
-                      </div>
-                  <div class="form-group">
-                    <label for="apellido1">Apellido Paterno:</label>
-                    <input type="text" id="apellido1" name="apellido1" [(ngModel)]="registerFormModel.Apellido1" required>
-                  </div>
-            
-                  <div class="form-group">
-                    <label for="apellido2">Apellido Materno:</label>
-                    <input type="text" id="apellido1" name="apellido2" [(ngModel)]="registerFormModel.Apellido2" required>
-                  </div>
-            
-                  <div class="form-group">
-                    <label for="nombre1">Primer Nombre:</label>
-                    <input type="text" id="nombre1" name="nombre1" [(ngModel)]="registerFormModel.Nombre1" required>
-                  </div>
-            
-                  <div class="form-group">
-                    <label for="nombre1">Segundo Nombre:</label>
-                    <input type="text" id="nombre1" name="nombre2" [(ngModel)]="registerFormModel.Nombre2" required>
-                  </div>
-            
-                  <div class="form-group">
-                    <label for="fecNac">Fecha de Nacimiento:</label>
-                    <input type="date" id="fecNac" name="fecNac" [(ngModel)]="registerFormModel.Fec_Nac" required>
-                  </div>
-            
-                  <div class="form-group">
-                    <label for="sexo">Sexo:</label>
-                    <select id="sexo" name="sexo" [(ngModel)]="registerFormModel.Sexo" required>
-                      <option value="Masculino">Masculino</option>
-                      <option value="Femenino">Femenino</option>
-                    </select>
-                  </div>
-            
-                  <div class="form-group">
-                    <label for="estCiv">Estado Civil:</label>
-                    <select id="estCiv" name="estCiv" [(ngModel)]="registerFormModel.Est_Civ" required>
-                      <option value="Soltero">Soltero</option>
-                      <option value="Casado">Casado</option>
-                      <option value="Divorciado">Divorciado</option>
-                      <option value="Viudo">Viudo</option>
-                      <option value="UnionLibre">Unión Libre</option>
-                    </select>
-                  </div>
-            
-                  <div class="form-group">
-                    <label for="telefono">Teléfono:</label>
-                    <input type="tel" id="telefono" name="telefono" [(ngModel)]="registerFormModel.Telefono" pattern="[0-9]{10}" required>
-                  </div>
-                  <div class="form-group" id="grid2">
-                    <label for="correo">Correo:</label>
-                    <input type="email" id="correo" name="correo" [(ngModel)]="registerFormModel.Correo" required>
-                  </div>
-                  <div class="form-group" id="grid2">
-                    <label for="contrasena">Contraseña:</label>
-                    <input type="password" id="contrasena" name="contrasena" [(ngModel)]="registerFormModel.Contrasena" required>
-                  </div>
-            
-                  <div class="form-group" id="grid2">
-                    <label for="contrasena">Confirmar contraseña:</label>
-                    <input type="password" id="contrasenavalidar" name="contrasenavalidar" required>
-                  </div>
-                  <div id="grid2">
-                    <button type="submit" [disabled]="!registerForm.valid">Actualizar</button>
-                  </div>
-                  <div id="grid2">
-                    <button type="button" class="btn btn-danger m-auto" (click)="noLogeado()">Cancelar</button>
-                  </div>
-                </div>
-              </form>
+      <div>
+        <h3>Editar Perfil</h3>
+        <div id="img">
+          <img [src]="profileImageUrl" alt="Foto" width="200" height="200" class="rounded-circle me-2">
         </div>
-        
-    </div>
+        <div id="foto">
+          <input type="file" (change)="onFileSelected($event)" accept="image/*">
+        </div>
+      </div>
+      <div id="col2">
+          <form (ngSubmit)="onRegisterSubmit()" #registerForm="ngForm" id="form">
+              <div id="grid">
+                  <div class="form-group" id="grid2">
+                      <label for="cedula">Cédula:</label>
+                      <input type="text" id="cedula" name="cedula" [(ngModel)]="registerFormModel.Cedula" required>
+                    </div>
+                <div class="form-group">
+                  <label for="apellido1">Apellido Paterno:</label>
+                  <input type="text" id="apellido1" name="apellido1" [(ngModel)]="registerFormModel.Apellido1" required>
+                </div>
+          
+                <div class="form-group">
+                  <label for="apellido2">Apellido Materno:</label>
+                  <input type="text" id="apellido1" name="apellido2" [(ngModel)]="registerFormModel.Apellido2" required>
+                </div>
+          
+                <div class="form-group">
+                  <label for="nombre1">Primer Nombre:</label>
+                  <input type="text" id="nombre1" name="nombre1" [(ngModel)]="registerFormModel.Nombre1" required>
+                </div>
+          
+                <div class="form-group">
+                  <label for="nombre1">Segundo Nombre:</label>
+                  <input type="text" id="nombre1" name="nombre2" [(ngModel)]="registerFormModel.Nombre2" required>
+                </div>
+          
+                <div class="form-group">
+                  <label for="fecNac">Fecha de Nacimiento:</label>
+                  <input type="date" id="fecNac" name="fecNac" [(ngModel)]="registerFormModel.Fec_Nac" required>
+                </div>
+          
+                <div class="form-group">
+                  <label for="sexo">Sexo:</label>
+                  <select id="sexo" name="sexo" [(ngModel)]="registerFormModel.Sexo" required>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                  </select>
+                </div>
+          
+                <div class="form-group">
+                  <label for="estCiv">Estado Civil:</label>
+                  <select id="estCiv" name="estCiv" [(ngModel)]="registerFormModel.Est_Civ" required>
+                    <option value="Soltero">Soltero</option>
+                    <option value="Casado">Casado</option>
+                    <option value="Divorciado">Divorciado</option>
+                    <option value="Viudo">Viudo</option>
+                    <option value="UnionLibre">Unión Libre</option>
+                  </select>
+                </div>
+          
+                <div class="form-group">
+                  <label for="telefono">Teléfono:</label>
+                  <input type="tel" id="telefono" name="telefono" [(ngModel)]="registerFormModel.Telefono" pattern="[0-9]{10}" required>
+                </div>
+                <div class="form-group" id="grid2">
+                  <label for="correo">Correo:</label>
+                  <input type="email" id="correo" name="correo" [(ngModel)]="registerFormModel.Correo" required>
+                </div>
+                <div class="form-group" id="grid2">
+                  <label for="contrasena">Contraseña:</label>
+                  <input type="password" id="contrasena" name="contrasena" [(ngModel)]="registerFormModel.Contrasena" required>
+                </div>
+          
+                <div class="form-group" id="grid2">
+                  <label for="contrasena">Confirmar contraseña:</label>
+                  <input type="password" id="contrasenavalidar" name="contrasenavalidar" required>
+                </div>
+                <div>
+                  <button type="submit" [disabled]="!registerForm.valid">Actualizar</button>
+                </div>
+                <div>
+                  <button id="cancelar" type="button" class="btn btn-danger m-auto" (click)="noLogeado()">Cancelar</button>
+                </div>
+              </div>
+            </form>
+      </div>
+      
+  </div>
+  </div>
+    
 </div>

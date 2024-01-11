@@ -14,7 +14,7 @@ import { ItemComponent } from './item/item.component';
 import { PublicarDepartamentosComponent } from './publicar-departamentos/publicar-departamentos.component';
 import { DescripcionItemComponent } from './descripcion-item/descripcion-item.component';
 import { CookieService } from 'ngx-cookie-service';
-import { ReportesComponent } from './reportes/reportes.component';
+import { ReportesComponent } from './reportes/reportes.component';              
 import { PerfilUsuariosComponent } from './perfil-usuarios/perfil-usuarios.component';
 
 @NgModule({

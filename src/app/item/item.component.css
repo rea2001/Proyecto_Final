@@ -4,3 +4,9 @@
 .noDispo{
     background-color: green;
 }
+
+#descripcion div{
+    text-align: center;
+    align-items: center;
+    padding-bottom: 10px;
+}

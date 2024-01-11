@@ -14,8 +14,12 @@
             <label for="password">Contraseña:</label>
             <input type="password" id="password" name="password" [(ngModel)]="loginFormModel.password" required>
         </div>
-        <button id="iniciar" type="button" class="btn btn-danger" (click)="noLogeado()">Cancelar</button>
-        <button id="iniciar" type="submit" [disabled]="!loginForm.valid">Iniciar sesión</button>
+        <div>
+            <button id="iniciar" type="submit" [disabled]="!loginForm.valid">Iniciar sesión</button>
+        </div>
+        <div>
+            <button id="iniciar" type="button" class="btn btn-danger" (click)="noLogeado()">Cancelar</button>
+        </div>
         <div class="register-link">
             <p>¿No tienes una cuenta? <a (click)="showRegistroOverlay($event)" href="">Regístrate aquí</a></p>
         </div>

@@ -24,6 +24,9 @@ export class ServicioUsuariosService {
       })
     );;
   }
+  ObtenerUsuarioPorId(id:number){
+    return this.http.get<Usuario>(this.url+`/RegresaUsuarioPorId/${id}`)      
+  }
   inicializarUsuarioConectado() {
     if (typeof localStorage !== 'undefined') {
       const usuarioGuardado = localStorage.getItem('usuarioConectado');

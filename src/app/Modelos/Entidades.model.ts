@@ -173,7 +173,9 @@ export class Mensaje{
         this.Id_Usu_Pub=idPublicador
         this.Id_Usu_Arr=idArrendador
         this.Mensaje_Env=mensaje
-        this.Fecha= '/Date(' + new Date(Date.now.toString()).getTime() + ')/'
+        this.Fecha= '/Date(' + new Date().getTime() + ')/';
+        this.Leido=false;
+        this.nombre=''        
     }
 
     Id_Men:number=0
@@ -181,4 +183,6 @@ export class Mensaje{
     Id_Usu_Arr:number=0
     Mensaje_Env:string=""
     Fecha: string= ""
+    Leido:boolean=false
+    nombre:string=''
 }

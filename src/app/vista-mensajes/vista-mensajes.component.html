@@ -1,29 +1,36 @@
-<div class="container w-50">
-    <h2 class="text-center">Buzon de Mensajes</h2>
-    <div class="row">
-        <div class="col-md-3 text-right">
-            <!-- Contenido de la primera columna -->
-            <img src="" alt="">
-            <img src="https://github.com/mdo.png" alt="" width="50" height="50"
-                                class="rounded-circle me-5">
-        </div>
-        <!-- Contenido de la segunda columna -->
-        <div class="col-md-8">
-            <div class="row">
-                <h5>Juan Andino</h5>
+<div class="modal position-static d-block bg-dark bg-opacity-50 py-md-5 p-4" role="dialog">
+    <div class="container bg-white p-3">
+        <h2 class="text-center">Buzon de Mensajes</h2>
+        <div class="row fila m-1" (click)="mensaje.Leido=true; mensajeElegido=mensaje.Mensaje_Env; verMensaje=true" 
+        *ngFor="let mensaje of mensajes">
+            <div class="col-md-2 text-center">
+                <!-- Contenido de la primera columna -->                
+                    <img src="" alt="">
+                    <img src="https://github.com/mdo.png" alt="" width="70" height="50" class="rounded-circle me-5">                
             </div>
-            <div class="row">
-                <p>Me ha gustado su publicación...</p>
+            <!-- Contenido de la segunda columna -->
+            <div class="col-md-8">
+                <div class="row">
+                    <h5>{{mensaje.nombre}}</h5>
+                </div>
+                <div class="row mensaje">
+                    <p>{{mensaje.Mensaje_Env}}</p>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <!-- Contenido de la tercera columna -->
+                <div class="row text-center">
+                    <p>{{convertirFecha(mensaje.Fecha)}}</p>
+                </div>
+                <div class="col mx-auto text-center" *ngIf="!mensaje.Leido">
+                    <div class="notificacion">1</div>
+                </div>
             </div>
         </div>
-        <div class="col-md-1">
-            <!-- Contenido de la tercera columna -->
-            <div class="row">
-                <p>00:15</p>
-            </div>
-            <div class="col mx-auto text-center">
-                <div class="notificacion">5</div>
-              </div>
-        </div>
+        <input type="button" class="btn btn-warning" (click)="estaMostrando.emit(false)" value="Salir">
     </div>
+</div>
+
+<div class="overlay" *ngIf="verMensaje">
+    <app-ver-mensaje [mensaje]="mensajeElegido" (mostrarMensaje)="obtenerBool($event)"></app-ver-mensaje>
 </div>

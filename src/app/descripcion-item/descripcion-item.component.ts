@@ -128,8 +128,7 @@ export class DescripcionItemComponent implements OnInit {
       
       const blob = new Blob([byteArray], { type: 'image/jpeg' }); // Ajusta el tipo de archivo según el formato de la imagen
       //aqui se pone la imagen
-      let imageUrl = URL.createObjectURL(blob);
-      alert(imageUrl)
+      let imageUrl = URL.createObjectURL(blob);      
       this.imagenes.push(imageUrl);
     }
   }

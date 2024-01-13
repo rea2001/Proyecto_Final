@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ServicioUsuariosService } from '../../servicio-usuarios.service';
 import { Router } from '@angular/router';
+import { SviviendasService } from '../../sviviendas.service';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class HearderComponent {
 
-  constructor(protected usuarioServicio: ServicioUsuariosService, private ruta: Router) { }
+  constructor(protected usuarioServicio: ServicioUsuariosService, protected ruta: Router, protected viviendaServicio:SviviendasService) { }
   isLoggedIn = this.usuarioServicio.verificaSesion();
   showLogin = false;
   esAdmin = this.usuarioServicio.esAdmin;

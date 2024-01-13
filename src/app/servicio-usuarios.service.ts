@@ -12,8 +12,8 @@ export class ServicioUsuariosService {
   constructor(private http: HttpClient, private cookie:CookieService) { 
     this.inicializarUsuarioConectado();
   }
-  url:string="http://reaavero.somee.com/SArriendos.svc"
-  //url:string="http://localhost:666/SArriendos.svc"
+  //url:string="http://reaavero.somee.com/SArriendos.svc"
+  url:string="http://localhost:666/SArriendos.svc"
   usuarioConectado!:Usuario|null;
   esAdmin:boolean=false
 

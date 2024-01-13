@@ -17,19 +17,24 @@ export class PublicarDepartamentosComponent implements OnInit {
   constructor(private servicioUsuario: ServicioUsuariosService, private Sviviendas: SviviendasService, private route: Router) { }
 
   ngOnInit(): void {
+    this.estaEditando = this.Sviviendas.estaEditando
     this.Sviviendas.retornarUbicaciones()
       .subscribe(
         (ubicacionesTraidas: ubicacion[]) => { this.ubicaciones = ubicacionesTraidas; console.log(ubicacionesTraidas) },
         error => { alert("error select de ubis"); console.log(error) }
       )
+    if (this.estaEditando) {
+      this.viviendaCrear = this.Sviviendas.vivendaElegida
+      this.cargarTodoVivienda();
+    }
   }
-
+  estaEditando: boolean = false
   @ViewChild('map') mapElement: any;
   ubicaciones!: ubicacion[];
   map!: google.maps.Map;
   marker!: google.maps.Marker;
   imagenes: string[] = [];
-  usuarioPertenece: Usuario | null = this.servicioUsuario.usuarioConectado  
+  usuarioPertenece: Usuario | null = this.servicioUsuario.usuarioConectado
   fileBytes: Uint8Array | undefined;
   fotos: Fotos[] = []
 
@@ -74,59 +79,15 @@ export class PublicarDepartamentosComponent implements OnInit {
     Tip_Pro: "",
     Estado: "Disponible",
     Latitud: -1.24908,
-    Descripcion:'',
+    Descripcion: '',
     Longitud: -78.61675,
     Id_Car_Per: 0,
     Id_Ser_Per: 0,
     Id_Con_Per: 0,
     Id_Ubi_Per: 0,
-    Id_Usu_Per: this.usuarioPertenece?.Id_Usu?this.usuarioPertenece?.Id_Usu:0
+    Id_Usu_Per: this.usuarioPertenece?.Id_Usu ? this.usuarioPertenece?.Id_Usu : 0
   }
 
-  imagenesSubir: Fotos = {
-    Id_Fot: 0,
-    Descripcion: "",
-    Foto_Com: "",
-    Id_Viv_Per: 0
-  }
-  //Metodo para las imagenes
-  // CambioImagenes(event: any) {
-  //  const files = event.target.files;
-  // //const files: File = event.target.files[0];
-
-  //   if (files) {
-  //     for (let i = 0; i < files.length; i++) {
-  //       const reader = new FileReader();
-  //       reader.onload = (e: any) => {
-  //         // Asegúrate de no exceder el límite de 5 imágenes
-  //         if (this.imagenes.length < 6) {
-  //           //------------------------------------------------------------------
-  //           const arrayBuffer: ArrayBuffer | null = e.target.result;
-  //           console.log(arrayBuffer)
-  //           if (arrayBuffer) {
-  //             const uintArray = new Uint8Array(arrayBuffer);
-  //             this.fileBytes = uintArray;
-  //             // El arreglo de bytes es uintArray de la imagen
-  //             console.log('Arreglo de bytes:', uintArray);
-  //             const stringBytes = this.uint8ArrayToBase64(uintArray);
-  //             let foto: Fotos = new Fotos(0, "Foto ", stringBytes);
-  //             alert(foto.Descripcion)
-  //             console.log('los bytes')
-  //             console.log(stringBytes)
-  //             console.log("foto")
-  //             console.log(foto)
-  //             this.fotos.push(foto);
-  //             this.imagenes.push(e.target.result);
-  //           }        
-  //           //------------------------------------------------------------------
-  //         } else {
-  //           alert("Límite de 5 imágenes");
-  //         }
-  //       };
-  //       reader.readAsDataURL(files[i]);
-  //     }
-  //   }
-  // }
 
   CambioImagenes(event: any) {
     Array.from(event.target.files).forEach((file) => {
@@ -140,20 +101,16 @@ export class PublicarDepartamentosComponent implements OnInit {
             const arrayBuffer: ArrayBuffer | null = e.target.result;
             if (arrayBuffer) {
               const uintArray = new Uint8Array(arrayBuffer);
-              this.fileBytes = uintArray;
-              // Aquí tendrás el arreglo de bytes (uintArray) de la imagen
-              console.log('Arreglo de bytes:', uintArray);
+              this.fileBytes = uintArray;              
               const stringBytes = this.uint8ArrayToBase64(uintArray);
-              let foto: Fotos = new Fotos(0, "Foto ", stringBytes);
+              let foto: Fotos = new Fotos(0, this.viviendaCrear.Id_Viv, "Foto ", stringBytes);
               this.fotos.push(foto);
 
               const byteArray = new Uint8Array(uintArray);
 
-              const blob = new Blob([byteArray], { type: 'image/jpeg' }); // Ajusta el tipo de archivo según el formato de la imagen
-              //    aqui se pone la imagen
+              const blob = new Blob([byteArray], { type: 'image/jpeg' });              
               let imageUrl = URL.createObjectURL(blob);
-              this.imagenes.push(imageUrl);
-              //this.displayImageFromBytes(uintArray);
+              this.imagenes.push(imageUrl);              
             }
           };
 
@@ -215,114 +172,87 @@ export class PublicarDepartamentosComponent implements OnInit {
     }
   }
 
-  // CrearVivienda(e:Event){
-  //   e.preventDefault();
-
-  //   this.Sviviendas.crearCaracteristica(this.caraCrear)
-  //   .subscribe(
-  //     (caracteristicaCreada:Caracteristicas)=>{
-  //       this.caraCrear=caracteristicaCreada;
-  //       this.viviendaCrear.Id_Car_Per=this.caraCrear.Id_Car;
-  //     },
-  //     error=>{
-  //       console.log('Ha ocurrido un error al crear la caracteristica: ', error)
-  //       alert('Ha ocurrido un error al crear la caracteristica')
-  //     }
-  //   )
-
-  //   this.Sviviendas.crearCondicione(this.condicioCrear)
-  //   .subscribe(
-  //     (condicionCreada:Condiciones)=>{
-  //       this.condicioCrear=condicionCreada;
-  //       this.viviendaCrear.Id_Con_Per=this.condicioCrear.Id_Con
-  //     },
-  //     error=>{
-  //       console.log('Ha ocurrido un error al crear la condicion: ', error)
-  //       alert('Ha ocurrido un error al crear la condicion')
-  //     }
-  //   )
-
-  //   this.Sviviendas.crearServicio(this.serviCrear)
-  //   .subscribe(
-  //     (servicioCreado:Servicios)=>{
-  //       this.serviCrear=servicioCreado;
-  //       this.viviendaCrear.Id_Ser_Per=this.serviCrear.Id_Ser;
-  //     },
-  //     error=>{
-  //       console.log('Ha ocurrido un error al crear la servicio: ', error)
-  //       alert('Ha ocurrido un error al crear la servicio')
-  //     }
-  //   )
-
-  //   this.Sviviendas.crearVivienda(this.viviendaCrear)
-  //   .subscribe(
-  //     (viviendaCreada:Vivienda)=>{
-  //       this.viviendaCrear=viviendaCreada;
-  //       alert("Vivienda Creada Exitosamente")
-  //       this.route.navigate(['/home'])
-  //     },
-  //     error=>{
-  //       console.log('Ha ocurrido un error al crear la vivenda: ', error)
-  //       alert('Ha ocurrido un error al crear la vivienda')
-  //     }
-  //   )
-
-
-  // }
-
-  //Segundo metodo
-
   CrearVivienda(e: Event) {
-    e.preventDefault();
+    e.preventDefault();    
 
-    const caracteristicaObservable = this.Sviviendas.crearCaracteristica(this.caraCrear);
-    const condicionObservable = this.Sviviendas.crearCondicione(this.condicioCrear);
-    const servicioObservable = this.Sviviendas.crearServicio(this.serviCrear);
+    const caracteristicaObservable = this.estaEditando ? this.Sviviendas.modificarCaracteristica(this.caraCrear) : this.Sviviendas.crearCaracteristica(this.caraCrear);
+    const condicionObservable = this.estaEditando ? this.Sviviendas.modificarCondicion(this.condicioCrear) : this.Sviviendas.crearCondicione(this.condicioCrear);
+    const servicioObservable = this.estaEditando ? this.Sviviendas.modificarServicio(this.serviCrear) : this.Sviviendas.crearServicio(this.serviCrear);    
 
     forkJoin({
       caracteristica: caracteristicaObservable,
       condicion: condicionObservable,
-      servicio: servicioObservable
+      servicio: servicioObservable    
     }).subscribe(
       (result: any) => {
-        alert(this.viviendaCrear.Id_Ubi_Per)
-        console.log(this.viviendaCrear)
-        this.viviendaCrear.Id_Car_Per = result.caracteristica.Id_Car;
-        this.viviendaCrear.Id_Con_Per = result.condicion.Id_Con;
-        this.viviendaCrear.Id_Ser_Per = result.servicio.Id_Ser;
+        if (this.estaEditando) {
+          if (result.caracteristica && result.condicion && result.servicio) {
+            this.Sviviendas.modificarViviendas(this.viviendaCrear).subscribe(
+              seCreo=>{
+                if (seCreo) {
+                  this.Sviviendas.modificarFotos(this.fotos).subscribe(
+                    estaFotos=>{
+                      if (estaFotos) {
+                        alert('Se ha modificado la vivienda correctamente')                        
+                      }else{
+                        alert('No se ha modificado la vivienda')
+                      }                      
+                    },
+                    errorFot=>{alert('No ha creado la vivienda'); console.log('Error al modificar las fotos',errorFot)}
+                  )
+                }else{
 
-        this.Sviviendas.crearVivienda(this.viviendaCrear).subscribe(
-          (viviendaCreada: Vivienda) => {
-            if (viviendaCreada) {
-              console.log('Vienda recibida')
-              console.log(viviendaCreada)
-              this.viviendaCrear = viviendaCreada
-              this.fotos.forEach(foto => {
-                foto.Id_Viv_Per = viviendaCreada.Id_Viv
-              });
-              this.Sviviendas.crearFotos(this.fotos).subscribe(
-                (resultadoFoto: boolean) => {
-                  if (resultadoFoto) {
-                    alert("Vivienda Creada Exitosamente");
-                    this.route.navigate(['/home']);
-                  } else {
+                }
+              },
+              error=>{
+                alert('No ha creado la vivienda')
+                console.log('error al modificar la vivienda',error)
+              }
+            )
+            
+          } else {
+            console.log('error al actualuzar caracteristica o condicion o servicio o fotos')
+            alert('No se pudo actualizar la vivienda')
+          }
+
+        } else {
+          console.log(this.viviendaCrear)
+          this.viviendaCrear.Id_Car_Per = result.caracteristica.Id_Car;
+          this.viviendaCrear.Id_Con_Per = result.condicion.Id_Con;
+          this.viviendaCrear.Id_Ser_Per = result.servicio.Id_Ser;
+          this.Sviviendas.crearVivienda(this.viviendaCrear).subscribe(
+            (viviendaCreada: Vivienda) => {
+              if (viviendaCreada) {
+                console.log('Vivienda recibida')
+                console.log(viviendaCreada)
+                this.viviendaCrear = viviendaCreada
+                this.fotos.forEach(foto => {
+                  foto.Id_Viv_Per = viviendaCreada.Id_Viv
+                });
+                this.Sviviendas.crearFotos(this.fotos).subscribe(
+                  (resultadoFoto: boolean) => {
+                    if (resultadoFoto) {
+                      alert("Vivienda Creada Exitosamente");
+                      this.route.navigate(['/home']);
+                    } else {
+                      alert("Vivienda No se pudo crear");
+                    }
+                  },
+                  error => {
                     alert("Vivienda No se pudo crear");
                   }
-                },
-                error => {
-                  alert("Vivienda No se pudo crear");
-                }
-              )
-            } else {
-              alert("La vivienda no se ha creado");
-            }
+                )
+              } else {
+                alert("La vivienda no se ha creado");
+              }
 
-          },
-          error => {
-            console.log('Ha ocurrido un error al crear la vivienda: ', error);
-            alert('Ha ocurrido un error al crear la vivienda');
-          }
-        );
+            },
+            error => {
+              console.log('Ha ocurrido un error al crear la vivienda: ', error);
+              alert('Ha ocurrido un error al crear la vivienda');
+            }
+          )
+        };
       },
       error => {
         console.log('Ha ocurrido un error al crear características, condiciones o servicios: ', error);
@@ -333,8 +263,78 @@ export class PublicarDepartamentosComponent implements OnInit {
 
   EscogioParroquia(parroquiasSelect: HTMLSelectElement) {
     this.viviendaCrear.Id_Ubi_Per = parseInt(parroquiasSelect.value)
-    alert(this.viviendaCrear.Id_Ubi_Per)
   }
-  
+
+  //Actualizar depa--------------------------------------------------------------
+  cargarTodoVivienda() {
+
+    this.Sviviendas.retornarUbicacionPorId(this.viviendaCrear.Id_Ubi_Per).subscribe(
+      ubicacion => {
+        this.viviendaCrear.Id_Ubi_Per = ubicacion.Id_Ubi
+      },
+      error => {
+        console.log(error)
+      }
+    )
+    this.Sviviendas.retornarCondicionesPorId(this.viviendaCrear.Id_Con_Per).subscribe(
+      condicion => {
+        this.condicioCrear = condicion
+      },
+      error => {
+        console.log(error)
+      }
+    )
+    this.Sviviendas.retornarServiciosPorId(this.viviendaCrear.Id_Ser_Per).subscribe(
+      servicio => {
+        this.serviCrear = servicio
+      },
+      error => {
+        console.log(error)
+      }
+    )
+    this.Sviviendas.retornarCaracteristicasPorId(this.viviendaCrear.Id_Car_Per).subscribe(
+      caracteristica => {
+        this.caraCrear = caracteristica
+      },
+      error => {
+        console.log(error)
+      }
+    )
+    this.Sviviendas.retornarFotosPorIdVivienda(this.viviendaCrear.Id_Viv).subscribe(
+      fotos => {
+        this.fotos = fotos
+        this.displayImageFromBytes()
+      },
+      error => {
+        console.log(error)
+      }
+    )
+
+  }
+
+  displayImageFromBytes() {
+    for (let i = 0; i < this.fotos.length; i++) {
+      let encoded = this.base64ToUint8Array(this.fotos[i].Foto_Com)
+      const byteArray = new Uint8Array(encoded);
+      const blob = new Blob([byteArray], { type: 'image/jpeg' });
+      let imageUrl = URL.createObjectURL(blob);      
+      this.imagenes.push(imageUrl);
+    }
+  }
+
+
+  //De base 64 a bit[]
+  private base64ToUint8Array(base64String: string): Uint8Array {
+    const binaryString = atob(base64String);
+    const length = binaryString.length;
+    const uintArray = new Uint8Array(length);
+
+    for (let i = 0; i < length; i++) {
+      uintArray[i] = binaryString.charCodeAt(i);
+    }
+
+    return uintArray;
+  }
+
 
 }

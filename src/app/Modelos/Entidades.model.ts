@@ -163,6 +163,22 @@ export class Usuario {
     Rol: string = "";
     Sexo: string = "";
     Telefono: string = "";
-    Fec_Nac: string= ""; // Ajusta según la forma en que tu servicio maneje las fechas
+    Fec_Nac: string= "";
 
+}
+//MENSAJE-----------------------------------------------------------------------------------------------------
+export class Mensaje{
+    constructor( idPublicador:number, idArrendador:number, mensaje:string){
+        this.Id_Men=0
+        this.Id_Usu_Pub=idPublicador
+        this.Id_Usu_Arr=idArrendador
+        this.Mensaje_Env=mensaje
+        this.Fecha= '/Date(' + new Date(Date.now.toString()).getTime() + ')/'
+    }
+
+    Id_Men:number=0
+    Id_Usu_Pub:number=0
+    Id_Usu_Arr:number=0
+    Mensaje_Env:string=""
+    Fecha: string= ""
 }

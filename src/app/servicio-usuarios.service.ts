@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Usuario } from './Modelos/Entidades.model';
+import { Mensaje, Usuario } from './Modelos/Entidades.model';
 import { CookieService } from 'ngx-cookie-service';
 import { tap } from 'rxjs/operators';
 
@@ -12,8 +12,8 @@ export class ServicioUsuariosService {
   constructor(private http: HttpClient, private cookie:CookieService) { 
     this.inicializarUsuarioConectado();
   }
-  //url:string="http://reaavero.somee.com/SArriendos.svc"
-  url:string="http://localhost:666/SArriendos.svc"
+  url:string="http://reaavero.somee.com/SArriendos.svc"
+  //url:string="http://localhost:666/SArriendos.svc"
   usuarioConectado!:Usuario|null;
   esAdmin:boolean=false
 
@@ -55,4 +55,18 @@ export class ServicioUsuariosService {
     this.usuarioConectado=null    
     this.esAdmin=false;
   }  
+  //Mensajes-----------------------------------------------
+  CrearMensaje(mensaje:Mensaje){
+    const cabecera = new HttpHeaders({ 'Content-Type': 'application/json' });    
+    return this.http.post(this.url+"/CrearMen", mensaje, { headers: cabecera });
+  }      
+  retornarMensajesPorIdUsu(idPublicador:number, idArrendador:number){    
+    return this.http.get<Mensaje[]>(this.url+"/DevuelveMenPorIdUsu/"+idPublicador+'/'+idArrendador)
+  }
+  retornarMensajesPorIdPub(idPublicador:number){
+    return this.http.get<Mensaje[]>(this.url+"/DevuelveMenPorIdPub/"+idPublicador)
+  }
+  eliminarMensaje(idMensaje:number){
+    return this.http.delete<boolean>(this.url+"/EliminarMen/"+idMensaje)
+  }
 }

@@ -9,8 +9,8 @@ export class SviviendasService {
 
   constructor(private http: HttpClient) {}
 
-  //url:string="http://reaavero.somee.com/SArriendos.svc"
-  url:string="http://localhost:666/SArriendos.svc"
+  url:string="http://reaavero.somee.com/SArriendos.svc"
+  //url:string="http://localhost:666/SArriendos.svc"
   
   vivendaElegida!:Vivienda
   estaEditando!:boolean

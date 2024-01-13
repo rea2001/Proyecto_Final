@@ -16,6 +16,7 @@ export class DescripcionItemComponent implements OnInit {
   @ViewChild('map') mapElement: any;
   map!: google.maps.Map;
   marker!: google.maps.Marker;
+  estaMostrando=false
 
   estaVivienda!: Vivienda
   usuario!: Usuario

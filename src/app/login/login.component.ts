@@ -1,11 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { AppComponent } from '../app.component';
-import { error } from 'console';
+import { Router } from '@angular/router';
 import { Usuario } from '../Modelos/Entidades.model';
 import { ServicioUsuariosService } from '../servicio-usuarios.service';
-import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',

@@ -1,29 +1,28 @@
-<div class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog"
+<div class="modal modal-sheet position-static d-block bg-dark bg-opacity-50 p-4 py-md-5" tabindex="-1" role="dialog"
     id="modalSignin">
     <div class="modal-dialog" role="document">
         <div class="modal-content rounded-4 shadow">
             <div class="modal-header p-5 pb-4 border-bottom-0">
                 <h3>Escribe un mensaje</h3>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="estaMostrado.emit(false)"></button>
             </div>
 
             <div class="modal-body p-5 pt-0">
                 <form class="formulario">
                     <div class="form-group">
                         
-                        <input type="text" id="floatingInput" placeholder="Nombre">
+                        <input type="text" id="floatingInput" placeholder="Nombre" name="Nombre" [(ngModel)]="usuarioConectado.Nombre1">
                     </div>
                     <div class="form-group">
-                        <input type="email" id="floatingInput" placeholder="Email">
+                        <input type="email" id="floatingInput" placeholder="Email" name="Correo" [(ngModel)]="usuarioConectado.Correo">
                     </div>
                     <div class="form-group">
-                        <input type="tel" id="floatingInput" placeholder="Teléfono">
+                        <input type="tel" id="floatingInput" placeholder="Teléfono" name="Telefono" [(ngModel)]="usuarioConectado.Telefono">
                     </div>
                     <div class="form-group">
-                        <textarea name="message" cols="30" id="form-message" rows="5"
-                            placeholder="Me gustaría recibir más información sobre la propiedad"></textarea>
+                        <textarea name="Mensaje_Env" cols="30" id="form-message" rows="5" [(ngModel)]="mensaje.Mensaje_Env"></textarea>
                     </div>
-                    <button id="enviar" type="button" class="btn btn-danger">Enviar</button>
+                    <button id="enviar" type="button" class="btn btn-danger" (click)="enviarMensaje()">Enviar</button>
                     <small class="text-body-secondary">Al enviar este formulario, usted acepta compartir sus datos con
                         el propietario, agente de esta propiedad. Para obtener más información, consulte nuestra <a
                             href="#">Política de privacidad</a></small>

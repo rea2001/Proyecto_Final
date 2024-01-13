@@ -303,8 +303,9 @@
                                         value="buy">Salir</button>
                                 </div>
                                 <div class="col d-grid">
-                                    <button  class="btn btn-primary btn-lg" name="submit"
-                                        value="addtocard"><a href="/modal-mensajeria">Contactar al dueño</a></button>
+                                    <button  class="btn btn-primary btn-lg" name="submit" (click)="estaMostrando=true">
+                                        Contactar al dueño
+                                    </button>
                                 </div>
                             </div>
                         </form>
@@ -316,6 +317,10 @@
     </div>
 </section>
 <!-- Close Content -->
+
+<div class="overlay" *ngIf="estaMostrando==true">
+    <app-modal-mensajeria (estaMostrado)="estaMostrando=$event"></app-modal-mensajeria>
+</div>
 
 <script>
     $('#carousel-related-product').slick({

@@ -1,0 +1,19 @@
+.modal-sheet .modal-dialog {
+    width: 380px;
+    transition: bottom .75s ease-in-out;
+  }
+  .modal-sheet .modal-footer {
+    padding-bottom: 2rem;
+  }
+
+  .form-group input,
+  .form-group select, textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+  }
+
+  
+  

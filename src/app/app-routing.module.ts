@@ -9,6 +9,7 @@ import { PublicarDepartamentosComponent } from './publicar-departamentos/publica
 import { DescripcionItemComponent } from './descripcion-item/descripcion-item.component';
 import { ReportesComponent } from './reportes/reportes.component';
 import { PerfilUsuariosComponent } from './perfil-usuarios/perfil-usuarios.component';
+import { ModalMensajeriaComponent } from './modal-mensajeria/modal-mensajeria.component';
 
 const routes: Routes = [
   {path: '', redirectTo:'/home', pathMatch:'full'},
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path: 'publicar-departamentos',component: PublicarDepartamentosComponent, pathMatch: 'full'},
   {path: 'descripcionItem',component: DescripcionItemComponent, pathMatch: 'full'},
   {path: 'reportes', component: ReportesComponent, pathMatch: 'full'},
-  {path: 'perfil-usuarios', component: PerfilUsuariosComponent, pathMatch: 'full'}
+  {path: 'perfil-usuarios', component: PerfilUsuariosComponent, pathMatch: 'full'},
+  {path: 'modal-mensajeria', component: ModalMensajeriaComponent, pathMatch: 'full'}
   // Puedes agregar más rutas según tus necesidades
 ];
 

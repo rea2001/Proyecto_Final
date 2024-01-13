@@ -23,8 +23,26 @@
       </div>
     </div>
   </nav>
-  
-<section class="py-5">
+  <hr class="my-4">
+  <nav>
+    <div id="grid">
+      <div>
+        <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="submit"><i class="bi bi-currency-dollar"></i> Precio</button>
+      </div>
+      <div>
+        <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="submit">Superfice</button>
+      </div>
+      <div>
+        <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="submit">Habitaciones</button>
+      </div>
+      <div>
+        <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="submit">Baños</button>
+      </div>
+    </div>
+  </nav>
+    <hr class="my-3">
+
+<section>
     <div class="container px-4 px-lg-5 mt-5" >
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             <app-item *ngFor="let vivienda of viviendas" direccionItem="Ambato" [vivienda]="vivienda" [esAdmin]="esAdmin"></app-item>

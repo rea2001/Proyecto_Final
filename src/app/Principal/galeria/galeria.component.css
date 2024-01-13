@@ -1,5 +1,13 @@
 .navbar {
     width: 50%;
     margin: 0 auto; /* Para centrar la barra de navegación */
-    padding: 50px ;
+    padding-top: 30px ;
+  }
+
+  #grid{
+    width: 50%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Grid de 2 columnas con igual anchura */
+    grid-gap: 8px; /* Espacio entre las columnas y filas */
   }

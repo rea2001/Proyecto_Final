@@ -1,52 +1,165 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="display: grid; grid-template-columns: repeat(5, 1fr); grid-gap: 8px;">
+
+      <div class="dropdown">
+        <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="button" id="dropdownMenuButton"
+          data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Precio
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <div class="modal-content">
+            <div class="modal-body">
+              <!-- Agrega aquí el contenido de tu modal -->
+              <form class="formulario">
+                <div class="grid2">
+                  <div class="form-group">
+                    <label for="">Precio Mínimo:</label>
+                    <input type="text" id="floatingInput" placeholder="Desde $">
+                  </div>
+                  <div class="form-group">
+                    <label for="">Precio Máximo </label>
+                    <input type="email" id="floatingInput" placeholder="Hasta $">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Limpiar</button>
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="button" id="dropdownMenuButton"
+          data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Superfice
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <div class="modal-content">
+            <div class="modal-body">
+              <!-- Agrega aquí el contenido de tu modal -->
+              <form class="formulario">
+                <div id="grid2">
+                  <div class="form-group">
+                    <label for="">Precio Mínimo:</label>
+                    <input type="text" id="floatingInput" placeholder="Desde $">
+                  </div>
+                  <div class="form-group">
+                    <label for="">Precio Máximo </label>
+                    <input type="email" id="floatingInput" placeholder="Hasta $">
+                  </div>
+                </div>
+              </form>
+            </div>
+            <hr class="my-4">
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Limpiar</button>
+              <button type="button" class="btn btn-primary">Filtrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="button" id="dropdownMenuButton"
+          data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Habitaciones
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <div class="modal-content">
+            <div class="modal-body">
+              <!-- Agrega aquí el contenido de tu modal -->
+              <form class="formulario">
+                <div id="grid2">
+                  <div class="form-group">
+                    <label for="">Precio Mínimo:</label>
+                    <input type="text" id="floatingInput" placeholder="Desde $">
+                  </div>
+                  <div class="form-group">
+                    <label for="">Precio Máximo </label>
+                    <input type="email" id="floatingInput" placeholder="Hasta $">
+                  </div>
+                </div>
+              </form>
+            </div>
+            <hr class="my-4">
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Limpiar</button>
+              <button type="button" class="btn btn-primary">Filtrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+    <div class="dropdown">
+      <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="button" id="dropdownMenuButton"
+        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Baños
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Tipo de Vivienda
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Casa</a></li>
-              <li><a class="dropdown-item" href="#">Media Agua</a></li>
-              <li><a class="dropdown-item" href="#">Departamento</a></li>
-            </ul>
-          </li>
-        </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Parroquia" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Buscar</button>
-        </form>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <div class="modal-content">
+          <div class="modal-body">
+            <!-- Agrega aquí el contenido de tu modal -->
+            <form class="formulario">
+              <div id="grid2">
+                <div class="form-group">
+                  <label for="">Precio Mínimo:</label>
+                  <input type="text" id="floatingInput" placeholder="Desde $">
+                </div>
+                <div class="form-group">
+                  <label for="">Precio Máximo </label>
+                  <input type="email" id="floatingInput" placeholder="Hasta $">
+                </div>
+              </div>
+            </form>
+          </div>
+          <hr class="my-4">
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Limpiar</button>
+            <button type="button" class="btn btn-primary">Filtrar</button>
+          </div>
+        </div>
       </div>
     </div>
-  </nav>
-  <hr class="my-4">
-  <nav>
-    <div id="grid">
-      <div>
-        <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="submit"><i class="bi bi-currency-dollar"></i> Precio</button>
-      </div>
-      <div>
-        <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="submit">Superfice</button>
-      </div>
-      <div>
-        <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="submit">Habitaciones</button>
-      </div>
-      <div>
-        <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="submit">Baños</button>
-      </div>
+
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Tipo de Vivienda
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Casa</a></li>
+            <li><a class="dropdown-item" href="#">Media Agua</a></li>
+            <li><a class="dropdown-item" href="#">Departamento</a></li>
+          </ul>
+        </li>
+      </ul>
+      
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Parroquia" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Buscar</button>
+      </form>
     </div>
-  </nav>
-    <hr class="my-3">
+  </div>
+</nav>
+<hr class="my-4">
 
 <section>
-    <div class="container px-4 px-lg-5 mt-5" >
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            <app-item *ngFor="let vivienda of viviendas" direccionItem="Ambato" [vivienda]="vivienda" [esAdmin]="esAdmin"></app-item>
-            <p *ngIf="viviendas.length<1">No tienes viviendas publicadas, puedes publicar una ahora</p>
-        </div>
+  <div class="container px-4 px-lg-5 mt-5">
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+      <app-item *ngFor="let vivienda of viviendas" direccionItem="Ambato" [vivienda]="vivienda"
+        [esAdmin]="esAdmin"></app-item>
+      <p *ngIf="viviendas.length<1">No tienes viviendas publicadas, puedes publicar una ahora</p>
     </div>
+  </div>
 </section>

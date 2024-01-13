@@ -20,10 +20,10 @@
         <div id="descripcion" class="card-footer p-4 pt-0 border-top-0 bg-transparent">
             <div *ngIf="esAdmin==1" class="text-center my-1">
                 <div>
-                    <a class="btn btn-primary mt-auto" href="#">Editar</a>
+                    <a class="btn btn-primary mt-auto" (click)="EditarDepa()">Editar</a>
                 </div>
                 <div>
-                    <a class="btn btn-danger " href="#">Eliminar</a>
+                    <a class="btn btn-danger "(click)="EliminarDepa()">Eliminar</a>
                 </div>
             </div>
             <div  class="text-center"><a class="btn btn-outline-dark mt-auto" (click)="mostrarDepa()">Ver mas</a></div>

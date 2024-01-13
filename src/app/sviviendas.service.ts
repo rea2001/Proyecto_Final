@@ -9,10 +9,11 @@ export class SviviendasService {
 
   constructor(private http: HttpClient) {}
 
-  url:string="http://reaavero.somee.com/SArriendos.svc"
-  //url:string="http://localhost:666/SArriendos.svc"
+  //url:string="http://reaavero.somee.com/SArriendos.svc"
+  url:string="http://localhost:666/SArriendos.svc"
   
   vivendaElegida!:Vivienda
+  estaEditando!:boolean
 
   crearCaracteristica(caracteristica:Caracteristicas){
     const cabecera = new HttpHeaders({ 'Content-Type': 'application/json' });    
@@ -39,10 +40,31 @@ export class SviviendasService {
   }
 
   crearFotos(fotos:Fotos[]){
-    const cabecera = new HttpHeaders({ 'Content-Type': 'application/json' });
-    console.log(fotos)
+    const cabecera = new HttpHeaders({ 'Content-Type': 'application/json' });    
     return this.http.post<boolean>(this.url+"/InsertaFot", fotos, { headers: cabecera });
   }
+
+  modificarCaracteristica(caracteristica:Caracteristicas){
+    const cabecera = new HttpHeaders({ 'Content-Type': 'application/json' });    
+    return this.http.put<boolean>(this.url+"/ActualizarCar", caracteristica, { headers: cabecera });
+  }
+  modificarServicio(servicio:Servicios){
+    const cabecera = new HttpHeaders({ 'Content-Type': 'application/json' });    
+    return this.http.put<boolean>(this.url+"/ActualizarSer", servicio, { headers: cabecera });
+  }
+  modificarCondicion(condicion:Condiciones){
+    const cabecera = new HttpHeaders({ 'Content-Type': 'application/json' });    
+    return this.http.put<boolean>(this.url+"/ActualizarCondicion", condicion, { headers: cabecera });
+  }
+  modificarViviendas(vivienda:Vivienda){
+    const cabecera = new HttpHeaders({ 'Content-Type': 'application/json' });    
+    return this.http.put<boolean>(this.url+"/ActualizarViv", vivienda, { headers: cabecera });
+  }
+  modificarFotos(fotos:Fotos[]){
+    const cabecera = new HttpHeaders({ 'Content-Type': 'application/json' });    
+    return this.http.put<boolean>(this.url+"/ActualizarFotos", fotos, { headers: cabecera });
+  }
+
     
   retornarUbicaciones(){    
     return this.http.get<ubicacion[]>(this.url+"/DevuelveUbi")
@@ -68,5 +90,24 @@ export class SviviendasService {
   }
   retornarFotosPorIdVivienda(idVivienda:number){
     return this.http.get<Fotos[]>(this.url+"/DevuelveFotosViv/"+idVivienda)
+  }
+
+  eliminarVivienda(idVivienda:number){
+    return this.http.delete<boolean>(this.url+"/EliminarViv/"+idVivienda)
+  }
+  eliminarCaracteristica(idCaracteristica:number){
+    return this.http.delete<boolean>(this.url+"/EliminarCar/"+idCaracteristica)
+  }
+  eliminarServicio(idServicio:number){
+    return this.http.delete<boolean>(this.url+"/EliminarSer/"+idServicio)
+  }
+  eliminarCondicion(idCondicion:number){
+    return this.http.delete<boolean>(this.url+"/EliminarCondicion/"+idCondicion)
+  }
+  eliminarFoto(idFoto:number){
+    return this.http.delete<boolean>(this.url+"/EliminarFot/"+idFoto)
+  }  
+  eliminarFotosPorIdVivienda(idVivienda:number){
+    return this.http.delete<boolean>(this.url+"/EliminarFotosIdVivienda/"+idVivienda)
   }
 }

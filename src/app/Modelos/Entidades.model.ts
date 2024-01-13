@@ -119,8 +119,8 @@ export class ubicacion{
 }
 
 export class Fotos{
-    constructor( Id_Viv_Per: number, Descripcion: string, Foto_Com: string){
-        this.Id_Fot = 0;
+    constructor(id_fot:number, Id_Viv_Per: number, Descripcion: string, Foto_Com: string){
+        this.Id_Fot = id_fot;
         this.Id_Viv_Per = Id_Viv_Per;
         this.Descripcion = Descripcion;
         this.Foto_Com = Foto_Com;

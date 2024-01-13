@@ -19,11 +19,11 @@
               <form class="formulario">
                 <div class="grid2">
                   <div class="form-group">
-                    <label for="">Precio Mínimo:</label>
+                    <label for="">Mínimo:</label>
                     <input type="text" id="floatingInput" placeholder="Desde $">
                   </div>
                   <div class="form-group">
-                    <label for="">Precio Máximo </label>
+                    <label for="">Máximo: </label>
                     <input type="email" id="floatingInput" placeholder="Hasta $">
                   </div>
                   <div class="modal-footer">
@@ -51,12 +51,12 @@
               <form class="formulario">
                 <div class="grid2">
                   <div class="form-group">
-                    <label for="">Precio Mínimo:</label>
-                    <input type="text" id="floatingInput" placeholder="Desde $">
+                    <label for="">Mínimo:</label>
+                    <input type="text" id="floatingInput" placeholder="Desde m2">
                   </div>
                   <div class="form-group">
-                    <label for="">Precio Máximo </label>
-                    <input type="email" id="floatingInput" placeholder="Hasta $">
+                    <label for="">Máximo: </label>
+                    <input type="email" id="floatingInput" placeholder="Hasta m2">
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Limpiar</button>
@@ -76,22 +76,32 @@
           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Habitaciones
         </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <div class="modal-content">
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width: 100px;">
+          <div class="modal-content" style="width: 100%; padding: 10px;">
             <div class="modal-body">
               <!-- Agrega aquí el contenido de tu modal -->
               <form class="formulario">
-                <div class="grid2">
-                  <div class="form-group">
-                    <label for="">Precio Mínimo:</label>
-                    <input type="text" id="floatingInput" placeholder="Desde $">
+                <div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="checkboxGroup" id="checkbox1">
+                    <label class="form-check-label" for="checkbox1">
+                      1
+                    </label>
                   </div>
-                  <div class="form-group">
-                    <label for="">Precio Máximo </label>
-                    <input type="email" id="floatingInput" placeholder="Hasta $">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="checkboxGroup" id="checkbox2">
+                    <label class="form-check-label" for="checkbox2">
+                      2
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="checkboxGroup" id="checkbox3">
+                    <label class="form-check-label" for="checkbox3">
+                      3+
+                    </label>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Limpiar</button>
+                    <button style="margin-bottom: 10px; margin-top: 10px;" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Limpiar</button>
                   </div>
                   <div class="modal-footer">
                     <button class="btn btn-outline-success" type="submit">Buscar</button>
@@ -108,22 +118,32 @@
           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Baños
         </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <div class="modal-content">
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="width: 100px;">
+          <div class="modal-content" style="width: 100%; padding: 10px;">
             <div class="modal-body">
               <!-- Agrega aquí el contenido de tu modal -->
               <form class="formulario">
-                <div class="grid2">
-                  <div class="form-group">
-                    <label for="">Precio Mínimo:</label>
-                    <input type="text" id="floatingInput" placeholder="Desde $">
+                <div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="checkboxGroup" id="checkbox1">
+                    <label class="form-check-label" for="checkbox1">
+                      1
+                    </label>
                   </div>
-                  <div class="form-group">
-                    <label for="">Precio Máximo </label>
-                    <input type="email" id="floatingInput" placeholder="Hasta $">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="checkboxGroup" id="checkbox2">
+                    <label class="form-check-label" for="checkbox2">
+                      2
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="checkboxGroup" id="checkbox3">
+                    <label class="form-check-label" for="checkbox3">
+                      3+
+                    </label>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Limpiar</button>
+                    <button style="margin-bottom: 10px; margin-top: 10px;" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Limpiar</button>
                   </div>
                   <div class="modal-footer">
                     <button class="btn btn-outline-success" type="submit">Buscar</button>
@@ -150,7 +170,7 @@
       </ul>
 
       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Parroquia" aria-label="Search">
+        <input class="form-control me-2" type="search" placeholder="Parroquia" aria-label="Search" >
         <button class="btn btn-outline-success" type="submit">Buscar</button>
       </form>
     </div>

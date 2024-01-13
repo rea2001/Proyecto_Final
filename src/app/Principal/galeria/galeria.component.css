@@ -20,8 +20,17 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Grid de 2 columnas con igual anchura */
   grid-gap: 8px; 
-  padding: 20px;
+  padding: 10px;
 }
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
 
 .modal-content{
   width: 300px;
@@ -31,7 +40,7 @@
   /* Estilos personalizados para el contenido del modal */
   border: 2px solid #007bff;
   border-radius: 10px;
-  padding: 20px;
+  padding: 10px;
 }
 
 .custom-modal-header {

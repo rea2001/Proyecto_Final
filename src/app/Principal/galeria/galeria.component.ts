@@ -13,7 +13,7 @@ export class GaleriaComponent implements OnInit, OnDestroy{
   usuarioConectado!:Usuario|null
   constructor(private servicioUsuario:ServicioUsuariosService, private sViviendas:SviviendasService){}
   esAdmin=0;
-  viviendas!:Vivienda[]
+  viviendas:Vivienda[]=[]
   
   ngOnInit(): void {
     this.cargarUsuario()

@@ -319,7 +319,7 @@
 <!-- Close Content -->
 
 <div class="overlay" *ngIf="estaMostrando==true">
-    <app-modal-mensajeria (estaMostrado)="estaMostrando=$event"></app-modal-mensajeria>
+    <app-modal-mensajeria (estaMostrado)="estaMostrando=$event" [idPublicador]="estaVivienda.Id_Usu_Per"></app-modal-mensajeria>
 </div>
 
 <script>

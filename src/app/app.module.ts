@@ -18,6 +18,7 @@ import { ReportesComponent } from './reportes/reportes.component';
 import { PerfilUsuariosComponent } from './perfil-usuarios/perfil-usuarios.component';
 import { ModalMensajeriaComponent } from './modal-mensajeria/modal-mensajeria.component';
 import { VistaMensajesComponent } from './vista-mensajes/vista-mensajes.component';
+import { VerMensajeComponent } from './ver-mensaje/ver-mensaje.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { VistaMensajesComponent } from './vista-mensajes/vista-mensajes.componen
     ReportesComponent,
     PerfilUsuariosComponent,
     ModalMensajeriaComponent,
-    VistaMensajesComponent
+    VistaMensajesComponent,
+    VerMensajeComponent
   ],
   imports: [
     BrowserModule,

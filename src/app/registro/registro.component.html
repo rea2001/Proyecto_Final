@@ -2,7 +2,9 @@
   <div>
     <h2>Registro</h2>
   </div>
-  <form (ngSubmit)="onRegisterSubmit()" #registerForm="ngForm">
+
+
+  <form (ngSubmit)="onRegisterSubmit()" #registerForm="ngForm" class="row g-3 needs-validation" novalidate>
     <div id="grid">
       <div class="form-group">
         <label for="cedula">Cédula:</label>

@@ -22,6 +22,8 @@ import { VerMensajeComponent } from './ver-mensaje/ver-mensaje.component';
 import { ModalViviendaComponent } from './Modal/modal-vivienda/modal-vivienda.component';
 import { ModalViviendaEliminarComponent } from './Modal/modal-vivienda-eliminar/modal-vivienda-eliminar.component';
 import { ModalUsuarioActualizarComponent } from './Modal/modal-usuario-actualizar/modal-usuario-actualizar.component';
+import { ModalFotosComponent } from './Modal/modal-fotos/modal-fotos.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -41,14 +43,16 @@ import { ModalUsuarioActualizarComponent } from './Modal/modal-usuario-actualiza
     VerMensajeComponent,
     ModalViviendaComponent,
     ModalViviendaEliminarComponent,
-    ModalUsuarioActualizarComponent
+    ModalUsuarioActualizarComponent,
+    ModalFotosComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [
     provideClientHydration(),CookieService

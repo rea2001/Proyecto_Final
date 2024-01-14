@@ -1,0 +1,11 @@
+<div class="modal-header">
+    <h4 class="modal-title">Vista previa de la imagen</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('close')"></button>
+  </div>
+  <div class="modal-body">
+    <img [src]="image" class="img-fluid" alt="Imagen">
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="deleteImage()">Eliminar</button>
+    <button type="button" class="btn btn-primary" (click)="acceptImage()">Aceptar</button>
+  </div>

@@ -6,6 +6,8 @@ import { ServicioUsuariosService } from '../servicio-usuarios.service';
 import { SviviendasService } from '../sviviendas.service';
 import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalFotosComponent } from '../Modal/modal-fotos/modal-fotos.component';
 
 @Component({
   selector: 'app-publicar-departamentos',
@@ -14,7 +16,8 @@ import { forkJoin } from 'rxjs';
 })
 export class PublicarDepartamentosComponent implements OnInit {
 
-  constructor(private servicioUsuario: ServicioUsuariosService, private Sviviendas: SviviendasService, private route: Router) { }
+  constructor(private servicioUsuario: ServicioUsuariosService, private Sviviendas: SviviendasService,
+     private route: Router, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.estaEditando = this.Sviviendas.estaEditando
@@ -119,8 +122,35 @@ export class PublicarDepartamentosComponent implements OnInit {
 
       }
     });
-
   }
+
+  openModal(imageUrl: string, index: number) {
+    const modalRef = this.modalService.open(ModalFotosComponent);
+    modalRef.componentInstance.image = imageUrl;
+  
+    modalRef.result.then(
+      (result) => {
+        if (result === 'delete') {
+          // Emitir el evento para eliminar la imagen
+          this.deleteImage(index);
+        } else if (result === 'accept') {
+          // Lógica para aceptar la imagen
+        }
+      },
+      (reason) => {
+        // Lógica para el caso de cierre del modal sin aceptar ni eliminar
+      }
+    );
+  }
+  
+  // Método para eliminar la imagen
+  deleteImage(index: number) {
+    this.imagenes.splice(index, 1);
+    // También elimina la imagen de la lista de fotos (this.fotos) si es necesario
+     // Asegúrate de que la lista 'imagenes' se actualice después de la eliminación
+  this.imagenes = [...this.imagenes];
+  }
+  
 
 
   //Metodo para pasar de bits[] a base64 string
@@ -283,7 +313,8 @@ export class PublicarDepartamentosComponent implements OnInit {
       error => {
         console.log(error)
       }
-    )
+    ),
+
     this.Sviviendas.retornarServiciosPorId(this.viviendaCrear.Id_Ser_Per).subscribe(
       servicio => {
         this.serviCrear = servicio

@@ -9,8 +9,8 @@
       </div>
       <!-- Columna de imágenes -->
       <div class="row" style="background-color: beige; border-radius: 5px; ">
-        <div *ngFor="let image of imagenes" class="col-md-4 mb-3">
-          <img class="img-fluid custom-image" [src]="image" alt="Imagen">
+        <div *ngFor="let image of imagenes; let i = index" class="col-md-4 mb-3">
+          <img class="img-fluid custom-image" [src]="image" alt="Imagen" (click)="openModal(image, i)">
         </div>
       </div>
 

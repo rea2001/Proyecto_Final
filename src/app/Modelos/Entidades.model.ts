@@ -186,3 +186,16 @@ export class Mensaje{
     Leido:boolean=false
     nombre:string=''
 }
+//FILTROS-----------------------------------------------------------------------------------------------------
+export class Filtro{
+    constructor(){
+        
+    }
+    PrecioDesde:number=0
+    PrecioHasta:number=0
+    SuperficieDesde:number=0
+    SuperficieHasta:number=0
+    TipoVivienda:string=''
+    Parroquia:string=''
+    Ordenes:number[]=[]
+}

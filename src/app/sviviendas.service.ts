@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Caracteristicas, Condiciones, Filtro, Fotos, Servicios, Vivienda, ubicacion } from './Modelos/Entidades.model';
+import { Caracteristicas, Condiciones, Filtro, Fotos, Reporte, Servicios, Vivienda, ubicacion } from './Modelos/Entidades.model';
 
 @Injectable({
   providedIn: 'root'
@@ -114,5 +114,8 @@ export class SviviendasService {
   ObtenerFiltro(filtro:Filtro){
     const cabecera = new HttpHeaders({ 'Content-Type': 'application/json' });    
     return this.http.put<Vivienda[]>(this.url+"/ObtenerFiltros", filtro, { headers: cabecera });
+  }
+  ObtenerReporte(eleccion:number){
+    return this.http.get<Reporte>(this.url+"/DevuelveReporte/"+eleccion)
   }
 }

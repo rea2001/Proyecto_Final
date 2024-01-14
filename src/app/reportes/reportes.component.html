@@ -31,39 +31,39 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-target="#collapseTwo"
+            <li class="nav-item eleccion" [ngClass]="{'elegido':liElegido==1}" (click)="ObtenerReporte(1)" >
+                <a class="nav-link collapsed" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <span>Mayor concentración de alquiler por sector</span>
                 </a>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-target="#collapseUtilities"
+            <li class="nav-item eleccion" (click)="ObtenerReporte(2)" [ngClass]="{'elegido':liElegido==2}">
+                <a class="nav-link collapsed" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <span>Viviendas de alquiler cerca de la UTA</span>
                 </a>
             </li>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#"  data-target="#collapsePages"
+            <li class="nav-item eleccion" (click)="ObtenerReporte(3)" [ngClass]="{'elegido':liElegido==3}">
+                <a class="nav-link collapsed" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
                     <span>Viviendas con servicio de internet por sector</span>
                 </a>
             </li>
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">
+            <li class="nav-item eleccion" (click)="ObtenerReporte(4)" [ngClass]="{'elegido':liElegido==4}">
+                <a class="nav-link">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Viviendas que permiten mascotas por sector</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">
+            <li class="nav-item eleccion" (click)="ObtenerReporte(5)" [ngClass]="{'elegido':liElegido==5}">
+                <a class="nav-link">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Viviendas con servicio de Garaje por sector</span></a>
             </li>
@@ -91,7 +91,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                Precio Promedio de Alquiler </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$ 400</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$ {{reporte.PrecPromedio}}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -109,7 +109,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Precio Mínimo de Alquiler</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$ 215,000</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$ {{reporte.PrecMin}}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -130,7 +130,7 @@
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">$ 2000</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">$ {{reporte.PrecMax}}</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -150,7 +150,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 Precio más frecuente</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$ 2808</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$ {{reporte.PrecFrec}}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -175,8 +175,8 @@
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <div class="chart-area">
-                                        <canvas id="myAreaChart"></canvas>
+                                    <div class="areaChart" id="bar">                                        
+                                        <canvas id="miChart"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -192,8 +192,8 @@
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <div class="chart-pie pt-4 pb-2">
-                                        <canvas id="myPieChart"></canvas>
+                                    <div class="areaChart" id="pie">
+                                        <canvas id="miPieChart"></canvas>
                                     </div>
                                     <div class="mt-4 text-center small">
                                         <span class="mr-2">

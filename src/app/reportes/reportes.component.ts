@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Chart } from 'chart.js/auto';
-
+import { Reporte, Vivienda } from '../Modelos/Entidades.model';
+import Chart from 'chart.js/auto';
+import { SviviendasService } from '../sviviendas.service';
+	
 @Component({
   selector: 'app-reportes',
   templateUrl: './reportes.component.html',
@@ -9,89 +11,87 @@ import { Chart } from 'chart.js/auto';
 
  export class ReportesComponent implements OnInit {
 
+  reporte:Reporte=new Reporte()
+  chart: any;
+  chart2: any;
+  chartPai:number=0
+  chartBar:number=0
+  liElegido:number=0
+
+  constructor(private sViviendas:SviviendasService){}
+
   ngOnInit() {
-    // Area Chart Example
-    var ctx = document.getElementById("myAreaChart") as HTMLCanvasElement;
-    var myLineChart = new Chart(ctx, {
-      type: 'line',
+    this.ObtenerReporte(1);    
+    //this.crearChart('pai');
+  }
+
+  ObtenerReporte(eleccion:number){
+    this.liElegido=eleccion;
+    this.sViviendas.ObtenerReporte(eleccion).subscribe(
+      reporte=>{
+        this.reporte=reporte
+        this.crearChart('bar','miChart', this.chart);
+        this.crearChart('pie','miPieChart', this.chart2)
+      },
+      error=>{
+        console.log('Un error al obtener el reporte '+eleccion, error)
+      }
+    )
+  }
+
+  crearChart(tipoChart:ChartType, idHtml:string, chart:Chart) {
+
+    const pie = document.getElementById('pie') as HTMLDivElement
+	  const barra = document.getElementById('bar') as HTMLDivElement
+    
+    if(this.chartBar>=1 && idHtml=='miChart'){
+      barra.innerHTML=''
+      barra.innerHTML='<canvas id="miChart"></canvas>'
+      this.chartBar=0;
+    }else if(this.chartPai>=1 && idHtml=='miPieChart'){	
+      pie.innerHTML=''
+      pie.innerHTML='<canvas id="miPieChart"></canvas>'		
+      this.chartPai=0;
+    }
+    
+  const ctx = document.getElementById(idHtml) as HTMLCanvasElement;
+
+	if(idHtml=='miChart'){
+		this.chartBar=this.chartBar+1;
+	}else if (idHtml=='miPieChart'){
+		this.chartPai=this.chartPai+1;
+	}
+		
+	
+	
+    chart = new Chart(ctx, {
+      type: tipoChart, // Puedes cambiar el tipo de gráfico según tus necesidades --pie
       data: {
-        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        labels: this.reporte.ListaDescriptores, // Ejemplo de etiquetas
         datasets: [{
-          label: "Earnings",
-          cubicInterpolationMode: 'default',
-          backgroundColor: "rgba(78, 115, 223, 0.05)",
-          borderColor: "rgba(78, 115, 223, 1)",
-          pointRadius: 3,
-          pointBackgroundColor: "rgba(78, 115, 223, 1)",
-          pointBorderColor: "rgba(78, 115, 223, 1)",
-          pointHoverRadius: 3,
-          pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
-          pointHoverBorderColor: "rgba(78, 115, 223, 1)",
-          pointHitRadius: 10,
-          pointBorderWidth: 2,
-          data: [0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
-        }],
+          label: 'Cantidad de Viviendas',
+          data: this.reporte.ListaValores, // Ejemplo de datos
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)'
+          ],
+          borderWidth: 1
+        }]
       },
       options: {
-        maintainAspectRatio: false,
-        layout: {
-          padding: {
-            left: 10,
-            right: 25,
-            top: 25,
-            bottom: 0
-          }
-        },
         scales: {
-          x: {
-            type: 'time',
-            time: {
-              unit: 'month'
-            },
-            grid: {
-              display: false,
-              },
-            ticks: {
-              maxTicksLimit: 7
-            }
-          },
           y: {
-            ticks: {
-              maxTicksLimit: 5,
-              padding: 10,
-              callback: function (value: any, index: any, values: any) {
-                return '$' + value.toLocaleString();
-              }
-            },
-            grid: {
-              color: "rgb(234, 236, 244)"
-            }
-          }
-        },
-        plugins: {
-          legend: {
-            display: true,
-            position: 'bottom',
-            align: 'start',
-            labels: {
-              boxWidth: 10,
-              padding: 15
-            }
-          },
-          tooltip: { // Aquí se cambió de tooltips a tooltip
-            backgroundColor: "rgb(255,255,255)",
-            titleMarginBottom: 10,
-            borderColor: '#dddfeb',
-            borderWidth: 1,
-            displayColors: false,
-            callbacks: {
-              label: function (tooltipItem: any) {
-                return 'Earnings: $' + tooltipItem.formattedValue;
-              }
-            }
+            beginAtZero: true
           }
         }
       }
     });
   }
 }
+type ChartType = 'line' | 'bar' | 'radar' | 'doughnut' | 'polarArea' | 'bubble' | 'scatter' | 'pie';

@@ -40,6 +40,12 @@ export class ServicioUsuariosService {
     const cabecera = new HttpHeaders({ 'Content-Type': 'application/json' });    
     return this.http.post(this.url+"/Crear", usuario, { headers: cabecera });
   }
+
+  ActualizarUsuario(usuario: Usuario) {
+    const cabecera = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.put(this.url + "/Actualizar", usuario, { headers: cabecera });
+  }
+  
   crearSesion(estado:boolean){
     this.esAdmin=this.usuarioConectado?.Rol=="Publicar"?true:false
     this.cookie.set('isLoggedIn', estado.toString());

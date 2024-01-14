@@ -42,26 +42,23 @@ export class PerfilUsuariosComponent implements OnInit {
     // Lógica de inicialización si es necesaria
   }
 
-  onRegisterSubmit() {    
-    //this.registerFormModel.Fec_Nac = Date.parse(this.registerFormModel.Fec_Nac).toString();
-    this.registerFormModel.Fec_Nac = '/Date(' + new Date(this.registerFormModel.Fec_Nac).getTime() + ')/';
-    alert(this.registerFormModel.Fec_Nac)
-    this.servicioUsuario.CrearUsuario(this.registerFormModel).subscribe(
-        (data) => {
-          if (data) {
-            alert('Usuario registrado con éxito:');
-            this.noLogeado();            
-          }else{
-            alert('El usuario no se pudo crear');
-          }
-          console.log("Estado de la creacion de usuario: "+data);
-        },
-        (error) => {
-          alert('Error al registrar usuario: \n' + error);
-          
+  onRegisterSubmit() {
+    this.servicioUsuario.ActualizarUsuario(this.registerFormModel).subscribe(
+      (data) => {
+        if (data) {
+          alert('Usuario actualizado con éxito');
+          this.noLogeado();
+        } else {
+          alert('El usuario no se pudo actualizar');
         }
-      );      
-  }  
+        console.log("Estado de la actualización de usuario: " + data);
+      },
+      (error) => {
+        alert('Error al actualizar usuario: \n' + error);
+      }
+    );
+  }
+  
 //foto de perfil
   profileImageUrl: string = 'https://github.com/mdo.png';
 

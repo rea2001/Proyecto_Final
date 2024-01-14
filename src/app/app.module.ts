@@ -19,6 +19,9 @@ import { PerfilUsuariosComponent } from './perfil-usuarios/perfil-usuarios.compo
 import { ModalMensajeriaComponent } from './modal-mensajeria/modal-mensajeria.component';
 import { VistaMensajesComponent } from './vista-mensajes/vista-mensajes.component';
 import { VerMensajeComponent } from './ver-mensaje/ver-mensaje.component';
+import { ModalViviendaComponent } from './Modal/modal-vivienda/modal-vivienda.component';
+import { ModalViviendaEliminarComponent } from './Modal/modal-vivienda-eliminar/modal-vivienda-eliminar.component';
+import { ModalUsuarioActualizarComponent } from './Modal/modal-usuario-actualizar/modal-usuario-actualizar.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,10 @@ import { VerMensajeComponent } from './ver-mensaje/ver-mensaje.component';
     PerfilUsuariosComponent,
     ModalMensajeriaComponent,
     VistaMensajesComponent,
-    VerMensajeComponent
+    VerMensajeComponent,
+    ModalViviendaComponent,
+    ModalViviendaEliminarComponent,
+    ModalUsuarioActualizarComponent
   ],
   imports: [
     BrowserModule,

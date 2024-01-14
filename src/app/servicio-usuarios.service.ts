@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Mensaje, Usuario } from './Modelos/Entidades.model';
 import { CookieService } from 'ngx-cookie-service';
 import { tap } from 'rxjs/operators';
+import { of, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,8 @@ export class ServicioUsuariosService {
   constructor(private http: HttpClient, private cookie:CookieService) { 
     this.inicializarUsuarioConectado();
   }
-  url:string="http://reaavero.somee.com/SArriendos.svc"
-  //url:string="http://localhost:666/SArriendos.svc"
+  //url:string="http://reaavero.somee.com/SArriendos.svc"
+  url:string="http://localhost:666/SArriendos.svc";
   usuarioConectado!:Usuario|null;
   esAdmin:boolean=false
 
@@ -40,10 +41,26 @@ export class ServicioUsuariosService {
     const cabecera = new HttpHeaders({ 'Content-Type': 'application/json' });    
     return this.http.post(this.url+"/Crear", usuario, { headers: cabecera });
   }
-
+  
   ActualizarUsuario(usuario: Usuario) {
     const cabecera = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.put(this.url + "/Actualizar", usuario, { headers: cabecera });
+  }
+
+  getUsuarioActual() {
+    if (this.usuarioConectado) {
+      return of(this.usuarioConectado);  // Importa 'of' from 'rxjs' para crear un observable
+    } else {
+      // Si no hay usuario conectado, intenta obtenerlo del almacenamiento local
+      const usuarioGuardado = localStorage.getItem('usuarioConectado');
+      if (usuarioGuardado) {
+        this.usuarioConectado = JSON.parse(usuarioGuardado);
+        this.esAdmin = this.usuarioConectado?.Rol === 'Publicar';
+        return of(this.usuarioConectado);
+      } else {
+        return throwError('Usuario no encontrado');
+      }
+    }
   }
   
   crearSesion(estado:boolean){

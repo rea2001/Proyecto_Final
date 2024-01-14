@@ -23,7 +23,7 @@ export class Vivienda {
     Tip_Pro: string = "";
     Latitud: number = 0;
     Longitud: number = 0;
-    Descripcion: string  = "";
+    Descripcion: string = "";
     Estado: string = "Disponible"
     Id_Car_Per: number = 0;
     Id_Ser_Per: number = 0;
@@ -32,29 +32,29 @@ export class Vivienda {
     Id_Usu_Per: number = 0;
 }
 
-export class Caracteristicas{
-    constructor(Id_Car: number, Num_Ban: number, Num_Hab:number, Num_Pis:number,Metraje:number, Cocina: boolean, Sala:boolean,Comedor: boolean,
-        Lavanderia: boolean, Ascensor: boolean,Amoblado: boolean,Jardin: boolean,Terraza: boolean){
-            this.Id_Car = Id_Car;
-            this.Num_Ban = Num_Ban;
-            this.Num_Hab = Num_Hab;
-            this.Num_Pis = Num_Pis;
-            this.Metraje = Metraje;
-            this.Cocina = Cocina;
-            this.Sala = Sala;
-            this.Comedor = Comedor;
-            this.Lavanderia = Lavanderia;
-            this.Ascensor = Ascensor;
-            this.Amoblado = Amoblado;
-            this.Jardin = Jardin;
-            this.Terraza = Terraza;
+export class Caracteristicas {
+    constructor(Id_Car: number, Num_Ban: number, Num_Hab: number, Num_Pis: number, Metraje: number, Cocina: boolean, Sala: boolean, Comedor: boolean,
+        Lavanderia: boolean, Ascensor: boolean, Amoblado: boolean, Jardin: boolean, Terraza: boolean) {
+        this.Id_Car = Id_Car;
+        this.Num_Ban = Num_Ban;
+        this.Num_Hab = Num_Hab;
+        this.Num_Pis = Num_Pis;
+        this.Metraje = Metraje;
+        this.Cocina = Cocina;
+        this.Sala = Sala;
+        this.Comedor = Comedor;
+        this.Lavanderia = Lavanderia;
+        this.Ascensor = Ascensor;
+        this.Amoblado = Amoblado;
+        this.Jardin = Jardin;
+        this.Terraza = Terraza;
     }
 
     Id_Car: number = 0;
     Num_Ban: number = 0;
     Num_Hab: number = 0;
     Num_Pis: number = 0;
-    Metraje: number= 0;
+    Metraje: number = 0;
     Cocina: boolean = false;
     Sala: boolean = false;
     Comedor: boolean = false;
@@ -66,18 +66,18 @@ export class Caracteristicas{
 
 }
 
-export class Servicios{
-    constructor(Id_Ser:number, Luz: boolean, Agua: boolean, Internet: boolean,Garaje: boolean,Telefono: boolean,
-        Calefon: boolean,Duc_Elec: boolean){
-            this.Id_Ser = Id_Ser;
-            this.Agua = Agua;
-            this.Luz = Luz;
-            this.Internet = Internet;
-            this.Garaje = Garaje;
-            this.Telefono = Telefono;
-            this.Calefon = Calefon;
-            this.Duc_Elec = Duc_Elec;
-        }
+export class Servicios {
+    constructor(Id_Ser: number, Luz: boolean, Agua: boolean, Internet: boolean, Garaje: boolean, Telefono: boolean,
+        Calefon: boolean, Duc_Elec: boolean) {
+        this.Id_Ser = Id_Ser;
+        this.Agua = Agua;
+        this.Luz = Luz;
+        this.Internet = Internet;
+        this.Garaje = Garaje;
+        this.Telefono = Telefono;
+        this.Calefon = Calefon;
+        this.Duc_Elec = Duc_Elec;
+    }
 
     Id_Ser: number = 0;
     Luz: boolean = false;
@@ -89,8 +89,8 @@ export class Servicios{
     Duc_Elec: boolean = false;
 }
 
-export class Condiciones{
-    constructor(Id_Con: number, Num_Pers: number, Mascotas: boolean, Fiestas: boolean, Garantia:number ){
+export class Condiciones {
+    constructor(Id_Con: number, Num_Pers: number, Mascotas: boolean, Fiestas: boolean, Garantia: number) {
         this.Id_Con = Id_Con;
         this.Num_Pers = Num_Pers;
         this.Garantia = Garantia;
@@ -105,21 +105,21 @@ export class Condiciones{
     Fiestas: boolean = false;
 }
 
-export class ubicacion{
-    constructor(Id_Ubi: number, Provincia: string, Canton: string, Parroquia: string){
+export class ubicacion {
+    constructor(Id_Ubi: number, Provincia: string, Canton: string, Parroquia: string) {
         this.Id_Ubi = Id_Ubi;
         this.Provincia = Provincia;
         this.Canton = Canton;
         this.Parroquia = Parroquia;
     }
     Id_Ubi: number = 0;
-    Provincia: string  = "";
-    Canton: string  = "";
-    Parroquia: string  = "";
+    Provincia: string = "";
+    Canton: string = "";
+    Parroquia: string = "";
 }
 
-export class Fotos{
-    constructor(id_fot:number, Id_Viv_Per: number, Descripcion: string, Foto_Com: string){
+export class Fotos {
+    constructor(id_fot: number, Id_Viv_Per: number, Descripcion: string, Foto_Com: string) {
         this.Id_Fot = id_fot;
         this.Id_Viv_Per = Id_Viv_Per;
         this.Descripcion = Descripcion;
@@ -127,28 +127,28 @@ export class Fotos{
     }
     Id_Fot: number = 0;
     Id_Viv_Per: number = 0;
-    Descripcion: string  = "";
-    Foto_Com: string  = "";
+    Descripcion: string = "";
+    Foto_Com: string = "";
 }
 
 //-------------------------------------------------------------------------------------
 export class Usuario {
-    constructor(Apellido1: string, Apellido2: string, cedula: string, contraseña: string, correo: string, estadoCivil: string, fechaNacimiento: string, idUsu: number, 
+    constructor(Apellido1: string, Apellido2: string, cedula: string, contraseña: string, correo: string, estadoCivil: string, fechaNacimiento: string, idUsu: number,
         nombreUsuario: string, nombre1: string, nombre2: string, rol: string, sexo: string, telefono: string) {
-        this.Apellido1=Apellido1
-        this.Apellido2=Apellido2
-        this.Cedula=cedula
-        this.Contrasena=contraseña
-        this.Correo=correo
-        this.Est_Civ=estadoCivil
-        this.Fec_Nac= '/Date(' + new Date(fechaNacimiento).getTime() + ')/'
-        this.Id_Usu=idUsu;
-        this.Nom_Usuario=nombreUsuario
-        this.Nombre1=nombre1
-        this.Nombre2=nombre2
-        this.Rol=rol
-        this.Sexo=sexo
-        this.Telefono=telefono
+        this.Apellido1 = Apellido1
+        this.Apellido2 = Apellido2
+        this.Cedula = cedula
+        this.Contrasena = contraseña
+        this.Correo = correo
+        this.Est_Civ = estadoCivil
+        this.Fec_Nac = '/Date(' + new Date(fechaNacimiento).getTime() + ')/'
+        this.Id_Usu = idUsu;
+        this.Nom_Usuario = nombreUsuario
+        this.Nombre1 = nombre1
+        this.Nombre2 = nombre2
+        this.Rol = rol
+        this.Sexo = sexo
+        this.Telefono = telefono
     }
     Apellido1: string = "";
     Apellido2: string = "";
@@ -163,39 +163,52 @@ export class Usuario {
     Rol: string = "";
     Sexo: string = "";
     Telefono: string = "";
-    Fec_Nac: string= "";
+    Fec_Nac: string = "";
 
 }
 //MENSAJE-----------------------------------------------------------------------------------------------------
-export class Mensaje{
-    constructor( idPublicador:number, idArrendador:number, mensaje:string){
-        this.Id_Men=0
-        this.Id_Usu_Pub=idPublicador
-        this.Id_Usu_Arr=idArrendador
-        this.Mensaje_Env=mensaje
-        this.Fecha= '/Date(' + new Date().getTime() + ')/';
-        this.Leido=false;
-        this.nombre=''        
+export class Mensaje {
+    constructor(idPublicador: number, idArrendador: number, mensaje: string) {
+        this.Id_Men = 0
+        this.Id_Usu_Pub = idPublicador
+        this.Id_Usu_Arr = idArrendador
+        this.Mensaje_Env = mensaje
+        this.Fecha = '/Date(' + new Date().getTime() + ')/';
+        this.Leido = false;
+        this.nombre = ''
     }
 
-    Id_Men:number=0
-    Id_Usu_Pub:number=0
-    Id_Usu_Arr:number=0
-    Mensaje_Env:string=""
-    Fecha: string= ""
-    Leido:boolean=false
-    nombre:string=''
+    Id_Men: number = 0
+    Id_Usu_Pub: number = 0
+    Id_Usu_Arr: number = 0
+    Mensaje_Env: string = ""
+    Fecha: string = ""
+    Leido: boolean = false
+    nombre: string = ''
 }
 //FILTROS-----------------------------------------------------------------------------------------------------
-export class Filtro{
-    constructor(){
-        
+export class Filtro {
+    constructor() {
+
     }
-    PrecioDesde:number=0
-    PrecioHasta:number=0
-    SuperficieDesde:number=0
-    SuperficieHasta:number=0
-    TipoVivienda:string=''
-    Parroquia:string=''
-    Ordenes:number[]=[]
+    PrecioDesde: number = 0
+    PrecioHasta: number = 0
+    SuperficieDesde: number = 0
+    SuperficieHasta: number = 0
+    TipoVivienda: string = ''
+    Parroquia: string = ''
+    Ordenes: number[] = []
+}
+//REPORTE---------------------------------------------------------------------------------------------------------
+export class Reporte {
+    constructor() {
+
+    }
+    PrecPromedio: number = 0;
+    PrecMin: number = 0
+    PrecMax: number = 0
+    PrecFrec: number = 0
+    ListaDescriptores:string[]=[]
+    ListaValores:number[]=[]
+    Eleccion:number=0;
 }

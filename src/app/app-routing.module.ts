@@ -29,8 +29,7 @@ const routes: Routes = [
   {path: 'vista-mensajes', component: VistaMensajesComponent, pathMatch: 'full'},
   {path: 'modal-usuario-actualizar', component: ModalUsuarioActualizarComponent, pathMatch:'full'},
   {path: 'modal-vivienda-actualizar',component: ModalViviendaComponent, pathMatch: 'full'},
-  {path: 'modal-vivienda-eliminar',component: ModalViviendaEliminarComponent, pathMatch: 'full'}
-  // Puedes agregar más rutas según tus necesidades
+  {path: 'modal-vivienda-eliminar',component: ModalViviendaEliminarComponent, pathMatch: 'full'}  
 ];
 
 @NgModule({

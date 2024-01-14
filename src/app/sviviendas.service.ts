@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Caracteristicas, Condiciones, Fotos, Servicios, Vivienda, ubicacion } from './Modelos/Entidades.model';
+import { Caracteristicas, Condiciones, Filtro, Fotos, Servicios, Vivienda, ubicacion } from './Modelos/Entidades.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +9,8 @@ export class SviviendasService {
 
   constructor(private http: HttpClient) {}
 
-  url:string="http://reaavero.somee.com/SArriendos.svc"
-  //url:string="http://localhost:666/SArriendos.svc"
+  //url:string="http://reaavero.somee.com/SArriendos.svc"
+  url:string="http://localhost:666/SArriendos.svc"
   
   vivendaElegida!:Vivienda
   estaEditando!:boolean
@@ -109,5 +109,10 @@ export class SviviendasService {
   }  
   eliminarFotosPorIdVivienda(idVivienda:number){
     return this.http.delete<boolean>(this.url+"/EliminarFotosIdVivienda/"+idVivienda)
+  }
+
+  ObtenerFiltro(filtro:Filtro){
+    const cabecera = new HttpHeaders({ 'Content-Type': 'application/json' });    
+    return this.http.put<Vivienda[]>(this.url+"/ObtenerFiltros", filtro, { headers: cabecera });
   }
 }

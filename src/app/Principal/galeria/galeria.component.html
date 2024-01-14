@@ -5,7 +5,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent"
-      style="display: grid; grid-template-columns: repeat(5, 1fr); grid-gap: 8px;">
+      style="display: grid; grid-template-columns: repeat(6, 1fr); grid-gap: 8px;">
 
       <div class="dropdown">
         <button class="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="button" id="dropdownMenuButton"
@@ -16,18 +16,18 @@
           <div class="modal-content">
             <div class="modal-body">
               <!-- Agrega aquí el contenido de tu modal -->
-              <form class="formulario">
+              <form class="formulario" (click)="aceptarPrecio()">
                 <div class="grid2">
                   <div class="form-group">
                     <label for="">Mínimo:</label>
-                    <input type="text" id="floatingInput" placeholder="Desde $">
+                    <input type="text" id="floatingInput" placeholder="Desde $" name="PrecioDesde" [(ngModel)]="filtros.PrecioDesde">
                   </div>
                   <div class="form-group">
                     <label for="">Máximo: </label>
-                    <input type="email" id="floatingInput" placeholder="Hasta $">
+                    <input type="email" id="floatingInput" placeholder="Hasta $" name="PrecioHasta" [(ngModel)]="filtros.PrecioHasta">
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Limpiar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="eliminarFiltro(0)">Limpiar</button>
                   </div>
                   <div class="modal-footer">
                     <button class="btn btn-outline-success" type="submit">Buscar</button>
@@ -48,18 +48,18 @@
           <div class="modal-content">
             <div class="modal-body">
               <!-- Agrega aquí el contenido de tu modal -->
-              <form class="formulario">
+              <form class="formulario" (click)="aceptarSuperficie()">
                 <div class="grid2">
                   <div class="form-group">
                     <label for="">Mínimo:</label>
-                    <input type="text" id="floatingInput" placeholder="Desde m2">
+                    <input type="text" id="floatingInput" placeholder="Desde m2" name="SuperficieDesde" [(ngModel)]="filtros.SuperficieDesde">
                   </div>
                   <div class="form-group">
                     <label for="">Máximo: </label>
-                    <input type="email" id="floatingInput" placeholder="Hasta m2">
+                    <input type="email" id="floatingInput" placeholder="Hasta m2" name="SuperficieHasta" [(ngModel)]="filtros.SuperficieHasta">
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Limpiar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="eliminarFiltro(1)">Limpiar</button>
                   </div>
                   <div class="modal-footer">
                     <button class="btn btn-outline-success" type="submit">Buscar</button>
@@ -80,28 +80,28 @@
           <div class="modal-content" style="width: 100%; padding: 10px;">
             <div class="modal-body">
               <!-- Agrega aquí el contenido de tu modal -->
-              <form class="formulario">
+              <form class="formulario" (submit)="aceptarHabitaciones()">
                 <div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="checkboxGroup" id="checkbox1">
+                    <input class="form-check-input" type="radio" name="checkboxGroup" id="checkbox1" value="3" [(ngModel)]="filtroHabitacion">
                     <label class="form-check-label" for="checkbox1">
                       1
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="checkboxGroup" id="checkbox2">
+                    <input class="form-check-input" type="radio" name="checkboxGroup" id="checkbox2" value="4" [(ngModel)]="filtroHabitacion">
                     <label class="form-check-label" for="checkbox2">
                       2
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="checkboxGroup" id="checkbox3">
+                    <input class="form-check-input" type="radio" name="checkboxGroup" id="checkbox3" value="5" [(ngModel)]="filtroHabitacion">
                     <label class="form-check-label" for="checkbox3">
                       3+
                     </label>
                   </div>
                   <div class="modal-footer">
-                    <button style="margin-bottom: 10px; margin-top: 10px;" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Limpiar</button>
+                    <button style="margin-bottom: 10px; margin-top: 10px;" type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="eliminarFiltro(2)">Limpiar</button>
                   </div>
                   <div class="modal-footer">
                     <button class="btn btn-outline-success" type="submit">Buscar</button>
@@ -122,28 +122,28 @@
           <div class="modal-content" style="width: 100%; padding: 10px;">
             <div class="modal-body">
               <!-- Agrega aquí el contenido de tu modal -->
-              <form class="formulario">
+              <form class="formulario" (submit)="aceptarBanos()">
                 <div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="checkboxGroup" id="checkbox1">
+                    <input class="form-check-input" type="radio" name="checkboxGroup" id="checkbox1" value="6" [(ngModel)]="filtroBanos">
                     <label class="form-check-label" for="checkbox1">
                       1
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="checkboxGroup" id="checkbox2">
+                    <input class="form-check-input" type="radio" name="checkboxGroup" id="checkbox2" value="7" [(ngModel)]="filtroBanos">
                     <label class="form-check-label" for="checkbox2">
                       2
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="checkboxGroup" id="checkbox3">
+                    <input class="form-check-input" type="radio" name="checkboxGroup" id="checkbox3" value="8" [(ngModel)]="filtroBanos">
                     <label class="form-check-label" for="checkbox3">
                       3+
                     </label>
                   </div>
                   <div class="modal-footer">
-                    <button style="margin-bottom: 10px; margin-top: 10px;" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Limpiar</button>
+                    <button style="margin-bottom: 10px; margin-top: 10px;" type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="eliminarFiltro(3)">Limpiar</button>
                   </div>
                   <div class="modal-footer">
                     <button class="btn btn-outline-success" type="submit">Buscar</button>
@@ -162,15 +162,19 @@
             Tipo de Vivienda
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Casa</a></li>
-            <li><a class="dropdown-item" href="#">Media Agua</a></li>
-            <li><a class="dropdown-item" href="#">Departamento</a></li>
+            <li><a class="dropdown-item" (click)="aceptarTipo(casa)" id="Casa" #casa>Casa</a></li>
+            <li><a class="dropdown-item" (click)="aceptarTipo(media)" id="Media Agua" #media>Media Agua</a></li>
+            <li><a class="dropdown-item" (click)="aceptarTipo(departamento)" id="Departamento" #departamento>Departamento</a></li>
           </ul>
         </li>
       </ul>
 
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Parroquia" aria-label="Search" >
+      <div *ngIf="aplicoFiltro==true">
+        <input type="button" class="btn btn-primary m-1" (click)="eliminarTodosFiltros()" value="Eliminar Filtros">
+      </div>
+
+      <form class="d-flex" role="search" (submit)="cargarParroquia()">
+        <input class="form-control me-2" type="search" placeholder="Parroquia" aria-label="Search" name="Parroquia" [(ngModel)]="filtros.Parroquia">
         <button class="btn btn-outline-success" type="submit">Buscar</button>
       </form>
     </div>

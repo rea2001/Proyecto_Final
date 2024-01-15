@@ -130,8 +130,7 @@ export class PublicarDepartamentosComponent implements OnInit {
   
     modalRef.result.then(
       (result) => {
-        if (result === 'delete') {
-          // Emitir el evento para eliminar la imagen
+        if (result === 'delete') {             
           this.deleteImage(index);
         } else if (result === 'accept') {
           // Lógica para aceptar la imagen
@@ -146,9 +145,12 @@ export class PublicarDepartamentosComponent implements OnInit {
   // Método para eliminar la imagen
   deleteImage(index: number) {
     this.imagenes.splice(index, 1);
+    this.fotos.splice(index, 1);
     // También elimina la imagen de la lista de fotos (this.fotos) si es necesario
      // Asegúrate de que la lista 'imagenes' se actualice después de la eliminación
-  this.imagenes = [...this.imagenes];
+  this.fotos =[...this.fotos]
+  this.imagenes = [...this.imagenes];  
+  console.log(this.fotos)
   }
   
 

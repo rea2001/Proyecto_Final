@@ -4,6 +4,8 @@ import { ServicioUsuariosService } from '../servicio-usuarios.service';
 import { Router } from '@angular/router';
 import { SviviendasService } from '../sviviendas.service';
 import { forkJoin } from 'rxjs';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalViviendaEliminarComponent } from '../Modal/modal-vivienda-eliminar/modal-vivienda-eliminar.component';
 
 @Component({
   selector: 'app-item',
@@ -13,7 +15,8 @@ import { forkJoin } from 'rxjs';
 
 export class ItemComponent implements OnInit {
 
-  constructor(private sUsuarios: ServicioUsuariosService, private ruta: Router, private viviendaServicio: SviviendasService) { }
+  constructor(private sUsuarios: ServicioUsuariosService, private ruta: Router,
+     private viviendaServicio: SviviendasService, private modalService: NgbModal) { }
 
   @Input() vivienda!: Vivienda;
   @Input() direccionItem!: string;
@@ -41,6 +44,23 @@ export class ItemComponent implements OnInit {
     this.viviendaServicio.vivendaElegida = this.vivienda
     this.viviendaServicio.estaEditando=true
     this.ruta.navigate(['/publicar-departamentos'])
+  }
+
+  openModal() {
+    const modalRef = this.modalService.open(ModalViviendaEliminarComponent);
+      modalRef.result.then(
+      (result) => {
+        if (result === 'delete') {
+          // Emitir el evento para eliminar la imagen
+          this.EliminarDepa();
+        } else if (result === 'accept') {
+          // Lógica para aceptar la imagen
+        }
+      },
+      (reason) => {
+        // Lógica para el caso de cierre del modal sin aceptar ni eliminar
+      }
+    );
   }
 
   EliminarDepa() {

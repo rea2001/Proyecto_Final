@@ -12,7 +12,7 @@
         <hr class="my-4">
       </div>
       <div id="col2">
-          <form (ngSubmit)="onRegisterSubmit()" #registerForm="ngForm" id="form">
+          <form #registerForm="ngForm" id="form">
               <div id="grid">
                   <div class="form-group" id="grid2">
                       <label for="cedula">Cédula:</label>
@@ -80,7 +80,7 @@
                   <input type="password" id="contrasenavalidar" name="confirmPassword" [(ngModel)]="confirmPassword" required>
                 </div> -->
                 <div>
-                  <button type="submit">Actualizar</button>
+                  <button type="submit" (click)="openModal()">Actualizar</button>
                 </div>
                 <div>
                   <button id="cancelar" type="button" class="btn btn-danger m-auto">Cancelar</button>

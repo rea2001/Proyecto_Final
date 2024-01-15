@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-modal-vivienda',
@@ -7,4 +9,13 @@ import { Component } from '@angular/core';
 })
 export class ModalViviendaComponent {
 
+  constructor(public activeModal: NgbActiveModal) {}
+
+  actualizarVivienda() {
+    this.activeModal.close('update');
+  }
+
+  cancelar() {
+    this.activeModal.close('cancelar');
+  }
 }

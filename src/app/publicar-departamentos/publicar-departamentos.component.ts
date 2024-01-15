@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalFotosComponent } from '../Modal/modal-fotos/modal-fotos.component';
+import { ModalViviendaComponent } from '../Modal/modal-vivienda/modal-vivienda.component';
 
 @Component({
   selector: 'app-publicar-departamentos',
@@ -142,6 +143,22 @@ export class PublicarDepartamentosComponent implements OnInit {
     );
   }
 
+  openModalActualizar() {
+    const modalRef = this.modalService.open(ModalViviendaComponent);
+      modalRef.result.then(
+      (result) => {
+        if (result === 'update') {
+
+        } else if (result === 'accept') {
+          // Lógica para aceptar la imagen
+        }
+      },
+      (reason) => {
+        // Lógica para el caso de cierre del modal sin aceptar ni eliminar
+      }
+    );
+  }
+  
   // Método para eliminar la imagen
   deleteImage(index: number) {
     this.imagenes.splice(index, 1);

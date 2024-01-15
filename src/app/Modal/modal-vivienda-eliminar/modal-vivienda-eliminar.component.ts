@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-modal-vivienda-eliminar',
@@ -7,4 +9,13 @@ import { Component } from '@angular/core';
 })
 export class ModalViviendaEliminarComponent {
 
+  constructor(public activeModal: NgbActiveModal) {}
+
+  eliminarVivienda() {
+    this.activeModal.close('delete');
+  }
+
+  cancelar() {
+    this.activeModal.close('cancelar');
+  }
 }

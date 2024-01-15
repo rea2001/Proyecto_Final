@@ -3,6 +3,9 @@ import { ServicioUsuariosService } from '../servicio-usuarios.service';
 import { OnInit,Output, EventEmitter,   } from '@angular/core';
 import { Usuario } from '../Modelos/Entidades.model';
 import { error } from 'node:console';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalUsuarioActualizarComponent } from '../Modal/modal-usuario-actualizar/modal-usuario-actualizar.component';
+
 
 @Component({
   selector: 'app-perfil-usuarios',
@@ -14,7 +17,7 @@ export class PerfilUsuariosComponent  implements OnInit {
   registerFormModel: Usuario = {} as Usuario;
   profileImageUrl: string = 'https://github.com/mdo.png';
 
-  constructor(private servicioUsuario: ServicioUsuariosService) { }
+  constructor(private servicioUsuario: ServicioUsuariosService, private modalService: NgbModal) { }
 
   ngOnInit() {
     // Cargar los datos del usuario al iniciar el componente
@@ -77,7 +80,25 @@ export class PerfilUsuariosComponent  implements OnInit {
     //   });
   }
 
-  onRegisterSubmit() {
+  openModal() {
+    const modalRef = this.modalService.open(ModalUsuarioActualizarComponent);
+      modalRef.result.then(
+      (result) => {
+        if (result === 'update') {
+          this.actualizar();
+          // Emitir el evento para eliminar la imagen
+        } else if (result === 'accept') {
+          // Lógica para aceptar la imagen
+        }
+      },
+      (reason) => {
+        // Lógica para el caso de cierre del modal sin aceptar ni eliminar
+      }
+    );
+  }
+
+
+  actualizar() {
     /* if (this.confirmPassword !== this.registerFormModel.Contrasena) {
       console.error('Las contraseñas no coinciden.');
       return;
@@ -91,9 +112,8 @@ export class PerfilUsuariosComponent  implements OnInit {
         if (result) {
           this.servicioUsuario.usuarioConectado=this.registerFormModel
           console.log('Usuario actualizado correctamente.');
-          
-          // Recargar los datos del usuario después de la actualización
-          this.loadUserData();
+          this.servicioUsuario.usuarioConectado=this.registerFormModel;
+                    this.loadUserData();
         } else {
           console.error('Error al actualizar el usuario.');
         }

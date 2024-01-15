@@ -1,13 +1,25 @@
-<div class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog" id="modalChoice">
+<!-- <div class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog" id="modalChoice">
     <div class="modal-dialog" role="document">
       <div class="modal-content rounded-3 shadow">
         <div class="modal-body p-4 text-center">
           <p class="mb-0">¿Estás seguro que quieres actualizar tus datos personales?</p>
         </div>
         <div class="modal-footer flex-nowrap p-0">
-            <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end"><strong>Aceptar</strong></button>
-            <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end" (click)="actualizarUsuario()"><strong>Aceptar</strong></button>
+            <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal" (click)="cancelar()">Cancelar</button>
           </div>
       </div>
     </div>
+  </div> -->
+
+  <div class="modal-header">
+    <h4 class="modal-title">Actualizar</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('close')"></button>
+  </div>
+  <div class="modal-body">
+    <p class="mb-0">¿Estás seguro que quieres actualizar tus datos personales?</p>
+    </div>
+  <div class="modal-footer">
+    <button type="button"  class="btn btn-danger fs-6 text-decoration-none col-6 m-0  border-end" (click)="actualizarUsuario()"><strong>Aceptar</strong></button>
+    <button type="button"   class="btn btn-secondary fs-6 text-decoration-none col-6 m-0 border-end" data-bs-dismiss="modal" (click)="cancelar()">Cancelar</button>
   </div>

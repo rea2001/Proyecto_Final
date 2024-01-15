@@ -1,4 +1,4 @@
-<div class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog" id="modalChoice">
+<!-- <div class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog" id="modalChoice">
     <div class="modal-dialog" role="document">
       <div class="modal-content rounded-3 shadow">
         <div class="modal-body p-4 text-center">
@@ -10,4 +10,16 @@
           </div>
       </div>
     </div>
+</div> -->
+
+<div class="modal-header">
+    <h4 class="modal-title">Actualizar</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('close')"></button>
+  </div>
+  <div class="modal-body">
+    <p class="mb-0">¿Estás seguro que quieres actualizar los datos de la vivienda?</p>
+    </div>
+  <div class="modal-footer">
+    <button type="button"  class="btn btn-danger fs-6 text-decoration-none col-6 m-0  border-end" (click)="actualizarVivienda()"><strong>Aceptar</strong></button>
+    <button type="button"   class="btn btn-secondary fs-6 text-decoration-none col-6 m-0 border-end" data-bs-dismiss="modal" (click)="cancelar()">Cancelar</button>
   </div>

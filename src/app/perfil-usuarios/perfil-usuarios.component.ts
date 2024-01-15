@@ -89,6 +89,7 @@ export class PerfilUsuariosComponent  implements OnInit {
     this.servicioUsuario.ActualizarUsuario(this.registerFormModel)
       .subscribe(result => {
         if (result) {
+          this.servicioUsuario.usuarioConectado=this.registerFormModel
           console.log('Usuario actualizado correctamente.');
           
           // Recargar los datos del usuario después de la actualización

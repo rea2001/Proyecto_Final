@@ -17,7 +17,7 @@ import { ModalFotosComponent } from '../Modal/modal-fotos/modal-fotos.component'
 export class PublicarDepartamentosComponent implements OnInit {
 
   constructor(private servicioUsuario: ServicioUsuariosService, private Sviviendas: SviviendasService,
-     private route: Router, private modalService: NgbModal) { }
+    private route: Router, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.estaEditando = this.Sviviendas.estaEditando
@@ -104,16 +104,16 @@ export class PublicarDepartamentosComponent implements OnInit {
             const arrayBuffer: ArrayBuffer | null = e.target.result;
             if (arrayBuffer) {
               const uintArray = new Uint8Array(arrayBuffer);
-              this.fileBytes = uintArray;              
+              this.fileBytes = uintArray;
               const stringBytes = this.uint8ArrayToBase64(uintArray);
               let foto: Fotos = new Fotos(0, this.viviendaCrear.Id_Viv, "Foto ", stringBytes);
               this.fotos.push(foto);
 
               const byteArray = new Uint8Array(uintArray);
 
-              const blob = new Blob([byteArray], { type: 'image/jpeg' });              
+              const blob = new Blob([byteArray], { type: 'image/jpeg' });
               let imageUrl = URL.createObjectURL(blob);
-              this.imagenes.push(imageUrl);              
+              this.imagenes.push(imageUrl);
             }
           };
 
@@ -127,10 +127,10 @@ export class PublicarDepartamentosComponent implements OnInit {
   openModal(imageUrl: string, index: number) {
     const modalRef = this.modalService.open(ModalFotosComponent);
     modalRef.componentInstance.image = imageUrl;
-  
+
     modalRef.result.then(
       (result) => {
-        if (result === 'delete') {             
+        if (result === 'delete') {
           this.deleteImage(index);
         } else if (result === 'accept') {
           // Lógica para aceptar la imagen
@@ -141,18 +141,15 @@ export class PublicarDepartamentosComponent implements OnInit {
       }
     );
   }
-  
+
   // Método para eliminar la imagen
   deleteImage(index: number) {
     this.imagenes.splice(index, 1);
     this.fotos.splice(index, 1);
-    // También elimina la imagen de la lista de fotos (this.fotos) si es necesario
-     // Asegúrate de que la lista 'imagenes' se actualice después de la eliminación
-  this.fotos =[...this.fotos]
-  this.imagenes = [...this.imagenes];  
-  console.log(this.fotos)
+    this.fotos = [...this.fotos]
+    this.imagenes = [...this.imagenes];    
   }
-  
+
 
 
   //Metodo para pasar de bits[] a base64 string
@@ -205,43 +202,43 @@ export class PublicarDepartamentosComponent implements OnInit {
   }
 
   CrearVivienda(e: Event) {
-    e.preventDefault();    
+    e.preventDefault();
 
     const caracteristicaObservable = this.estaEditando ? this.Sviviendas.modificarCaracteristica(this.caraCrear) : this.Sviviendas.crearCaracteristica(this.caraCrear);
     const condicionObservable = this.estaEditando ? this.Sviviendas.modificarCondicion(this.condicioCrear) : this.Sviviendas.crearCondicione(this.condicioCrear);
-    const servicioObservable = this.estaEditando ? this.Sviviendas.modificarServicio(this.serviCrear) : this.Sviviendas.crearServicio(this.serviCrear);    
+    const servicioObservable = this.estaEditando ? this.Sviviendas.modificarServicio(this.serviCrear) : this.Sviviendas.crearServicio(this.serviCrear);
 
     forkJoin({
       caracteristica: caracteristicaObservable,
       condicion: condicionObservable,
-      servicio: servicioObservable    
+      servicio: servicioObservable
     }).subscribe(
       (result: any) => {
         if (this.estaEditando) {
           if (result.caracteristica && result.condicion && result.servicio) {
             this.Sviviendas.modificarViviendas(this.viviendaCrear).subscribe(
-              seCreo=>{
+              seCreo => {
                 if (seCreo) {
                   this.Sviviendas.modificarFotos(this.fotos).subscribe(
-                    estaFotos=>{
+                    estaFotos => {
                       if (estaFotos) {
-                        alert('Se ha modificado la vivienda correctamente')                        
-                      }else{
+                        alert('Se ha modificado la vivienda correctamente')
+                      } else {
                         alert('No se ha modificado la vivienda')
-                      }                      
+                      }
                     },
-                    errorFot=>{alert('No ha creado la vivienda'); console.log('Error al modificar las fotos',errorFot)}
+                    errorFot => { alert('No ha creado la vivienda'); console.log('Error al modificar las fotos', errorFot) }
                   )
-                }else{
+                } else {
 
                 }
               },
-              error=>{
+              error => {
                 alert('No ha creado la vivienda')
-                console.log('error al modificar la vivienda',error)
+                console.log('error al modificar la vivienda', error)
               }
             )
-            
+
           } else {
             console.log('error al actualuzar caracteristica o condicion o servicio o fotos')
             alert('No se pudo actualizar la vivienda')
@@ -317,14 +314,14 @@ export class PublicarDepartamentosComponent implements OnInit {
       }
     ),
 
-    this.Sviviendas.retornarServiciosPorId(this.viviendaCrear.Id_Ser_Per).subscribe(
-      servicio => {
-        this.serviCrear = servicio
-      },
-      error => {
-        console.log(error)
-      }
-    )
+      this.Sviviendas.retornarServiciosPorId(this.viviendaCrear.Id_Ser_Per).subscribe(
+        servicio => {
+          this.serviCrear = servicio
+        },
+        error => {
+          console.log(error)
+        }
+      )
     this.Sviviendas.retornarCaracteristicasPorId(this.viviendaCrear.Id_Car_Per).subscribe(
       caracteristica => {
         this.caraCrear = caracteristica
@@ -350,7 +347,7 @@ export class PublicarDepartamentosComponent implements OnInit {
       let encoded = this.base64ToUint8Array(this.fotos[i].Foto_Com)
       const byteArray = new Uint8Array(encoded);
       const blob = new Blob([byteArray], { type: 'image/jpeg' });
-      let imageUrl = URL.createObjectURL(blob);      
+      let imageUrl = URL.createObjectURL(blob);
       this.imagenes.push(imageUrl);
     }
   }

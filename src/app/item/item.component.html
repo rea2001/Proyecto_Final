@@ -1,7 +1,7 @@
 <div class="col mb-5">
     <div class="card h-100">
         <!-- Sale badge-->
-        <div class="badge text-white position-absolute" [ngClass]="{'dispo':vivienda.Estado === 'Disponible','noDispo':vivienda.Estado !== 'Disponible'}" style="top: 0.5rem; right: 0.5rem;">{{vivienda.Estado === "Disponible" ? "Disponible" : "Arrendado" }}</div>
+        <div class="badge text-white position-absolute" (click)="cambiarEstado()" [ngClass]="{'dispo':vivienda.Estado === 'Disponible','noDispo':vivienda.Estado !== 'Disponible'}" style="top: 0.5rem; right: 0.5rem;">{{vivienda.Estado === "Disponible" ? "Disponible" : "Arrendado" }}</div>
         <!-- Product image-->
         <img class="card-img-top"  [src]="imagen" alt="..." />
         <!-- Product details-->

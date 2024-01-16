@@ -16,7 +16,7 @@ export class LoginComponent {
   loginFormModel = { username: '', password: ''};
   showRegistro = false;  
 
-  siLogeado() {    
+  siLogeado() {        
     this.usuarioLogeado.emit(true);
   }
   noLogeado() {
@@ -44,8 +44,8 @@ export class LoginComponent {
         if (data) {
           // this.usuarioConectado = new Usuario(data.Apellido1, data.Apellido2, data.Cedula, data.Contrasena, data.Correo,
           //   data.Est_Civ, data.Fec_Nac, data.Id_Usu, data.Nom_Usuario, data.Nombre1, data.Nombre2, data.Rol, data.Sexo, data.Telefono);          
-          this.usuarioServicio.usuarioConectado=data;
-          console.log('Autenticación exitosa');                        
+          this.usuarioServicio.usuarioConectado=data;          
+          console.log('Autenticación exitosa');
             this.siLogeado();
             this.router.navigate(['/galeria']);
         } else {

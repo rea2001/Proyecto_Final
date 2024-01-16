@@ -21,6 +21,7 @@ export class HearderComponent {
     this.isLoggedIn = estado;
     this.usuarioServicio.crearSesion(estado)
     this.showLogin = false;
+    this.usuarioServicio.mostrarLogin=false
     this.esAdmin = this.usuarioServicio.esAdmin;
     // if (this.usuarioServicio.usuarioConectado) {
     //   if (this.usuarioServicio.usuarioConectado.Rol == 'Publicar') {
@@ -38,9 +39,10 @@ export class HearderComponent {
   // Método para mostrar el login superpuesto
   showLoginOverlay() {
     this.showLogin = true;
+    this.usuarioServicio.mostrarLogin=true    
   }
   mostrarMensajes() {
-    this.estaMostrando=true;
+    this.estaMostrando=true;    
   }
 
 }

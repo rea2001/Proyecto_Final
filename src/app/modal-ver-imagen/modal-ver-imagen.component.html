@@ -1,10 +1,10 @@
 <div class="modal-header">
-    <h4 class="modal-title">Vista previa de la imagen</h4>
+    <h4 class="modal-title">Fotos de la Vivienda</h4>
     <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('close')"></button>
   </div>
   <div class="modal-body">
-    <a (click)="cambiarImagen(false)">back</a>
+    <span (click)="cambiarImagen(false)"><<</span>
     <img [src]="imagenes[eleccionImagen]" class="img-fluid" alt="Imagen">
-    <a (click)="cambiarImagen(true)">next</a>
+    <span (click)="cambiarImagen(true)"> >> </span>
   </div>
-  <textarea id="" cols="30" rows="5" name="comentario" [(ngModel)]="fotos[eleccionImagen].Descripcion" ></textarea>  
+  <textarea id="" cols="30" rows="5" name="comentario" [(ngModel)]="fotos[eleccionImagen].Descripcion" disabled></textarea>  

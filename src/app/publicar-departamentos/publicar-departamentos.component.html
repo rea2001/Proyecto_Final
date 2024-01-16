@@ -31,7 +31,7 @@
             <div class="form-group">
               <label for="TipoPropiedad">Tipo de propiedad: </label>
               <select id="tipoPropiedad" name="tipoPropiedad" name="tipoPropiedad" [(ngModel)]="viviendaCrear.Tip_Pro">
-                <option value="Casa">Casa</option>                
+                <option value="Casa">Casa</option>
                 <option value="Departamento">Departamento</option>
                 <option value="Condominio">Condominio</option>
               </select>
@@ -218,10 +218,10 @@
           <hr class="my-4">
 
           <!-- Input para subir múltiples archivos -->
-          <div class="mb-3">
+          <!-- <div class="mb-3">
             <label for="formFileMultiple" class="form-label">Subir PDF (Contrato de Arrendamiento)</label>
             <input class="form-control" type="file" id="formFileMultiple" multiple>
-          </div>
+          </div> -->
           <button type="submit">Publicar Departamento</button>
         </form>
       </div>
@@ -230,7 +230,7 @@
     <!-- Ubicacion del mapa -->
     <div id="mapa" style="background-color: #fff;">
       <div style="padding: 20px;">
-        <div #map style="height: 500px; width: 100%;  padding: 20px;">
+        <div #map style="height: 100vh; width: 100%;  padding: 20px;">
         </div>
       </div>
     </div>

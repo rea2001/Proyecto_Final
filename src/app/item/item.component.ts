@@ -36,7 +36,7 @@ export class ItemComponent implements OnInit {
 
   mostrarDepa() {
     this.esAdmin == 0 ?
-      this.ruta.navigate(['/login']) :
+    this.sUsuarios.mostrarLogin=true:
       (this.viviendaServicio.vivendaElegida = this.vivienda, this.ruta.navigate(['/descripcionItem']))
   }
 
@@ -78,6 +78,21 @@ export class ItemComponent implements OnInit {
         console.error('ERROR AL ELIMINAR FOTOS: ', error);
       }
     );
+  }
+
+  cambiarEstado(){
+    if (this.esAdmin==1) {
+      this.vivienda.Estado=this.vivienda.Estado=='Disponible'?'Arrendado':'Disponible';
+      this.viviendaServicio.modificarViviendas(this.vivienda).subscribe(
+        correcto=>{
+          if(correcto){
+            this.ngOnInit()
+          }else
+          console.log('ocurrio un error en el server')
+        }
+      )
+      
+    }
   }
 
   private eliminarVivienda() {

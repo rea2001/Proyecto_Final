@@ -13,6 +13,7 @@ export class GaleriaComponent implements OnInit, OnDestroy {
   usuarioConectado!: Usuario | null
   constructor(private servicioUsuario: ServicioUsuariosService, private sViviendas: SviviendasService) { }
   esAdmin = 0;
+  aplicado:string[]=[]
   aplicoFiltro=false;
   filtroHabitacion: string = "3"
   filtroBanos: string = "6"
@@ -33,7 +34,7 @@ export class GaleriaComponent implements OnInit, OnDestroy {
       this.sViviendas.retornarTodasViviendas()
         .subscribe(
           viviendasRetornadas => {
-            this.viviendas = viviendasRetornadas
+            this.viviendas = viviendasRetornadas.filter(x=>x.Estado=='Disponible')
           }
         )
     } else if (this.esAdmin == 1) {
@@ -70,53 +71,66 @@ export class GaleriaComponent implements OnInit, OnDestroy {
   aceptarPrecio() {
     this.filtros.Ordenes[0] = 1;
     this.aplicarFiltros();
+    this.aplicado.push('Por precio')
   }
   aceptarSuperficie() {
     this.filtros.Ordenes[1] = 2;
     this.aplicarFiltros();
+    this.aplicado.push('Por superficie')
   }
   aceptarHabitaciones() {
     this.filtros.Ordenes[2] = parseInt(this.filtroHabitacion);
     this.aplicarFiltros();
+    this.aplicado.push('Por habitaciones')
   }
   aceptarBanos() {
     this.filtros.Ordenes[3] = parseInt(this.filtroBanos);
     this.aplicarFiltros();
+    this.aplicado.push('Por baños')
   }
   aceptarTipo(eleHtml: HTMLAnchorElement) {
     this.filtros.Ordenes[4] = 9;
     this.filtros.TipoVivienda = eleHtml.id
     this.aplicarFiltros();
+    this.aplicado.push('Por Tipo de propiedad')
   }
   cargarParroquia() {
     this.filtros.Ordenes[5] = 10;
     this.aplicarFiltros();
+    this.aplicado.push('Por parroquia')
   }
   eliminarFiltro(cualEliminar: number) {
     switch (cualEliminar) {
       case 0:
         this.filtros.Ordenes[0] = 0;
+        this.aplicado=this.aplicado.filter(x=>x!='Por precio')
         break;
       case 1:
         this.filtros.Ordenes[1] = 0;
+        this.aplicado=this.aplicado.filter(x=>x!='Por superficie')
         break;
       case 2:
         this.filtros.Ordenes[2] = 0;
+        this.aplicado=this.aplicado.filter(x=>x!='Por habitaciones')
         break;
       case 3:
         this.filtros.Ordenes[3] = 0;
+        this.aplicado=this.aplicado.filter(x=>x!='Por baños')
         break;
       case 4:
         this.filtros.Ordenes[4] = 0;
+        this.aplicado=this.aplicado.filter(x=>x!='Por Tipo de propiedad')
         break;
       case 5:
         this.filtros.Ordenes[5] = 0;
+        this.aplicado=this.aplicado.filter(x=>x!='Por parroquia')
         break;      
     }
     this.aplicarFiltros()
   }
   eliminarTodosFiltros(){
     this.filtros.Ordenes=[0,0,0,0,0,0];
+    this.aplicado=[]
     this.ngOnInit();
     this.aplicoFiltro=false;
   }

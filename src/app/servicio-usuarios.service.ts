@@ -17,6 +17,7 @@ export class ServicioUsuariosService {
   url:string="http://localhost:666/SArriendos.svc";
   usuarioConectado!:Usuario|null;
   esAdmin:boolean=false
+  mostrarLogin:boolean=false
 
   LogearUsuario(usuario:string, contraseña:string){
     return this.http.get<Usuario>(this.url+`/RegresaUsuario/${usuario}/${contraseña}`).pipe(

@@ -4,7 +4,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Caracteristicas, Condiciones, Fotos, Servicios, Usuario, Vivienda, ubicacion } from '../Modelos/Entidades.model';
 import { ServicioUsuariosService } from '../servicio-usuarios.service';
 import { SviviendasService } from '../sviviendas.service';
-import { encode } from 'punycode';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalVerImagenComponent } from '../modal-ver-imagen/modal-ver-imagen.component';
 
 @Component({
   selector: 'app-descripcion-item',
@@ -12,7 +13,7 @@ import { encode } from 'punycode';
   styleUrl: './descripcion-item.component.css'
 })
 export class DescripcionItemComponent implements OnInit {
-  constructor(private sUsuarios: ServicioUsuariosService, private sViviendas: SviviendasService) { }
+  constructor(private sUsuarios: ServicioUsuariosService, private sViviendas: SviviendasService, private modalService: NgbModal) { }
   @ViewChild('map') mapElement: any;
   map!: google.maps.Map;
   marker!: google.maps.Marker;
@@ -27,6 +28,7 @@ export class DescripcionItemComponent implements OnInit {
   fotos: Fotos[]=[]
   imagenes: string[]=[]
   imagenElegida!: string
+  indexFoto:number=0
 
   ngOnInit(): void {
     if (this.sUsuarios.usuarioConectado) {
@@ -36,6 +38,37 @@ export class DescripcionItemComponent implements OnInit {
       this.estaVivienda = this.sViviendas.vivendaElegida
       this.cargarTodoVivienda();
     }
+  }
+
+  carusel(esSegundo:boolean){
+    if (!esSegundo) {
+      return this.imagenes.slice(0, 3)
+    }else{
+      if (this.imagenes.length>3) {        
+        return this.imagenes.slice(3, 6)
+      }else{
+        return this.imagenes.slice(0, 2)
+      }
+    }
+  }
+
+  abrirModal(){
+    const modalRef = this.modalService.open(ModalVerImagenComponent);
+    modalRef.componentInstance.imagenes = this.imagenes;
+    modalRef.componentInstance.fotos = this.fotos
+    modalRef.componentInstance.eleccionImagen = this.indexFoto
+    modalRef.result.then(
+      (result) => {
+        if (result === 'delete') {
+          
+        } else if (result === 'accept') {
+
+        }
+      },
+      (reason) => {
+        // Lógica para el caso de cierre del modal sin aceptar ni eliminar
+      }
+    );
   }
 
   ngAfterViewInit(): void {

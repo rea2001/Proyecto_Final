@@ -24,6 +24,8 @@ import { ModalViviendaEliminarComponent } from './Modal/modal-vivienda-eliminar/
 import { ModalUsuarioActualizarComponent } from './Modal/modal-usuario-actualizar/modal-usuario-actualizar.component';
 import { ModalFotosComponent } from './Modal/modal-fotos/modal-fotos.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalVerImagenComponent } from './modal-ver-imagen/modal-ver-imagen.component';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ModalViviendaComponent,
     ModalViviendaEliminarComponent,
     ModalUsuarioActualizarComponent,
-    ModalFotosComponent
+    ModalFotosComponent,
+    ModalVerImagenComponent
   ],
   imports: [
     BrowserModule,
@@ -52,14 +55,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule    
   ],
   providers: [
     provideClientHydration(),CookieService
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
 
 
 

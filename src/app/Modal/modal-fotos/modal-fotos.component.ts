@@ -9,7 +9,8 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 export class ModalFotosComponent {
   
-  @Input() image!: string;
+  @Input() image!: string;  
+  @Input() comentario:string=''
   constructor(public activeModal: NgbActiveModal) {}
 
   deleteImage() {
@@ -17,6 +18,6 @@ export class ModalFotosComponent {
   }
 
   acceptImage() {
-    this.activeModal.close('accept');
+    this.activeModal.close('accept');    
   }
 }

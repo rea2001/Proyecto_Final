@@ -5,15 +5,15 @@
             <!-- col start -->
             <div class="col-lg-5 mt-5" *ngIf="imagenes" >
                 <div class="card mb-3">
-                    <img class="card-img img-fluid" [src]="imagenes[0]" alt="Imagen Principal"
-                        id="product-detail" width="694" height="694">
+                    <img class="card-img img-fluid" [src]="imagenes[indexFoto]" alt="Imagen Principal"
+                        id="product-detail" width="694" height="694" (click)="abrirModal()">
                 </div>
                 <div class="row">
                     <!--Start Controls-->
                     <div class="col-1 align-self-center">
                         <a href="#multi-item-example" role="button" data-bs-slide="prev">
-                            <i class="text-dark fas fa-chevron-left"></i>
-                            <span class="sr-only">Anterior</span>
+                                                        
+                            <span class="sr-only"> << </span>
                         </a>
                     </div>
                     <!--End Controls-->
@@ -26,9 +26,9 @@
                             <!--First slide-->
                             <div class="carousel-item active">
                                 <div class="row">
-                                    <div class="col-4" *ngFor="let imagen of imagenes">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" [src]="imagen"
+                                    <div class="col-4" *ngFor="let imagen of carusel(false); let i = index">
+                                        <a>
+                                            <img class="card-img img-fluid" [src]="imagen" (click)="indexFoto=i"
                                                 alt="Product Image 1" style="background-color: white;" width="176"
                                                 height="176">
                                         </a>
@@ -40,9 +40,9 @@
                             <!--Second slide-->
                             <div class="carousel-item">
                                 <div class="row">
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="assets/img/product_single_04.jpg"
+                                    <div class="col-4" *ngFor="let imagen of carusel(true); let i = index">
+                                        <a>
+                                            <img class="card-img img-fluid" [src]="imagen" (click)="indexFoto=this.imagenes.length>3?i+3:i"
                                                 alt="Product Image 4">
                                         </a>
                                     </div>                                    
@@ -55,9 +55,8 @@
                     <!--End Carousel Wrapper-->
                     <!--Start Controls-->
                     <div class="col-1 align-self-center">
-                        <a href="#multi-item-example" role="button" data-bs-slide="next">
-                            <i class="text-dark fas fa-chevron-right"></i>
-                            <span class="sr-only">Next</span>
+                        <a href="#multi-item-example" role="button" data-bs-slide="next">                            
+                            <span class="sr-only"> >> </span>
                         </a>
                     </div>
                     <!--End Controls-->

@@ -4,7 +4,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Vivienda, Usuario, Caracteristicas, Servicios, Condiciones, Fotos, ubicacion } from '../Modelos/Entidades.model';
 import { ServicioUsuariosService } from '../servicio-usuarios.service';
 import { SviviendasService } from '../sviviendas.service';
-import { Router } from '@angular/router';
+import { ActivationEnd, Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalFotosComponent } from '../Modal/modal-fotos/modal-fotos.component';
@@ -94,47 +94,57 @@ export class PublicarDepartamentosComponent implements OnInit {
 
 
   CambioImagenes(event: any) {
-    Array.from(event.target.files).forEach((file) => {
-      if (file instanceof File) {
+    if (this.imagenes.length >= 5) {
+      alert('Solo se permite subir 5 fotos por vivienda')
+    }else{
+      Array.from(event.target.files).forEach((file) => {
 
-        const selectedFile: File = file;
-        if (selectedFile) {
-          const reader = new FileReader();
-
-          reader.onload = (e: any) => {
-            const arrayBuffer: ArrayBuffer | null = e.target.result;
-            if (arrayBuffer) {
-              const uintArray = new Uint8Array(arrayBuffer);
-              this.fileBytes = uintArray;
-              const stringBytes = this.uint8ArrayToBase64(uintArray);
-              let foto: Fotos = new Fotos(0, this.viviendaCrear.Id_Viv, "Foto ", stringBytes);
-              this.fotos.push(foto);
-
-              const byteArray = new Uint8Array(uintArray);
-
-              const blob = new Blob([byteArray], { type: 'image/jpeg' });
-              let imageUrl = URL.createObjectURL(blob);
-              this.imagenes.push(imageUrl);
+        if (this.imagenes.length >= 5) {
+          alert('Solo se permite subir 5 fotos por vivienda')
+        }else{
+       
+          if (file instanceof File) {
+  
+            const selectedFile: File = file;
+            if (selectedFile) {
+              const reader = new FileReader();
+  
+              reader.onload = (e: any) => {
+                const arrayBuffer: ArrayBuffer | null = e.target.result;
+                if (arrayBuffer) {
+                  const uintArray = new Uint8Array(arrayBuffer);
+                  this.fileBytes = uintArray;
+                  const stringBytes = this.uint8ArrayToBase64(uintArray);
+                  let foto: Fotos = new Fotos(0, this.viviendaCrear.Id_Viv, "Foto ", stringBytes);
+                  this.fotos.push(foto);
+  
+                  const byteArray = new Uint8Array(uintArray);
+  
+                  const blob = new Blob([byteArray], { type: 'image/jpeg' });
+                  let imageUrl = URL.createObjectURL(blob);
+                  this.imagenes.push(imageUrl);
+                }
+              };
+  
+              reader.readAsArrayBuffer(selectedFile);
             }
-          };
-
-          reader.readAsArrayBuffer(selectedFile);
+  
+          }
         }
-
-      }
-    });
+      });      
+    }
   }
 
   openModal(imageUrl: string, index: number) {
     const modalRef = this.modalService.open(ModalFotosComponent);
     modalRef.componentInstance.image = imageUrl;
-
+    modalRef.componentInstance.comentario = this.fotos[index].Descripcion
     modalRef.result.then(
       (result) => {
         if (result === 'delete') {
           this.deleteImage(index);
         } else if (result === 'accept') {
-          // Lógica para aceptar la imagen
+          this.fotos[index].Descripcion = modalRef.componentInstance.comentario
         }
       },
       (reason) => {
@@ -143,13 +153,14 @@ export class PublicarDepartamentosComponent implements OnInit {
     );
   }
 
-  openModalActualizar() {
+
+  openModalActualizar(e: Event) {
     const modalRef = this.modalService.open(ModalViviendaComponent);
-      modalRef.result.then(
+    modalRef.result.then(
       (result) => {
         if (result === 'update') {
-
-        } else if (result === 'accept') {
+          this.CrearVivienda(e)
+        } else if (result === 'cancelar') {
           // Lógica para aceptar la imagen
         }
       },
@@ -158,13 +169,13 @@ export class PublicarDepartamentosComponent implements OnInit {
       }
     );
   }
-  
+
   // Método para eliminar la imagen
   deleteImage(index: number) {
     this.imagenes.splice(index, 1);
     this.fotos.splice(index, 1);
     this.fotos = [...this.fotos]
-    this.imagenes = [...this.imagenes];    
+    this.imagenes = [...this.imagenes];
   }
 
 
@@ -192,7 +203,7 @@ export class PublicarDepartamentosComponent implements OnInit {
     this.marker = new google.maps.Marker({
       position: new google.maps.LatLng(this.viviendaCrear.Latitud != undefined ? this.viviendaCrear.Latitud : 0, this.viviendaCrear.Latitud != undefined ? this.viviendaCrear.Longitud : 0),
       map: this.map,
-      title: 'Marker Title',
+      title: 'Se arrienda',
       draggable: true
     });
 
@@ -217,8 +228,15 @@ export class PublicarDepartamentosComponent implements OnInit {
       });
     }
   }
-
+  CrearOActualizarAhiElDilema(e: Event) {
+    if (this.estaEditando) {
+      this.openModalActualizar(e)
+    } else {
+      this.CrearVivienda(e)
+    }
+  }
   CrearVivienda(e: Event) {
+
     e.preventDefault();
 
     const caracteristicaObservable = this.estaEditando ? this.Sviviendas.modificarCaracteristica(this.caraCrear) : this.Sviviendas.crearCaracteristica(this.caraCrear);
@@ -239,7 +257,8 @@ export class PublicarDepartamentosComponent implements OnInit {
                   this.Sviviendas.modificarFotos(this.fotos).subscribe(
                     estaFotos => {
                       if (estaFotos) {
-                        alert('Se ha modificado la vivienda correctamente')
+                        this.route.navigate(['/home'])
+                        alert('Vivienda modificada correctamente')
                       } else {
                         alert('No se ha modificado la vivienda')
                       }
@@ -278,8 +297,8 @@ export class PublicarDepartamentosComponent implements OnInit {
                 this.Sviviendas.crearFotos(this.fotos).subscribe(
                   (resultadoFoto: boolean) => {
                     if (resultadoFoto) {
-                      alert("Vivienda Creada Exitosamente");
                       this.route.navigate(['/home']);
+                      alert("Vivienda Creada Exitosamente");
                     } else {
                       alert("Vivienda No se pudo crear");
                     }

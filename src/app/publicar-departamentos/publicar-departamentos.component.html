@@ -17,7 +17,7 @@
       <hr class="my-4">
 
       <div id="form" class="form-group">
-        <form (submit)="CrearVivienda($event)">
+        <form (submit)="CrearOActualizarAhiElDilema($event)">
           <!-- Campos del formulario -->
           <div class="form-group">
             <label for="Nombre">Nombre:</label>
@@ -31,11 +31,9 @@
             <div class="form-group">
               <label for="TipoPropiedad">Tipo de propiedad: </label>
               <select id="tipoPropiedad" name="tipoPropiedad" name="tipoPropiedad" [(ngModel)]="viviendaCrear.Tip_Pro">
-                <option value="Casa">Casa</option>
-                <option value="Media Agua">Media Agua</option>
+                <option value="Casa">Casa</option>                
                 <option value="Departamento">Departamento</option>
                 <option value="Condominio">Condominio</option>
-                <option value="Solohabitacion">Solo habitación</option>
               </select>
             </div>
           </div>
